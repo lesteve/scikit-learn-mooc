@@ -11,5 +11,5 @@ dependencies:
   - seaborn
   - jupyterlab
   - notebook
-    # - jupytext
-    #  - plotly
+  - jupytext
+  - plotly
