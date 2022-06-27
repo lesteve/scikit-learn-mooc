@@ -5,11 +5,11 @@ channels:
 
 dependencies:
   - python=3.10
-    #  - scikit-learn >= 1.1.1
-    #  - pandas >= 1
-    #  - matplotlib-base
-    #  - seaborn
-    #  - jupyterlab
-    #  - notebook
-    #  - jupytext
+  - scikit-learn >= 1.1.1
+  - pandas >= 1
+  - matplotlib-base
+  - seaborn
+  - jupyterlab
+  - notebook
+    # - jupytext
     #  - plotly
