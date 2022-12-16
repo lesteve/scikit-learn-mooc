@@ -6,10 +6,9 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.11.3
+#       jupytext_version: 1.11.5
 #   kernelspec:
 #     display_name: Python 3
-#     language: python
 #     name: python3
 # ---
 
@@ -79,7 +78,7 @@ elapsed_time = time.time() - start
 scores = cv_results["test_score"]
 
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f} "
+      f"{scores.mean():.3f} ± {scores.std():.3f} "
       f"with a fitting time of {elapsed_time:.3f}")
 
 # %% [markdown]

@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # The blood transfusion dataset
 #
@@ -56,7 +63,7 @@ data.info()
 # distributions.
 
 # %%
-_ = data.hist(figsize=(12, 10), bins=30, edgecolor="black", density=True)
+_ = data.hist(figsize=(12, 10), bins=30, edgecolor="black")
 
 # %% [markdown]
 # There is nothing shocking regarding the distributions. We only observe a high
@@ -104,7 +111,7 @@ _ = sns.pairplot(blood_transfusion, hue="Class")
 # %% [markdown]
 # Looking at the diagonal plots, we don't see any feature that individually
 # could help at separating the two classes. When looking at a pair of feature,
-# we don't see any stricking combinations as well. However, we can note that
+# we don't see any striking combinations as well. However, we can note that
 # the `"Monetary"` and `"Frequency"` features are perfectly correlated: all the
 # data points are aligned on a diagonal.
 #

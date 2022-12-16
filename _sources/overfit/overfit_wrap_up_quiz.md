@@ -1,4 +1,4 @@
-# 🏁 Wrap-up quiz
+# 🏁 Wrap-up quiz 2
 
 **This quiz requires some programming to be answered.**
 
@@ -25,9 +25,9 @@ Select the correct answers from the following proposals.
 - c) The problem to be solved is a multiclass classification problem
   (more than 2 possible classes)
 - d) The proportions of the class counts are imbalanced: some classes have more
-  than twice as many rows than others)
+  than twice as many rows than others
 
-_Select several answers_
+_Select all answers that apply_
 
 Hint: `target.unique()`, and `target.value_counts()` are methods
 that are helpful to answer to this question.
@@ -58,7 +58,7 @@ and `sklearn.model_selection.cross_validate`
 ```{admonition} Question
 Repeat the previous experiment but compute the balanced accuracy instead of
 the accuracy score. Pass `scoring="balanced_accuracy"` when calling
-`cross_validate` or `cross_val_score` functions?
+`cross_validate` or `cross_val_score` functions, the mean score is:
 
 - a) ~25%
 - b) ~50%
@@ -113,10 +113,10 @@ estimator.
 +++
 
 ```{admonition} Question
-Evaluate the previous model with a 10-fold cross-validation. Use the balanced
-accuracy as a score.
-What can you say about this model? Compare the average of the train and test
-scores to argument your answer.
+Set `n_neighbors=1` in the previous model and evaluate it using a 10-fold
+cross-validation. Use the balanced accuracy as a score. What can you say about
+this model? Compare the average of the train and test scores to argument your
+answer.
 
 - a) The model clearly underfits
 - b) The model generalizes
@@ -152,6 +152,8 @@ Select the true affirmations stated below:
 - c) The model underfits for a range of `n_neighbors` values between 100 to 500
 ```
 
+_Select a single answer_
+
 +++
 
 ```{admonition} Question
@@ -162,12 +164,16 @@ Select the true affirmations stated below:
 - c) The model overfits for a range of `n_neighbors` values between 100 to 500
 ```
 
+_Select a single answer_
+
 +++
 
 ```{admonition} Question
-Select the true affirmations stated below:
+Select which of the following statements are true:
 
 - a) The model best generalizes for a range of `n_neighbors` values between 1 to 10
 - b) The model best generalizes for a range of `n_neighbors` values between 10 to 100
 - c) The model best generalizes for a range of `n_neighbors` values between 100 to 500
 ```
+
+_Select a single answer_

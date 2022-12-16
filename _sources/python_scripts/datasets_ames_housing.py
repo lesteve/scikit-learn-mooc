@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # The Ames housing dataset
 #
@@ -65,7 +72,7 @@ data.info()
 
 # %% [markdown]
 # Looking at the dataframe general information, we can see that 79 features are
-# availables and that the dataset contains 1460 samples. However, some features
+# available and that the dataset contains 1460 samples. However, some features
 # contains missing values. Also, the type of data is heterogeneous: both
 # numerical and categorical data are available.
 #
@@ -80,7 +87,7 @@ numerical_data.info()
 # a look at the histogram for all these features.
 
 # %%
-numerical_data.hist(bins=20, figsize=(12, 22), edgecolor="black", density=True,
+numerical_data.hist(bins=20, figsize=(12, 22), edgecolor="black",
                     layout=(9, 4))
 plt.subplots_adjust(hspace=0.8, wspace=0.8)
 

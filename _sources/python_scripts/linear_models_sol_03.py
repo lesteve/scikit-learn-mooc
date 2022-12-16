@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # 📃 Solution for Exercise M4.03
 #
@@ -55,7 +62,7 @@ cv_results = cross_validate(linear_regression, data, target,
 # %%
 # solution
 print(f"Mean absolute error on testing set: "
-      f"{-cv_results['test_score'].mean():.3f} k$ +/- "
+      f"{-cv_results['test_score'].mean():.3f} k$ ± "
       f"{cv_results['test_score'].std():.3f}")
 
 # %% [markdown]

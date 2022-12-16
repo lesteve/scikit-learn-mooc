@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # 📃 Solution for Exercise M7.03
 #
@@ -43,7 +50,7 @@ model = LinearRegression()
 from sklearn.model_selection import cross_val_score
 
 scores = cross_val_score(model, data, target, cv=10, scoring="r2")
-print(f"R2 score: {scores.mean():.3f} +/- {scores.std():.3f}")
+print(f"R2 score: {scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # Then, instead of using the $R^2$ score, use the mean absolute error. You need
@@ -55,7 +62,7 @@ scores = cross_val_score(model, data, target, cv=10,
                          scoring="neg_mean_absolute_error")
 errors = -scores
 print(f"Mean absolute error: "
-      f"{errors.mean():.3f} k$ +/- {errors.std():.3f}")
+      f"{errors.mean():.3f} k$ ± {errors.std():.3f}")
 
 # %% [markdown] tags=["solution"]
 # The `scoring` parameter in scikit-learn expects score. It means that the
@@ -79,6 +86,6 @@ cv_results = cross_validate(model, data, target, scoring=scoring)
 import pandas as pd
 
 scores = {"R2": cv_results["test_r2"],
-          "MSE": -cv_results["test_neg_mean_absolute_error"]}
+          "MAE": -cv_results["test_neg_mean_absolute_error"]}
 scores = pd.DataFrame(scores)
 scores

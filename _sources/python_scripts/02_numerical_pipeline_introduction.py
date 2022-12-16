@@ -1,14 +1,7 @@
 # ---
 # jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: percent
-#       format_version: '1.3'
-#       jupytext_version: 1.6.0
 #   kernelspec:
 #     display_name: Python 3
-#     language: python
 #     name: python3
 # ---
 
@@ -93,15 +86,10 @@ print(f"The dataset contains {data.shape[0]} samples and "
 # target data.
 
 # %%
-# to display nice model diagram
-from sklearn import set_config
-set_config(display='diagram')
-
-# %%
 from sklearn.neighbors import KNeighborsClassifier
 
 model = KNeighborsClassifier()
-model.fit(data, target)
+_ = model.fit(data, target)
 
 # %% [markdown]
 # Learning can be represented as follows:
@@ -172,7 +160,10 @@ print(f"Number of correct prediction: "
 (target == target_predicted).mean()
 
 # %% [markdown]
-# But, can this evaluation be trusted, or is it too good to be true?
+# This result means that the model makes a correct prediction for
+# approximately 82 samples out of 100. Note that we used the same data
+# to train and evaluate our model. Can this evaluation be trusted or is
+# it too good to be true?
 #
 # ## Train-test data split
 #
@@ -237,7 +228,7 @@ print(f"The test accuracy using a {model_name} is "
 #
 # It shows the importance to always testing the generalization performance of
 # predictive models on a different set than the one used to train these models.
-# We will discuss later in more details how predictive models should be
+# We will discuss later in more detail how predictive models should be
 # evaluated.
 
 # %% [markdown]
@@ -247,11 +238,13 @@ print(f"The test accuracy using a {model_name} is "
 # prediction of a model and the true targets. Equivalent terms for
 # **generalization performance** are predictive performance and statistical
 # performance. We will refer to **computational performance** of a predictive
-# model when accessing the computational costs of training a predictive model
+# model when assessing the computational costs of training a predictive model
 # or using it to make predictions.
 # ```
 
 # %% [markdown]
+# ## Notebook Recap
+#
 # In this notebook we:
 #
 # * fitted a **k-nearest neighbors** model on a training dataset;

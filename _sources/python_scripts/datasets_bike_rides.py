@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # The bike rides dataset
 #
@@ -88,7 +95,7 @@ data, target = cycling.drop(columns=target_name), cycling[target_name]
 # %%
 import matplotlib.pyplot as plt
 
-target.plot.hist(bins=50, edgecolor="black", density=True)
+target.plot.hist(bins=50, edgecolor="black")
 plt.xlabel("Power (W)")
 
 # %% [markdown]

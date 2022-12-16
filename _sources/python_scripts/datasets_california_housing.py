@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # The California housing dataset
 #
@@ -119,7 +126,7 @@ _ = plt.title("Median house value depending of\n their spatial location")
 # %% [markdown]
 # If you are not familiar with the state of California, it is interesting to
 # notice that all datapoints show a graphical representation of this state.
-# We note that the high-valued houses will be located on the cost, where the
+# We note that the high-valued houses will be located on the coast, where the
 # big cities from California are located: San Diego, Los Angeles, San Jose, or
 # San Francisco.
 #
@@ -187,7 +194,7 @@ cv_results = cross_validate(
 
 # %%
 score = cv_results["test_score"]
-print(f"R2 score: {score.mean():.3f} +/- {score.std():.3f}")
+print(f"R2 score: {score.mean():.3f} ± {score.std():.3f}")
 
 # %%
 import pandas as pd

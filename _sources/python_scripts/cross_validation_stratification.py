@@ -1,5 +1,20 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
+#
 # # Stratification
+#
+# In the previous notebooks, we always used either a default `KFold` or a
+# `ShuffleSplit` cross-validation strategies to iteratively split our dataset.
+# However, you should not assume that these approaches are always the best
+# option: some other cross-validation strategies might be better adapted to
+# your problem.
+#
 # Let's start with the concept of stratification by giving an example where
 # we can get into trouble if we are not careful. Let's load the iris dataset.
 
@@ -53,7 +68,7 @@ cv = KFold(n_splits=3)
 results = cross_validate(model, data, target, cv=cv)
 test_score = results["test_score"]
 print(f"The average accuracy is "
-      f"{test_score.mean():.3f} +/- {test_score.std():.3f}")
+      f"{test_score.mean():.3f} ± {test_score.std():.3f}")
 
 # %% [markdown]
 # It is a real surprise that our model cannot correctly classify any sample in
@@ -142,7 +157,7 @@ cv = KFold(n_splits=3, shuffle=True, random_state=0)
 results = cross_validate(model, data, target, cv=cv)
 test_score = results["test_score"]
 print(f"The average accuracy is "
-      f"{test_score.mean():.3f} +/- {test_score.std():.3f}")
+      f"{test_score.mean():.3f} ± {test_score.std():.3f}")
 
 # %% [markdown]
 # We get results that are closer to what we would expect with an accuracy above
@@ -197,7 +212,7 @@ cv = StratifiedKFold(n_splits=3)
 results = cross_validate(model, data, target, cv=cv)
 test_score = results["test_score"]
 print(f"The average accuracy is "
-      f"{test_score.mean():.3f} +/- {test_score.std():.3f}")
+      f"{test_score.mean():.3f} ± {test_score.std():.3f}")
 
 # %%
 train_cv_counts = []

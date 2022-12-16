@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Overfit-generalization-underfit
 #
@@ -59,7 +66,7 @@ scores[["train error", "test error"]] = -cv_results[
 # %%
 import matplotlib.pyplot as plt
 
-scores.plot.hist(bins=50, edgecolor="black", density=True)
+scores.plot.hist(bins=50, edgecolor="black")
 plt.xlabel("Mean absolute error (k$)")
 _ = plt.title("Train and test errors distribution via cross-validation")
 

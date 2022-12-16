@@ -1,5 +1,23 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Set and get hyperparameters in scikit-learn
+#
+# The process of learning a predictive model is driven by a set of internal
+# parameters and a set of training data. These internal parameters are called
+# hyperparameters and are specific for each family of models. In addition, a
+# specific set of hyperparameters are optimal for a specific dataset and thus
+# they need to be optimized.
+#
+# ```{note}
+# In this notebook we will use the words "hyperparameters" and "parameters"
+# interchangeably.
+# ```
 #
 # This notebook shows how one can get and set the value of a hyperparameter in
 # a scikit-learn estimator. We recall that hyperparameters refer to the
@@ -58,7 +76,7 @@ from sklearn.model_selection import cross_validate
 cv_results = cross_validate(model, data, target)
 scores = cv_results["test_score"]
 print(f"Accuracy score via cross-validation:\n"
-      f"{scores.mean():.3f} +/- {scores.std():.3f}")
+      f"{scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # We created a model with the default `C` value that is equal to 1. If we
@@ -80,7 +98,7 @@ model.set_params(classifier__C=1e-3)
 cv_results = cross_validate(model, data, target)
 scores = cv_results["test_score"]
 print(f"Accuracy score via cross-validation:\n"
-      f"{scores.mean():.3f} +/- {scores.std():.3f}")
+      f"{scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # When the model of interest is a `Pipeline`, the parameter names are of the
@@ -114,7 +132,7 @@ for C in [1e-3, 1e-2, 1e-1, 1, 10]:
     cv_results = cross_validate(model, data, target)
     scores = cv_results["test_score"]
     print(f"Accuracy score via cross-validation with C={C}:\n"
-          f"{scores.mean():.3f} +/- {scores.std():.3f}")
+          f"{scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # We can see that as long as C is high enough, the model seems to perform

@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Linear regression using scikit-learn
 #
@@ -22,9 +29,9 @@
 import pandas as pd
 
 penguins = pd.read_csv("../datasets/penguins_regression.csv")
-feature_names = "Flipper Length (mm)"
+feature_name = "Flipper Length (mm)"
 target_name = "Body Mass (g)"
-data, target = penguins[[feature_names]], penguins[target_name]
+data, target = penguins[[feature_name]], penguins[target_name]
 
 # %% [markdown]
 # ```{note}
@@ -66,7 +73,7 @@ predicted_body_mass = (
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-sns.scatterplot(x=data[feature_names], y=target, color="black", alpha=0.5)
+sns.scatterplot(x=data[feature_name], y=target, color="black", alpha=0.5)
 plt.plot(flipper_length_range, predicted_body_mass)
 _ = plt.title("Model using LinearRegression from scikit-learn")
 
@@ -104,7 +111,7 @@ print(f"The mean absolute error of the optimal model is {model_error:.2f} g")
 
 # %% [markdown]
 # A mean absolute error of 313 means that in average, our model make an error
-# of +/- 313 grams when predicting the body mass of a penguin given its flipper
+# of ± 313 grams when predicting the body mass of a penguin given its flipper
 # length.
 
 

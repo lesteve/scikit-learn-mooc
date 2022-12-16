@@ -12,7 +12,7 @@ In the notebook "First look at our dataset", we used pandas and specifically
 - e) load a file containing both the features and the target for our classification
   problem
 
-_Select multiple answers_
+_Select all answers that apply_
 ```
 
 +++
@@ -26,6 +26,8 @@ In the previous notebook, we used:
 - c) numpy and scipy to perform numerical inspection (for instance using
   `scipy.optimize.minimize`)
 - d) scikit-learn to fit some machine learning models
+
+_Select all answers that apply_
 ```
 
 +++
@@ -37,6 +39,8 @@ How is a tabular dataset organized?
 - b) a column represents a feature and a row represents a sample
 - c) the target variable is represented by a row
 - d) the target variable is represented by a column
+
+_Select all answers that apply_
 ```
 
 +++
@@ -44,7 +48,9 @@ How is a tabular dataset organized?
 ```{admonition} Question
 A categorical variable is:
 
-- a) a variable with only two different possible values
+- a) a variable with **only two** different possible values
 - b) a variable with continuous numerical values
 - c) a variable with a finite set of possible values
+
+_Select a single answer_
 ```

@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Sample grouping
 # We are going to linger into the concept of sample groups. As in the previous
@@ -11,15 +18,15 @@ digits = load_digits()
 data, target = digits.data, digits.target
 
 # %% [markdown]
-# We will recreate the same model used in the previous exercise:
-# a logistic regression classifier with preprocessor to scale the data.
+# We will recreate the same model used in the previous notebook:
+# a logistic regression classifier with a preprocessor to scale the data.
 
 # %%
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 
-model = make_pipeline(StandardScaler(), LogisticRegression())
+model = make_pipeline(MinMaxScaler(), LogisticRegression(max_iter=1_000))
 
 # %% [markdown]
 # We will use the same baseline model. We will use a `KFold` cross-validation
@@ -32,7 +39,7 @@ cv = KFold(shuffle=False)
 test_score_no_shuffling = cross_val_score(model, data, target, cv=cv,
                                           n_jobs=2)
 print(f"The average accuracy is "
-      f"{test_score_no_shuffling.mean():.3f} +/- "
+      f"{test_score_no_shuffling.mean():.3f} ± "
       f"{test_score_no_shuffling.std():.3f}")
 
 # %% [markdown]
@@ -44,7 +51,7 @@ cv = KFold(shuffle=True)
 test_score_with_shuffling = cross_val_score(model, data, target, cv=cv,
                                             n_jobs=2)
 print(f"The average accuracy is "
-      f"{test_score_with_shuffling.mean():.3f} +/- "
+      f"{test_score_with_shuffling.mean():.3f} ± "
       f"{test_score_with_shuffling.std():.3f}")
 
 # %% [markdown]
@@ -66,16 +73,16 @@ all_scores = pd.DataFrame(
 # %%
 import matplotlib.pyplot as plt
 
-all_scores.plot.hist(bins=10, edgecolor="black", density=True, alpha=0.7)
+all_scores.plot.hist(bins=10, edgecolor="black", alpha=0.7)
 plt.xlim([0.8, 1.0])
 plt.xlabel("Accuracy score")
 plt.legend(bbox_to_anchor=(1.05, 0.8), loc="upper left")
 _ = plt.title("Distribution of the test scores")
 
 # %% [markdown]
-# The cross-validation testing error that uses the shuffling has less
-# variance than the one that does not impose any shuffling. It means that some
-# specific fold leads to a low score in this case.
+# The cross-validation testing error that uses the shuffling has less variance
+# than the one that does not impose any shuffling. It means that some specific
+# fold leads to a low score in this case.
 
 # %%
 print(test_score_no_shuffling)
@@ -91,11 +98,11 @@ print(digits.DESCR)
 # %% [markdown]
 # If we read carefully, 13 writers wrote the digits of our dataset, accounting
 # for a total amount of 1797 samples. Thus, a writer wrote several times the
-# same numbers. Let's suppose that the writer samples are grouped.
-# Subsequently, not shuffling the data will keep all writer samples together
-# either in the training or the testing sets. Mixing the data will break this
-# structure, and therefore digits written by the same writer will be available
-# in both the training and testing sets.
+# same numbers. Let's suppose that the writer samples are grouped. Subsequently,
+# not shuffling the data will keep all writer samples together either in the
+# training or the testing sets. Mixing the data will break this structure, and
+# therefore digits written by the same writer will be available in both the
+# training and testing sets.
 #
 # Besides, a writer will usually tend to write digits in the same manner. Thus,
 # our model will learn to identify a writer's pattern for each digit instead of
@@ -105,7 +112,23 @@ print(digits.DESCR)
 # should either belong to the training or the testing set. Thus, we want to
 # group samples for each writer.
 #
-# Here, we will manually define the group for the 13 writers.
+# Indeed, we can recover the groups by looking at the target variable.
+
+# %%
+target[:200]
+
+# %% [markdown]
+#
+# It might not be obvious at first, but there is a structure in the target:
+# there is a repetitive pattern that always starts by some series of ordered
+# digits from 0 to 9 followed by random digits at a certain point. If we look in
+# detail, we see that there are 14 such patterns, always with around 130 samples
+# each.
+#
+# Even if it is not exactly corresponding to the 13 writers in the documentation
+# (maybe one writer wrote two series of digits), we can make the hypothesis that
+# each of these patterns corresponds to a different writer and thus a different
+# group.
 
 # %%
 from itertools import count
@@ -144,7 +167,7 @@ cv = GroupKFold()
 test_score = cross_val_score(model, data, target, groups=groups, cv=cv,
                              n_jobs=2)
 print(f"The average accuracy is "
-      f"{test_score.mean():.3f} +/- "
+      f"{test_score.mean():.3f} ± "
       f"{test_score.std():.3f}")
 
 # %% [markdown]
@@ -161,7 +184,7 @@ all_scores = pd.DataFrame(
 ).T
 
 # %%
-all_scores.plot.hist(bins=10, edgecolor="black", density=True, alpha=0.7)
+all_scores.plot.hist(bins=10, edgecolor="black", alpha=0.7)
 plt.xlim([0.8, 1.0])
 plt.xlabel("Accuracy score")
 plt.legend(bbox_to_anchor=(1.05, 0.8), loc="upper left")
@@ -169,5 +192,5 @@ _ = plt.title("Distribution of the test scores")
 
 # %% [markdown]
 # As a conclusion, it is really important to take any sample grouping pattern
-# into account when evaluating a model. Otherwise, the results obtained will
-# be over-optimistic in regards with reality.
+# into account when evaluating a model. Otherwise, the results obtained will be
+# over-optimistic in regards with reality.

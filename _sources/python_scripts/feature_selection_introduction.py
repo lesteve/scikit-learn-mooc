@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Benefits of using feature selection
 #
@@ -23,8 +30,8 @@ data, target = make_classification(
 )
 
 # %% [markdown]
-# We chose to create a dataset with two informative features among a hundred.
-# To simplify our example, we did not include either redundant or repeated
+# We choose to create a dataset with two informative features among a hundred.
+# To simplify our example, we do not include either redundant or repeated
 # features.
 #
 # We will create two machine learning pipelines. The former will be a random

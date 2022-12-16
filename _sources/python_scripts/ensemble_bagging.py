@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Bagging
 #
@@ -67,7 +74,7 @@ y_pred = tree.predict(data_test)
 # %%
 sns.scatterplot(x=data_train["Feature"], y=target_train, color="black",
                 alpha=0.5)
-plt.plot(data_test, y_pred, label="Fitted tree")
+plt.plot(data_test["Feature"], y_pred, label="Fitted tree")
 plt.legend()
 _ = plt.title("Predictions by a single decision tree")
 
@@ -76,10 +83,14 @@ _ = plt.title("Predictions by a single decision tree")
 #
 # ## Bootstrap resampling
 #
-# A bootstrap sample corresponds to a resampling with replacement, of the
-# original dataset, a sample that is the same size as the original dataset.
-# Thus, the bootstrap sample will contain some data points several times while
-# some of the original data points will not be present.
+# Given a dataset with `n` data points, bootstrapping corresponds to resampling
+# with replacement  `n` out of such `n` data points uniformly at random.
+#
+# As a result, the output of the bootstrap sampling procedure is another
+# dataset with also n data points, but likely with duplicates. As a consequence,
+# there are also data points from the original dataset that are never selected to
+# appear in a bootstrap sample (by chance). Those data points that are left away
+# are often referred to as the out-of-bag sample.
 #
 # We will create a function that given `data` and `target` will return a
 # resampled variation `data_bootstrap` and `target_bootstrap`.
@@ -108,11 +119,11 @@ def bootstrap_sample(data, target):
 n_bootstraps = 3
 for bootstrap_idx in range(n_bootstraps):
     # draw a bootstrap from the original data
-    data_bootstrap, target_booststrap = bootstrap_sample(
+    data_bootstrap, target_bootstrap = bootstrap_sample(
         data_train, target_train,
     )
     plt.figure()
-    plt.scatter(data_bootstrap["Feature"], target_booststrap,
+    plt.scatter(data_bootstrap["Feature"], target_bootstrap,
                 color="tab:blue", facecolors="none",
                 alpha=0.5, label="Resampled data", s=180, linewidth=5)
     plt.scatter(data_train["Feature"], target_train,
@@ -146,15 +157,14 @@ print(
 
 # %% [markdown]
 #
-# On average, ~63.2% of the original data points of the original dataset will
-# be present in a given bootstrap sample. The other ~36.8% are repeated
-# samples.
+# On average, roughly 63.2% of the original data points of the original dataset
+# will be present in a given bootstrap sample. Since the bootstrap sample has
+# the same size as the original dataset, there will be many samples that are in
+# the bootstrap sample multiple times.
 #
-# We are able to generate many datasets, all slightly different.
-#
-# Now, we can fit a decision tree for each of these datasets and they all shall
-# be slightly different as well.
-
+# Using bootstrap we are able to generate many datasets, all slightly
+# different. We can fit a decision tree for each of these datasets and they all
+# shall be slightly different as well.
 
 # %%
 bag_of_trees = []
@@ -177,7 +187,7 @@ sns.scatterplot(x=data_train["Feature"], y=target_train, color="black",
                 alpha=0.5)
 for tree_idx, tree in enumerate(bag_of_trees):
     tree_predictions = tree.predict(data_test)
-    plt.plot(data_test, tree_predictions, linestyle="--", alpha=0.8,
+    plt.plot(data_test["Feature"], tree_predictions, linestyle="--", alpha=0.8,
              label=f"Tree #{tree_idx} predictions")
 
 plt.legend()
@@ -186,7 +196,7 @@ _ = plt.title("Predictions of trees trained on different bootstraps")
 # %% [markdown]
 # ## Aggregating
 #
-# Once our trees are fitted and we are able to get predictions for each of
+# Once our trees are fitted, we are able to get predictions for each of
 # them. In regression, the most straightforward way to combine those
 # predictions is just to average them: for a given test data point, we feed the
 # input feature values to each of the `n` trained models in the ensemble and as
@@ -203,14 +213,14 @@ sns.scatterplot(x=data_train["Feature"], y=target_train, color="black",
 bag_predictions = []
 for tree_idx, tree in enumerate(bag_of_trees):
     tree_predictions = tree.predict(data_test)
-    plt.plot(data_test, tree_predictions, linestyle="--", alpha=0.8,
+    plt.plot(data_test["Feature"], tree_predictions, linestyle="--", alpha=0.8,
              label=f"Tree #{tree_idx} predictions")
     bag_predictions.append(tree_predictions)
 
 bag_predictions = np.mean(bag_predictions, axis=0)
-plt.plot(data_test, bag_predictions, label="Averaged predictions",
+plt.plot(data_test["Feature"], bag_predictions, label="Averaged predictions",
          linestyle="-")
-plt.legend()
+plt.legend(bbox_to_anchor=(1.05, 0.8), loc="upper left")
 _ = plt.title("Predictions of bagged trees")
 
 # %% [markdown]
@@ -248,7 +258,7 @@ sns.scatterplot(x=data_train["Feature"], y=target_train, color="black",
                 alpha=0.5)
 
 bagged_trees_predictions = bagged_trees.predict(data_test)
-plt.plot(data_test, bagged_trees_predictions)
+plt.plot(data_test["Feature"], bagged_trees_predictions)
 
 _ = plt.title("Predictions from a bagging classifier")
 
@@ -263,26 +273,18 @@ _ = plt.title("Predictions from a bagging classifier")
 # Let us compare the based model predictions with their average:
 
 # %%
-import warnings
-
-with warnings.catch_warnings():
-    # ignore scikit-learn warning when accessing bagged estimators
-    warnings.filterwarnings(
-        "ignore",
-        message="X has feature names, but DecisionTreeRegressor was fitted without feature names",
-    )
-
-    for tree_idx, tree in enumerate(bagged_trees.estimators_):
-        label = "Predictions of individual trees" if tree_idx == 0 else None
-        tree_predictions = tree.predict(data_test)
-        plt.plot(data_test, tree_predictions, linestyle="--", alpha=0.1,
-                 color="tab:blue", label=label)
+for tree_idx, tree in enumerate(bagged_trees.estimators_):
+    label = "Predictions of individual trees" if tree_idx == 0 else None
+    # we convert `data_test` into a NumPy array to avoid a warning raised in scikit-learn
+    tree_predictions = tree.predict(data_test.to_numpy())
+    plt.plot(data_test["Feature"], tree_predictions, linestyle="--", alpha=0.1,
+             color="tab:blue", label=label)
 
 sns.scatterplot(x=data_train["Feature"], y=target_train, color="black",
                 alpha=0.5)
 
 bagged_trees_predictions = bagged_trees.predict(data_test)
-plt.plot(data_test, bagged_trees_predictions,
+plt.plot(data_test["Feature"], bagged_trees_predictions,
          color="tab:orange", label="Predictions of ensemble")
 _ = plt.legend()
 
@@ -344,9 +346,10 @@ _ = bagging.fit(data_train, target_train)
 
 # %%
 for i, regressor in enumerate(bagging.estimators_):
-    regressor_predictions = regressor.predict(data_test)
+    # we convert `data_test` into a NumPy array to avoid a warning raised in scikit-learn
+    regressor_predictions = regressor.predict(data_test.to_numpy())
     base_model_line = plt.plot(
-        data_test, regressor_predictions, linestyle="--", alpha=0.2,
+        data_test["Feature"], regressor_predictions, linestyle="--", alpha=0.2,
         label="Predictions of base models" if i == 0 else None,
         color="tab:blue"
     )
@@ -354,7 +357,7 @@ for i, regressor in enumerate(bagging.estimators_):
 sns.scatterplot(x=data_train["Feature"], y=target_train, color="black",
                 alpha=0.5)
 bagging_predictions = bagging.predict(data_test)
-plt.plot(data_test, bagging_predictions,
+plt.plot(data_test["Feature"], bagging_predictions,
          color="tab:orange", label="Predictions of ensemble")
 plt.ylim(target_train.min(), target_train.max())
 plt.legend()
@@ -364,7 +367,7 @@ _ = plt.title("Bagged polynomial regression")
 #
 # The predictions of this bagged polynomial regression model looks
 # qualitatively better than the bagged trees. This is somewhat expected since
-# the base model better reflects our knowldege of the true data generating
+# the base model better reflects our knowledge of the true data generating
 # process.
 #
 # Again the different shades induced by the overlapping blue lines let us

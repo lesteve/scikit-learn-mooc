@@ -1,15 +1,7 @@
-# -*- coding: utf-8 -*-
 # ---
 # jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: percent
-#       format_version: '1.3'
-#       jupytext_version: 1.10.3
 #   kernelspec:
 #     display_name: Python 3
-#     language: python
 #     name: python3
 # ---
 
@@ -79,7 +71,7 @@ elapsed_time = time.time() - start
 scores = cv_results["test_score"]
 
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f} "
+      f"{scores.mean():.3f} ± {scores.std():.3f} "
       f"with a fitting time of {elapsed_time:.3f}")
 
 # %% [markdown]
@@ -109,7 +101,7 @@ elapsed_time = time.time() - start
 scores = cv_results["test_score"]
 
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f} "
+      f"{scores.mean():.3f} ± {scores.std():.3f} "
       f"with a fitting time of {elapsed_time:.3f}")
 
 # %% [markdown] tags=["solution"]
@@ -157,7 +149,7 @@ elapsed_time = time.time() - start
 scores = cv_results["test_score"]
 
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f} "
+      f"{scores.mean():.3f} ± {scores.std():.3f} "
       f"with a fitting time of {elapsed_time:.3f}")
 
 # %% [markdown] tags=["solution"]
@@ -169,7 +161,7 @@ print("The mean cross-validation accuracy is: "
 # categories (which was not the case for linear models).
 #
 # However from a computation point of view, the training time is
-# significantly longer: this is caused by the fact that `OneHotEncoder`
+# much longer: this is caused by the fact that `OneHotEncoder`
 # generates approximately 10 times more features than `OrdinalEncoder`.
 #
 # Note that the current implementation `HistGradientBoostingClassifier`

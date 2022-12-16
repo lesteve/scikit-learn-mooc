@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Bagging &#8212; Scikit-learn course</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,46 +20,46 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sklearn_mooc.js"></script>
+    <script src="../_static/matomo.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="📝 Exercise M6.01" href="ensemble_ex_01.html" />
-    <link rel="prev" title="Ensemble method using bootstrapping" href="../ensemble/ensemble_bootstrap_index.html" />
+    <link rel="prev" title="Introductory example to ensemble models" href="ensemble_introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -65,7 +67,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +90,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -109,7 +126,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml_concepts/slides.html">
-   📰 Introducing machine-learning concepts
+   🎥 Introducing machine-learning concepts
   </a>
  </li>
  <li class="toctree-l1">
@@ -207,6 +224,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_video_cross_validation.html">
+     🎥 Validation of a model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_numerical_pipeline_cross_validation.html">
+     Model evaluation using cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_quiz_m1_02.html">
      ✅ Quiz M1.02
     </a>
@@ -254,6 +281,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_visualization_video.html">
+     🎥 Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_categorical_pipeline_visualization.html">
+     Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_quiz_m1_03.html">
      ✅ Quiz M1.03
     </a>
@@ -262,7 +299,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../predictive_modeling_pipeline/wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 1
   </a>
  </li>
  <li class="toctree-l1">
@@ -294,12 +331,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/overfitting_vs_under_fitting_slides.html">
-     📰 Overfitting and Underfitting
+     🎥 Overfitting and Underfitting
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_train_test.html">
-     The framework and why do we need it
+     Cross-validation framework
     </a>
    </li>
    <li class="toctree-l2">
@@ -321,7 +358,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/learning_validation_curves_slides.html">
-     📰 Comparing train and test errors
+     🎥 Comparing train and test errors
     </a>
    </li>
    <li class="toctree-l2">
@@ -363,7 +400,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/bias_vs_variance_slides.html">
-     📰 Bias versus Variance
+     🎥 Bias versus Variance
     </a>
    </li>
    <li class="toctree-l2">
@@ -375,7 +412,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../overfit/overfit_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 2
   </a>
  </li>
  <li class="toctree-l1">
@@ -448,8 +485,18 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../tuning/parameter_tuning_parallel_plot_video.html">
+     🎥 Analysis of hyperparameter search results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parameter_tuning_parallel_plot.html">
+     Analysis of hyperparameter search results
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="parameter_tuning_nested.html">
-     Cross-validation and hyperparameter tuning
+     Evaluation and hyperparameter tuning
     </a>
    </li>
    <li class="toctree-l2">
@@ -471,7 +518,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tuning/parameter_tuning_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 3
   </a>
  </li>
  <li class="toctree-l1">
@@ -503,7 +550,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_models/linear_models_slides.html">
-     📰 Intuitions on linear models
+     🎥 Intuitions on linear models
     </a>
    </li>
    <li class="toctree-l2">
@@ -604,12 +651,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_models/regularized_linear_models_slides.html">
-     📰 Intuitions on regularized linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04a.html">
-     ✅ Quiz M4.04a
+     🎥 Intuitions on regularized linear models
     </a>
    </li>
    <li class="toctree-l2">
@@ -628,8 +670,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04b.html">
-     ✅ Quiz M4.04b
+    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04.html">
+     ✅ Quiz M4.04
     </a>
    </li>
   </ul>
@@ -673,7 +715,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../linear_models/linear_models_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 4
   </a>
  </li>
  <li class="toctree-l1">
@@ -705,7 +747,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../trees/slides.html">
-     📰 Intuitions on tree-based models
+     🎥 Intuitions on tree-based models
     </a>
    </li>
    <li class="toctree-l2">
@@ -803,7 +845,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../trees/trees_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 5
   </a>
  </li>
  <li class="toctree-l1">
@@ -823,24 +865,19 @@
    Module overview
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_intuitions_index.html">
-   Intuitions on ensemble methods
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">
+   Ensemble method using bootstrapping
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
   <label for="toctree-checkbox-18">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/slides.html">
-     📰 Intuitions on ensemble of tree-based models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">
-     ✅ Quiz M6.01
+    <a class="reference internal" href="../ensemble/bagging_slides.html">
+     🎥 Intuitions on ensemble models: bagging
     </a>
    </li>
    <li class="toctree-l2">
@@ -848,18 +885,6 @@
      Introductory example to ensemble models
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">
-   Ensemble method using bootstrapping
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Bagging
@@ -891,8 +916,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">
-     ✅ Quiz M6.02
+    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">
+     ✅ Quiz M6.01
     </a>
    </li>
   </ul>
@@ -901,15 +926,25 @@
   <a class="reference internal" href="../ensemble/ensemble_boosting_index.html">
    Ensemble based on boosting
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-  <label for="toctree-checkbox-20">
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/boosting_slides.html">
+     🎥 Intuitions on ensemble models: boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ensemble_adaboost.html">
      Adaptive Boosting (AdaBoost)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_gradient_boosting.html">
+     Gradient-boosting decision tree (GBDT)
     </a>
    </li>
    <li class="toctree-l2">
@@ -923,8 +958,30 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_gradient_boosting.html">
-     Gradient-boosting decision tree (GBDT)
+    <a class="reference internal" href="ensemble_hist_gradient_boosting.html">
+     Speeding-up gradient-boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">
+     ✅ Quiz M6.02
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">
+   Hyperparameter tuning with ensemble methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_hyperparameters.html">
+     Hyperparameter tuning
     </a>
    </li>
    <li class="toctree-l2">
@@ -938,52 +995,15 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_hist_gradient_boosting.html">
-     Speeding-up gradient-boosting
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_quiz_m6_03.html">
      ✅ Quiz M6.03
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">
-   Hyperparameter tuning with ensemble methods
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-  <label for="toctree-checkbox-21">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_hyperparameters.html">
-     Hyperparameter tuning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_ex_05.html">
-     📝 Exercise M6.05
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_sol_05.html">
-     📃 Solution for Exercise M6.05
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_04.html">
-     ✅ Quiz M6.04
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ensemble/ensemble_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 6
   </a>
  </li>
  <li class="toctree-l1">
@@ -1007,15 +1027,15 @@
   <a class="reference internal" href="../evaluation/cross_validation_baseline_index.html">
    Comparing a model with simple baselines
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_baseline.html">
-     Comparing results with baseline and chance level
+     Comparing model performance with a simple baseline
     </a>
    </li>
    <li class="toctree-l2">
@@ -1039,35 +1059,20 @@
   <a class="reference internal" href="../evaluation/cross_validation_choices_index.html">
    Choice of cross-validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_03.html">
-     📝 Introductory exercise regarding stratification
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_stratification.html">
      Stratification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_04.html">
-     📝 Introductory exercise for sample grouping
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_grouping.html">
      Sample grouping
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_05.html">
-     📝 Introductory exercise for non i.i.d. data
     </a>
    </li>
    <li class="toctree-l2">
@@ -1086,8 +1091,8 @@
   <a class="reference internal" href="../evaluation/cross_validation_nested_index.html">
    Nested cross-validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-  <label for="toctree-checkbox-24">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1104,17 +1109,12 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../evaluation/02_metrics.html">
-   Introduction of the evaluation metrics
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../evaluation/metrics_classification_index.html">
    Classification metrics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-  <label for="toctree-checkbox-25">
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1145,8 +1145,8 @@
   <a class="reference internal" href="../evaluation/metrics_regression_index.html">
    Regression metrics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-  <label for="toctree-checkbox-26">
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1175,12 +1175,98 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../evaluation/evaluation_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 7
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../evaluation/evaluation_module_take_away.html">
    Main take-away
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Concluding remarks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../concluding_remarks_video.html">
+   🎥 Concluding remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../concluding_remarks.html">
+   Concluding remarks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/datasets_intro.html">
+   Datasets description
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees_dataset.html">
+     The penguins datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/adult_census_description.html">
+     The adult census dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_california_housing.html">
+     The California housing dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_ames_housing.html">
+     The Ames housing dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_blood_transfusion.html">
+     The blood transfusion dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_bike_rides.html">
+     The bike rides dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/acknowledgement.html">
+   Acknowledgement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/notebook_timings.html">
+   Notebook timings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/toc_redirect.html">
+   Table of contents
   </a>
  </li>
 </ul>
@@ -1255,163 +1341,228 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../appendix/datasets_intro.html">
-   Datasets description
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
-  <label for="toctree-checkbox-28">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="trees_dataset.html">
-     The penguins datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../appendix/adult_census_description.html">
-     The adult census dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_california_housing.html">
-     The California housing dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_ames_housing.html">
-     The Ames housing dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_blood_transfusion.html">
-     The blood transfusion dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_bike_rides.html">
-     The bike rides dataset
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/acknowledgement.html">
-   Acknowledgement
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/notebook_timings.html">
-   Notebook timings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/toc_redirect.html">
-   Table of contents
-  </a>
- </li>
-</ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_scripts/ensemble_bagging.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.py</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/INRIA/scikit-learn-mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/ensemble_bagging.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/INRIA/scikit-learn-mooc/edit/master/python_scripts/ensemble_bagging.py"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/ensemble_bagging.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/ensemble_bagging.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/ensemble_bagging.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_scripts/ensemble_bagging.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.py</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bootstrap-resampling">
    Bootstrap resampling
@@ -1434,17 +1585,55 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Bagging</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bootstrap-resampling">
+   Bootstrap resampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aggregating">
+   Aggregating
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bagging-in-scikit-learn">
+   Bagging in scikit-learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bagging-complex-pipelines">
+   Bagging complex pipelines
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="bagging">
-<h1>Bagging<a class="headerlink" href="#bagging" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="bagging">
+<h1>Bagging<a class="headerlink" href="#bagging" title="Permalink to this headline">#</a></h1>
 <p>This notebook introduces a very natural strategy to build ensembles of
 machine learning models named “bagging”.</p>
 <p>“Bagging” stands for Bootstrap AGGregatING. It uses bootstrap resampling
@@ -1455,41 +1644,41 @@ learner are aggregated to give the final predictions.</p>
 bootstraping.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import numpy as np
 
-<span class="c1"># create a random number generator that will be used to set the randomness</span>
-<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+# create a random number generator that will be used to set the randomness
+rng = np.random.RandomState(1)
 
 
-<span class="k">def</span> <span class="nf">generate_data</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Generate synthetic dataset. Returns `data_train`, `data_test`,</span>
-<span class="sd">    `target_train`.&quot;&quot;&quot;</span>
-    <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
-    <span class="n">noise</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">noise</span>
-    <span class="n">y</span> <span class="o">/=</span> <span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+def generate_data(n_samples=30):
+    &quot;&quot;&quot;Generate synthetic dataset. Returns `data_train`, `data_test`,
+    `target_train`.&quot;&quot;&quot;
+    x_min, x_max = -3, 3
+    x = rng.uniform(x_min, x_max, size=n_samples)
+    noise = 4.0 * rng.randn(n_samples)
+    y = x ** 3 - 0.5 * (x + 1) ** 2 + noise
+    y /= y.std()
 
-    <span class="n">data_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">])</span>
-    <span class="n">data_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_max</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">])</span>
-    <span class="n">target_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Target&quot;</span><span class="p">)</span>
+    data_train = pd.DataFrame(x, columns=[&quot;Feature&quot;])
+    data_test = pd.DataFrame(
+        np.linspace(x_max, x_min, num=300), columns=[&quot;Feature&quot;])
+    target_train = pd.Series(y, name=&quot;Target&quot;)
 
-    <span class="k">return</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span>
+    return data_train, data_test, target_train
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import seaborn as sns
 
-<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Synthetic regression dataset&quot;</span><span class="p">)</span>
+data_train, data_test, target_train = generate_data(n_samples=30)
+sns.scatterplot(x=data_train[&quot;Feature&quot;], y=target_train, color=&quot;black&quot;,
+                alpha=0.5)
+_ = plt.title(&quot;Synthetic regression dataset&quot;)
 </pre></div>
 </div>
 </div>
@@ -1502,11 +1691,11 @@ However, a decision tree is capable of approximating such a non-linear
 dependency:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.tree import DecisionTreeRegressor
 
-<span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
+tree = DecisionTreeRegressor(max_depth=3, random_state=0)
+tree.fit(data_train, target_train)
+y_pred = tree.predict(data_test)
 </pre></div>
 </div>
 </div>
@@ -1516,11 +1705,11 @@ training and computing an evaluation metric on such a synthetic test set
 would be meaningless.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Fitted tree&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions by a single decision tree&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(x=data_train[&quot;Feature&quot;], y=target_train, color=&quot;black&quot;,
+                alpha=0.5)
+plt.plot(data_test[&quot;Feature&quot;], y_pred, label=&quot;Fitted tree&quot;)
+plt.legend()
+_ = plt.title(&quot;Predictions by a single decision tree&quot;)
 </pre></div>
 </div>
 </div>
@@ -1529,27 +1718,30 @@ would be meaningless.</p>
 </div>
 </div>
 <p>Let’s see how we can use bootstraping to learn several trees.</p>
-<div class="section" id="bootstrap-resampling">
-<h2>Bootstrap resampling<a class="headerlink" href="#bootstrap-resampling" title="Permalink to this headline">¶</a></h2>
-<p>A bootstrap sample corresponds to a resampling with replacement, of the
-original dataset, a sample that is the same size as the original dataset.
-Thus, the bootstrap sample will contain some data points several times while
-some of the original data points will not be present.</p>
+<section id="bootstrap-resampling">
+<h2>Bootstrap resampling<a class="headerlink" href="#bootstrap-resampling" title="Permalink to this headline">#</a></h2>
+<p>Given a dataset with <code class="docutils literal notranslate"><span class="pre">n</span></code> data points, bootstrapping corresponds to resampling
+with replacement  <code class="docutils literal notranslate"><span class="pre">n</span></code> out of such <code class="docutils literal notranslate"><span class="pre">n</span></code> data points uniformly at random.</p>
+<p>As a result, the output of the bootstrap sampling procedure is another
+dataset with also n data points, but likely with duplicates. As a consequence,
+there are also data points from the original dataset that are never selected to
+appear in a bootstrap sample (by chance). Those data points that are left away
+are often referred to as the out-of-bag sample.</p>
 <p>We will create a function that given <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> will return a
 resampled variation <code class="docutils literal notranslate"><span class="pre">data_bootstrap</span></code> and <code class="docutils literal notranslate"><span class="pre">target_bootstrap</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap_sample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="c1"># Indices corresponding to a sampling with replacement of the same sample</span>
-    <span class="c1"># size than the original data</span>
-    <span class="n">bootstrap_indices</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">size</span><span class="o">=</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="c1"># In pandas, we need to use `.iloc` to extract rows using an integer</span>
-    <span class="c1"># position index:</span>
-    <span class="n">data_bootstrap</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">bootstrap_indices</span><span class="p">]</span>
-    <span class="n">target_bootstrap</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">bootstrap_indices</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">data_bootstrap</span><span class="p">,</span> <span class="n">target_bootstrap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def bootstrap_sample(data, target):
+    # Indices corresponding to a sampling with replacement of the same sample
+    # size than the original data
+    bootstrap_indices = rng.choice(
+        np.arange(target.shape[0]), size=target.shape[0], replace=True,
+    )
+    # In pandas, we need to use `.iloc` to extract rows using an integer
+    # position index:
+    data_bootstrap = data.iloc[bootstrap_indices]
+    target_bootstrap = target.iloc[bootstrap_indices]
+    return data_bootstrap, target_bootstrap
 </pre></div>
 </div>
 </div>
@@ -1558,21 +1750,21 @@ resampled variation <code class="docutils literal notranslate"><span class="pre"
 with the original dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_bootstraps</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="k">for</span> <span class="n">bootstrap_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bootstraps</span><span class="p">):</span>
-    <span class="c1"># draw a bootstrap from the original data</span>
-    <span class="n">data_bootstrap</span><span class="p">,</span> <span class="n">target_booststrap</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
-        <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_bootstrap</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_booststrap</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Resampled data&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">target_train</span><span class="p">,</span>
-                <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original data&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resampled data #</span><span class="si">{</span><span class="n">bootstrap_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_bootstraps = 3
+for bootstrap_idx in range(n_bootstraps):
+    # draw a bootstrap from the original data
+    data_bootstrap, target_bootstrap = bootstrap_sample(
+        data_train, target_train,
+    )
+    plt.figure()
+    plt.scatter(data_bootstrap[&quot;Feature&quot;], target_bootstrap,
+                color=&quot;tab:blue&quot;, facecolors=&quot;none&quot;,
+                alpha=0.5, label=&quot;Resampled data&quot;, s=180, linewidth=5)
+    plt.scatter(data_train[&quot;Feature&quot;], target_train,
+                color=&quot;black&quot;, s=60,
+                alpha=1, label=&quot;Original data&quot;)
+    plt.title(f&quot;Resampled data #{bootstrap_idx}&quot;)
+    plt.legend()
 </pre></div>
 </div>
 </div>
@@ -1590,17 +1782,17 @@ and from each other. To confirm this intuition, we can check the number of
 unique samples in the bootstrap samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_train_huge</span><span class="p">,</span> <span class="n">data_test_huge</span><span class="p">,</span> <span class="n">target_train_huge</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span>
-    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
-<span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
-    <span class="n">data_train_huge</span><span class="p">,</span> <span class="n">target_train_huge</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_train_huge, data_test_huge, target_train_huge = generate_data(
+    n_samples=100_000)
+data_bootstrap_sample, target_bootstrap_sample = bootstrap_sample(
+    data_train_huge, target_train_huge)
 
-<span class="n">ratio_unique_sample</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">data_bootstrap_sample</span><span class="p">)</span><span class="o">.</span><span class="n">size</span> <span class="o">/</span>
-                       <span class="n">data_bootstrap_sample</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Percentage of samples present in the original dataset: &quot;</span>
-    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ratio_unique_sample</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span>
-<span class="p">)</span>
+ratio_unique_sample = (np.unique(data_bootstrap_sample).size /
+                       data_bootstrap_sample.size)
+print(
+    f&quot;Percentage of samples present in the original dataset: &quot;
+    f&quot;{ratio_unique_sample * 100:.1f}%&quot;
+)
 </pre></div>
 </div>
 </div>
@@ -1610,22 +1802,23 @@ unique samples in the bootstrap samples.</p>
 </div>
 </div>
 </div>
-<p>On average, ~63.2% of the original data points of the original dataset will
-be present in a given bootstrap sample. The other ~36.8% are repeated
-samples.</p>
-<p>We are able to generate many datasets, all slightly different.</p>
-<p>Now, we can fit a decision tree for each of these datasets and they all shall
-be slightly different as well.</p>
+<p>On average, roughly 63.2% of the original data points of the original dataset
+will be present in a given bootstrap sample. Since the bootstrap sample has
+the same size as the original dataset, there will be many samples that are in
+the bootstrap sample multiple times.</p>
+<p>Using bootstrap we are able to generate many datasets, all slightly
+different. We can fit a decision tree for each of these datasets and they all
+shall be slightly different as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bag_of_trees</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">bootstrap_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_bootstraps</span><span class="p">):</span>
-    <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bag_of_trees = []
+for bootstrap_idx in range(n_bootstraps):
+    tree = DecisionTreeRegressor(max_depth=3, random_state=0)
 
-    <span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span> <span class="o">=</span> <span class="n">bootstrap_sample</span><span class="p">(</span>
-        <span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
-    <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_bootstrap_sample</span><span class="p">,</span> <span class="n">target_bootstrap_sample</span><span class="p">)</span>
-    <span class="n">bag_of_trees</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+    data_bootstrap_sample, target_bootstrap_sample = bootstrap_sample(
+        data_train, target_train)
+    tree.fit(data_bootstrap_sample, target_bootstrap_sample)
+    bag_of_trees.append(tree)
 </pre></div>
 </div>
 </div>
@@ -1635,15 +1828,15 @@ predict the samples within the range of data. They shall give slightly
 different predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">tree_idx</span><span class="p">,</span> <span class="n">tree</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bag_of_trees</span><span class="p">):</span>
-    <span class="n">tree_predictions</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">tree_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tree #</span><span class="si">{</span><span class="n">tree_idx</span><span class="si">}</span><span class="s2"> predictions&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(x=data_train[&quot;Feature&quot;], y=target_train, color=&quot;black&quot;,
+                alpha=0.5)
+for tree_idx, tree in enumerate(bag_of_trees):
+    tree_predictions = tree.predict(data_test)
+    plt.plot(data_test[&quot;Feature&quot;], tree_predictions, linestyle=&quot;--&quot;, alpha=0.8,
+             label=f&quot;Tree #{tree_idx} predictions&quot;)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions of trees trained on different bootstraps&quot;</span><span class="p">)</span>
+plt.legend()
+_ = plt.title(&quot;Predictions of trees trained on different bootstraps&quot;)
 </pre></div>
 </div>
 </div>
@@ -1651,10 +1844,10 @@ different predictions.</p>
 <img alt="../_images/ensemble_bagging_16_0.png" src="../_images/ensemble_bagging_16_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="aggregating">
-<h2>Aggregating<a class="headerlink" href="#aggregating" title="Permalink to this headline">¶</a></h2>
-<p>Once our trees are fitted and we are able to get predictions for each of
+</section>
+<section id="aggregating">
+<h2>Aggregating<a class="headerlink" href="#aggregating" title="Permalink to this headline">#</a></h2>
+<p>Once our trees are fitted, we are able to get predictions for each of
 them. In regression, the most straightforward way to combine those
 predictions is just to average them: for a given test data point, we feed the
 input feature values to each of the <code class="docutils literal notranslate"><span class="pre">n</span></code> trained models in the ensemble and as
@@ -1664,21 +1857,21 @@ prediction of the ensemble for the test data point is the average of those
 <p>We can plot the averaged predictions from the previous example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(x=data_train[&quot;Feature&quot;], y=target_train, color=&quot;black&quot;,
+                alpha=0.5)
 
-<span class="n">bag_predictions</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">tree_idx</span><span class="p">,</span> <span class="n">tree</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bag_of_trees</span><span class="p">):</span>
-    <span class="n">tree_predictions</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">tree_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tree #</span><span class="si">{</span><span class="n">tree_idx</span><span class="si">}</span><span class="s2"> predictions&quot;</span><span class="p">)</span>
-    <span class="n">bag_predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tree_predictions</span><span class="p">)</span>
+bag_predictions = []
+for tree_idx, tree in enumerate(bag_of_trees):
+    tree_predictions = tree.predict(data_test)
+    plt.plot(data_test[&quot;Feature&quot;], tree_predictions, linestyle=&quot;--&quot;, alpha=0.8,
+             label=f&quot;Tree #{tree_idx} predictions&quot;)
+    bag_predictions.append(tree_predictions)
 
-<span class="n">bag_predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">bag_predictions</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">bag_predictions</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Averaged predictions&quot;</span><span class="p">,</span>
-         <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions of bagged trees&quot;</span><span class="p">)</span>
+bag_predictions = np.mean(bag_predictions, axis=0)
+plt.plot(data_test[&quot;Feature&quot;], bag_predictions, label=&quot;Averaged predictions&quot;,
+         linestyle=&quot;-&quot;)
+plt.legend(bbox_to_anchor=(1.05, 0.8), loc=&quot;upper left&quot;)
+_ = plt.title(&quot;Predictions of bagged trees&quot;)
 </pre></div>
 </div>
 </div>
@@ -1691,9 +1884,9 @@ final predictions given by our ‘bag’ of decision tree regressors. Note that
 the predictions of the ensemble is more stable because of the averaging
 operation. As a result, the bag of trees as a whole is less likely to overfit
 than the individual trees.</p>
-</div>
-<div class="section" id="bagging-in-scikit-learn">
-<h2>Bagging in scikit-learn<a class="headerlink" href="#bagging-in-scikit-learn" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bagging-in-scikit-learn">
+<h2>Bagging in scikit-learn<a class="headerlink" href="#bagging-in-scikit-learn" title="Permalink to this headline">#</a></h2>
 <p>Scikit-learn implements the bagging procedure as a “meta-estimator”, that is
 an estimator that wraps another estimator: it takes a base model that is
 cloned several times and trained independently on each bootstrap sample.</p>
@@ -1702,13 +1895,19 @@ trees. We set <code class="docutils literal notranslate"><span class="pre">n_est
 above to get a stronger smoothing effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.ensemble import BaggingRegressor
 
-<span class="n">bagged_trees</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span>
-    <span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
-    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">bagged_trees</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+bagged_trees = BaggingRegressor(
+    base_estimator=DecisionTreeRegressor(max_depth=3),
+    n_estimators=100,
+)
+_ = bagged_trees.fit(data_train, target_train)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/ensemble/_base.py:166: FutureWarning: `base_estimator` was renamed to `estimator` in version 1.2 and will be removed in 1.4.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
@@ -1716,13 +1915,13 @@ above to get a stronger smoothing effect.</p>
 <p>Let us visualize the predictions of the ensemble on the same interval of data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.scatterplot(x=data_train[&quot;Feature&quot;], y=target_train, color=&quot;black&quot;,
+                alpha=0.5)
 
-<span class="n">bagged_trees_predictions</span> <span class="o">=</span> <span class="n">bagged_trees</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">bagged_trees_predictions</span><span class="p">)</span>
+bagged_trees_predictions = bagged_trees.predict(data_test)
+plt.plot(data_test[&quot;Feature&quot;], bagged_trees_predictions)
 
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Predictions from a bagging classifier&quot;</span><span class="p">)</span>
+_ = plt.title(&quot;Predictions from a bagging classifier&quot;)
 </pre></div>
 </div>
 </div>
@@ -1737,28 +1936,20 @@ Python list in the <code class="docutils literal notranslate"><span class="pre">
 <p>Let us compare the based model predictions with their average:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for tree_idx, tree in enumerate(bagged_trees.estimators_):
+    label = &quot;Predictions of individual trees&quot; if tree_idx == 0 else None
+    # we convert `data_test` into a NumPy array to avoid a warning raised in scikit-learn
+    tree_predictions = tree.predict(data_test.to_numpy())
+    plt.plot(data_test[&quot;Feature&quot;], tree_predictions, linestyle=&quot;--&quot;, alpha=0.1,
+             color=&quot;tab:blue&quot;, label=label)
 
-<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-    <span class="c1"># ignore scikit-learn warning when accessing bagged estimators</span>
-    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span>
-        <span class="s2">&quot;ignore&quot;</span><span class="p">,</span>
-        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;X has feature names, but DecisionTreeRegressor was fitted without feature names&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
+sns.scatterplot(x=data_train[&quot;Feature&quot;], y=target_train, color=&quot;black&quot;,
+                alpha=0.5)
 
-    <span class="k">for</span> <span class="n">tree_idx</span><span class="p">,</span> <span class="n">tree</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bagged_trees</span><span class="o">.</span><span class="n">estimators_</span><span class="p">):</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Predictions of individual trees&quot;</span> <span class="k">if</span> <span class="n">tree_idx</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
-        <span class="n">tree_predictions</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">tree_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-                 <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">bagged_trees_predictions</span> <span class="o">=</span> <span class="n">bagged_trees</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">bagged_trees_predictions</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of ensemble&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+bagged_trees_predictions = bagged_trees.predict(data_test)
+plt.plot(data_test[&quot;Feature&quot;], bagged_trees_predictions,
+         color=&quot;tab:orange&quot;, label=&quot;Predictions of ensemble&quot;)
+_ = plt.legend()
 </pre></div>
 </div>
 </div>
@@ -1770,9 +1961,9 @@ Python list in the <code class="docutils literal notranslate"><span class="pre">
 overlap in the prediction functions of the individual trees.</p>
 <p>This visualization gives some insights on the uncertainty in the predictions
 in different areas of the feature space.</p>
-</div>
-<div class="section" id="bagging-complex-pipelines">
-<h2>Bagging complex pipelines<a class="headerlink" href="#bagging-complex-pipelines" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bagging-complex-pipelines">
+<h2>Bagging complex pipelines<a class="headerlink" href="#bagging-complex-pipelines" title="Permalink to this headline">#</a></h2>
 <p>While we used a decision tree as a base model, nothing prevents us of using
 any other type of model.</p>
 <p>As we know that the original data generating function is a noisy polynomial
@@ -1780,17 +1971,17 @@ transformation of the input variable, let us try to fit a bagged polynomial
 regression pipeline on this dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.linear_model import Ridge
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.pipeline import make_pipeline
 
 
-<span class="n">polynomial_regressor</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">MinMaxScaler</span><span class="p">(),</span>
-    <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-    <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">),</span>
-<span class="p">)</span>
+polynomial_regressor = make_pipeline(
+    MinMaxScaler(),
+    PolynomialFeatures(degree=4),
+    Ridge(alpha=1e-10),
+)
 </pre></div>
 </div>
 </div>
@@ -1808,246 +1999,51 @@ base models.</p>
 <code class="docutils literal notranslate"><span class="pre">base_estimator</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">BaggingRegressor</span></code> class:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bagging</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span>
-    <span class="n">base_estimator</span><span class="o">=</span><span class="n">polynomial_regressor</span><span class="p">,</span>
-    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">bagging</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bagging = BaggingRegressor(
+    base_estimator=polynomial_regressor,
+    n_estimators=100,
+    random_state=0,
+)
+_ = bagging.fit(data_train, target_train)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/ensemble/_base.py:166: FutureWarning: `base_estimator` was renamed to `estimator` in version 1.2 and will be removed in 1.4.
+  warnings.warn(
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">regressor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bagging</span><span class="o">.</span><span class="n">estimators_</span><span class="p">):</span>
-    <span class="n">regressor_predictions</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-    <span class="n">base_model_line</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="n">data_test</span><span class="p">,</span> <span class="n">regressor_predictions</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of base models&quot;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span>
-    <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i, regressor in enumerate(bagging.estimators_):
+    # we convert `data_test` into a NumPy array to avoid a warning raised in scikit-learn
+    regressor_predictions = regressor.predict(data_test.to_numpy())
+    base_model_line = plt.plot(
+        data_test[&quot;Feature&quot;], regressor_predictions, linestyle=&quot;--&quot;, alpha=0.2,
+        label=&quot;Predictions of base models&quot; if i == 0 else None,
+        color=&quot;tab:blue&quot;
+    )
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data_train</span><span class="p">[</span><span class="s2">&quot;Feature&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">bagging_predictions</span> <span class="o">=</span> <span class="n">bagging</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">bagging_predictions</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions of ensemble&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">target_train</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">target_train</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bagged polynomial regression&quot;</span><span class="p">)</span>
+sns.scatterplot(x=data_train[&quot;Feature&quot;], y=target_train, color=&quot;black&quot;,
+                alpha=0.5)
+bagging_predictions = bagging.predict(data_test)
+plt.plot(data_test[&quot;Feature&quot;], bagging_predictions,
+         color=&quot;tab:orange&quot;, label=&quot;Predictions of ensemble&quot;)
+plt.ylim(target_train.min(), target_train.max())
+plt.legend()
+_ = plt.title(&quot;Bagged polynomial regression&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-/opt/hostedtoolcache/Python/3.7.12/x64/lib/python3.7/site-packages/sklearn/base.py:439: UserWarning: X has feature names, but MinMaxScaler was fitted without feature names
-  f&quot;X has feature names, but {self.__class__.__name__} was fitted without&quot;
-</pre></div>
-</div>
-<img alt="../_images/ensemble_bagging_29_1.png" src="../_images/ensemble_bagging_29_1.png" />
+<img alt="../_images/ensemble_bagging_29_0.png" src="../_images/ensemble_bagging_29_0.png" />
 </div>
 </div>
 <p>The predictions of this bagged polynomial regression model looks
 qualitatively better than the bagged trees. This is somewhat expected since
-the base model better reflects our knowldege of the true data generating
+the base model better reflects our knowledge of the true data generating
 process.</p>
 <p>Again the different shades induced by the overlapping blue lines let us
 appreciate the uncertainty in the prediction of the bagged ensemble.</p>
@@ -2056,8 +2052,8 @@ generic tool of statistics and is not limited to build ensemble of machine
 learning models. The interested reader can learn more on the <a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Wikipedia
 article on
 bootstrapping</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2081,14 +2077,16 @@ bootstrapping</a>.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../ensemble/ensemble_bootstrap_index.html" title="previous page">
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ensemble_introduction.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Ensemble method using bootstrapping</p>
+            <p class="prev-next-title">Introductory example to ensemble models</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="ensemble_ex_01.html" title="next page">
@@ -2099,20 +2097,20 @@ bootstrapping</a>.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By scikit-learn developers<br/>
-        
-            &copy; Copyright 2021.<br/>
-          <div class="extra_footer">
-            <div>
-   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Register</a>
-  and get the full "Machine learning in Python with scikit-learn" MOOC experience!</br>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By scikit-learn developers<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+  <div class="mooc_add">
+   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
+  </div>
   Brought to you by
   <a href="https://learninglab.inria.fr">Inria Learning Lab</a>,
   <a href="https://scikit-learn.fondation-inria.fr">scikit-learn @ La Fondation Inria</a>,
@@ -2120,17 +2118,20 @@ bootstrapping</a>.</p>
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

@@ -1,14 +1,7 @@
 # ---
 # jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: percent
-#       format_version: '1.3'
-#       jupytext_version: 1.6.0
 #   kernelspec:
 #     display_name: Python 3
-#     language: python
 #     name: python3
 # ---
 
@@ -128,13 +121,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 
 model = make_pipeline(preprocessor, LogisticRegression(max_iter=500))
-
-# %% [markdown]
-# We can display an interactive diagram with the following command:
-
-# %%
-from sklearn import set_config
-set_config(display='diagram')
 model
 
 # %% [markdown]
@@ -159,7 +145,10 @@ data_train, data_test, target_train, target_test = train_test_split(
 #
 # ```{caution}
 # Be aware that we use `train_test_split` here for didactic purposes, to show
-# the scikit-learn API.
+# the scikit-learn API. In a real setting one might prefer to use
+# cross-validation to also be able to evaluate the uncertainty of
+# our estimation of the generalization performance of a model,
+# as previously demonstrated.
 # ```
 #
 # Now, we can train the model on the train set.
@@ -206,7 +195,7 @@ cv_results
 # %%
 scores = cv_results["test_score"]
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f}")
+      f"{scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # The compound model has a higher predictive accuracy than the two models that

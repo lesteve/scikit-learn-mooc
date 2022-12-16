@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Working with numerical data
 #
@@ -79,14 +86,14 @@ target
 data.dtypes
 
 # %% [markdown]
-# We seem to have only two data types. We can make sure by checking the unique
-# data types.
+# We seem to have only two data types: `int64` and `object`. We can make
+# sure by checking for unique data types.
 
 # %%
 data.dtypes.unique()
 
 # %% [markdown]
-# Indeed, the only two types in the dataset are integer and object.
+# Indeed, the only two types in the dataset are integer `int64` and `object`.
 # We can look at the first few lines of the dataframe to understand the
 # meaning of the `object` data type.
 
@@ -191,11 +198,6 @@ print(f"Number of samples in training: {data_train.shape[0]} => "
 # To create a logistic regression model in scikit-learn you can do:
 
 # %%
-# to display nice model diagram
-from sklearn import set_config
-set_config(display='diagram')
-
-# %%
 from sklearn.linear_model import LogisticRegression
 
 model = LogisticRegression()
@@ -218,8 +220,13 @@ accuracy = model.score(data_test, target_test)
 print(f"Accuracy of logistic regression: {accuracy:.3f}")
 
 # %% [markdown]
-# Now the real question is: is this generalization performance relevant of a good
-# predictive model? Find out by solving the next exercise!
+# ## Notebook recap
+#
+# In scikit-learn, the `score` method of a classification model returns the accuracy,
+# i.e. the fraction of correctly classified samples. In this case, around
+# 8 / 10 of the times the logistic regression predicts the right income of a
+# person. Now the real question is: is this generalization performance relevant
+# of a good predictive model? Find out by solving the next exercise!
 #
 # In this notebook, we learned to:
 #

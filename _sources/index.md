@@ -32,12 +32,13 @@ interpreting their predictions.
 <div class="container">
   <div class="row">
     <div class="col-xl">
-      Register to the
+      A new session of the
       <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">
         "Machine learning in Python with scikit-learn MOOC"
       </a>,
-      to have the full MOOC experience (quizz solutions, executable notebooks,
-      discussion forum, etc ...)!
+      is available starting on October 18, 2022 and will last for 3 months. Enroll for
+      the full MOOC experience (quizz solutions, executable notebooks, discussion
+      forum, etc ...) !
       </br>
       The MOOC is free and the platform does not use the student data for any other purpose
       than improving the educational material.
@@ -71,15 +72,18 @@ or use the following resources:
 
 ## MOOC material
 
-The MOOC material is developed publicly under the [CC-By license](
-https://github.com/INRIA/scikit-learn-mooc/blob/master/LICENSE),
-including the notebooks, exercises and solutions to the exercises
-(but not the quizz solutions ;) via the following GitHub
-repository:
+The MOOC material is developed publicly under the [CC-BY license](
+https://github.com/INRIA/scikit-learn-mooc/blob/main/LICENSE).
+
+You can cite us through the project's Zenodo archive using the following DOI:
+[10.5281/zenodo.7220306](https://doi.org/10.5281/zenodo.7220306).
+
+The following repository includes the notebooks, exercises and solutions to the
+exercises (but not the quizz solutions ;):
 
   https://github.com/INRIA/scikit-learn-mooc/
 
-This is also published as a static website at:
+The MOOC material is also published as a static website at:
 
   https://inria.github.io/scikit-learn-mooc/
 
@@ -87,8 +91,48 @@ It is possible to use the rocket icon at the top of each notebook
 page to interactively execute the code cells via the Binder
 service.
 
+The videos are available as YouTube playlist at the Inria Learning Lab channel:
+
+  https://www.youtube.com/playlist?list=PL2okA_2qDJ-m44KooOI7x8tu85wr4ez4f
+
 Note however that it is required to use the
 [version hosted on the fun-mooc platform](
 https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/)
 to complete the quizzes.
 
+## Follow scikit-learn on social networks
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+          <a href="https://www.facebook.com/ScikitLearn/">
+            <i class="fab fa-facebook fa-3x"></i>
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://github.com/scikit-learn/scikit-learn">
+            <i class="fab fa-github fa-3x"></i>
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://www.instagram.com/scikitlearnofficial/">
+            <i class="fab fa-instagram fa-3x"></i>
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://www.linkedin.com/company/scikit-learn/">
+            <i class="fab fa-linkedin fa-3x"></i>
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://twitter.com/scikit_learn">
+            <i class="fab fa-twitter fa-3x"></i>
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://www.youtube.com/channel/UCJosFjYm0ZYVUARxuOZqnnw">
+            <i class="fab fa-youtube fa-3x"></i>
+          </a>
+        </div>
+    </div>
+</div>

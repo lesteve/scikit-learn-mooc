@@ -1,4 +1,4 @@
-# 🏁 Wrap-up quiz
+# 🏁 Wrap-up quiz 1
 
 **This quiz requires some programming to be answered.**
 
@@ -29,7 +29,7 @@ the dataframe. The dataset contains:
 - b) only categorical features
 - c) both numerical and categorical features
 
-_Select several answers_
+_Select a single answer_
 ```
 
 +++
@@ -79,7 +79,7 @@ value (excluding ordinal categories)?
 - d) "OverallCond"
 - e) "YearBuilt"
 
-_Select several answers_
+_Select all answers that apply_
 ```
 
 +++
@@ -103,8 +103,8 @@ to scale these numerical data and a
 [`sklearn.linear_model.LogisticRegression`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html).
 
 ```{admonition} Question
-What is the accuracy score obtained by 5-fold cross-validation of this
-pipeline?
+What is the accuracy score obtained by 10-fold cross-validation (you can set
+the parameter `cv=10` when calling `cross_validate`) of this pipeline?
 
 - a) ~0.5
 - b) ~0.7
@@ -126,20 +126,16 @@ can process both the numerical and categorical features together as follows:
   the prediction, you can pass the parameter `handle_unknown="ignore"` to the
   `OneHotEncoder`.
 
-Let us now define a **substantial** improvement or deterioration as an
-increase or decrease of the mean test score (**difference of the mean
-test scores** of models using only numerical features and numerical
-together with categorical features) of **at least three times the
-standard deviation** of the cross-validated test scores of the model
-using both categorical and numerical features.
-
 ```{admonition} Question
-With this heterogeneous pipeline, the accuracy score:
+One way to compare two models is by comparing the cross-validation test scores
+of both models fold-to-fold, i.e. counting the number of folds where one model
+has a better test score than the other. Let's compare the model using all
+features with the model consisting of only numerical features. Select the range
+of folds where the former has a better test score than the latter:
 
-- a) worsens substantially
-- b) worsens slightly
-- c) improves slightly
-- d) improves substantially
+- a) [0, 3]: the pipeline using all features is substantially worse than the pipeline using only numerical feature
+- b) [4, 6]: both pipelines are almost equivalent
+- c) [7, 10]: the pipeline using all features is substantially better than the pipeline using only numerical feature
 
 _Select a single answer_
 ```

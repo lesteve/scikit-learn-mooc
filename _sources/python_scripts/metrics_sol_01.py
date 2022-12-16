@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # 📃 Solution for Exercise M7.02
 #
@@ -42,7 +49,7 @@ from sklearn.model_selection import cross_val_score, StratifiedKFold
 
 cv = StratifiedKFold(n_splits=10)
 scores = cross_val_score(tree, data, target, cv=cv, scoring="accuracy")
-print(f"Accuracy score: {scores.mean():.3f} +/- {scores.std():.3f}")
+print(f"Accuracy score: {scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # Repeat the experiment by computing the `balanced_accuracy`.
@@ -51,7 +58,7 @@ print(f"Accuracy score: {scores.mean():.3f} +/- {scores.std():.3f}")
 # solution
 scores = cross_val_score(tree, data, target, cv=cv,
                          scoring="balanced_accuracy")
-print(f"Balanced accuracy score: {scores.mean():.3f} +/- {scores.std():.3f}")
+print(f"Balanced accuracy score: {scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # We will now add a bit of complexity. We would like to compute the precision
@@ -99,7 +106,7 @@ precision = make_scorer(precision_score, pos_label="donated")
 # %%
 # solution
 scores = cross_val_score(tree, data, target, cv=cv, scoring=precision)
-print(f"Precision score: {scores.mean():.3f} +/- {scores.std():.3f}")
+print(f"Precision score: {scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # `cross_val_score` will only compute a single score provided to the `scoring`

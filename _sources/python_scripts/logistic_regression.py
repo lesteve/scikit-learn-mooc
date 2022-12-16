@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Linear model for classification
 # In regression, we saw that the target to be predicted was a continuous
@@ -34,8 +41,7 @@ import matplotlib.pyplot as plt
 for feature_name in culmen_columns:
     plt.figure()
     # plot the histogram for each specie
-    penguins.groupby("Species")[feature_name].plot.hist(
-        alpha=0.5, density=True, legend=True)
+    penguins.groupby("Species")[feature_name].plot.hist(alpha=0.5, legend=True)
     plt.xlabel(feature_name)
 
 # %% [markdown]
@@ -58,48 +64,8 @@ data_test = penguins_test[culmen_columns]
 target_train = penguins_train[target_column]
 target_test = penguins_test[target_column]
 
-range_features = {
-    feature_name: (penguins[feature_name].min() - 1,
-                   penguins[feature_name].max() + 1)
-    for feature_name in culmen_columns
-}
-
 # %% [markdown]
-# To visualize the separation found by our classifier, we will define a helper
-# function `plot_decision_function`. In short, this function will plot the edge
-# of the decision function, where the probability to be an Adelie or Chinstrap
-# will be equal (p=0.5).
-
-# %%
-import numpy as np
-
-
-def plot_decision_function(fitted_classifier, range_features, ax=None):
-    """Plot the boundary of the decision function of a classifier."""
-    from sklearn.preprocessing import LabelEncoder
-
-    feature_names = list(range_features.keys())
-    # create a grid to evaluate all possible samples
-    plot_step = 0.02
-    xx, yy = np.meshgrid(
-        np.arange(*range_features[feature_names[0]], plot_step),
-        np.arange(*range_features[feature_names[1]], plot_step),
-    )
-
-    # compute the associated prediction
-    Z = fitted_classifier.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = LabelEncoder().fit_transform(Z)
-    Z = Z.reshape(xx.shape)
-
-    # make the plot of the boundary and the data samples
-    if ax is None:
-        _, ax = plt.subplots()
-    ax.contourf(xx, yy, Z, alpha=0.4, cmap="RdBu_r")
-
-    return ax
-
-
-# %% [markdown]
+#
 # The linear regression that we previously saw will predict a continuous
 # output. When the target is a binary outcome, one can use the logistic
 # function to model the probability. This model is known as logistic
@@ -107,6 +73,10 @@ def plot_decision_function(fitted_classifier, range_features, ax=None):
 #
 # Scikit-learn provides the class `LogisticRegression` which implements this
 # algorithm.
+
+# %%
+import sklearn
+sklearn.set_config(display="diagram")
 
 # %%
 from sklearn.pipeline import make_pipeline
@@ -117,14 +87,38 @@ logistic_regression = make_pipeline(
     StandardScaler(), LogisticRegression(penalty="none")
 )
 logistic_regression.fit(data_train, target_train)
+accuracy = logistic_regression.score(data_test, target_test)
+print(f"Accuracy on test set: {accuracy:.3f}")
+
+# %% [markdown]
+#
+# Since we are dealing with a classification problem containing only 2
+# features, it is then possible to observe the decision function boundary.
+# The boundary is the rule used by our predictive model to affect a class label
+# given the feature values of the sample.
+#
+# ```{note}
+# Here, we will use the class `DecisionBoundaryDisplay`. This educational tool
+# allows us to gain some insights by plotting the decision function boundary
+# learned by the classifier in a 2 dimensional feature space.
+#
+# Notice however that in more realistic machine learning contexts, one would
+# typically fit on more than two features at once and therefore it would not be
+# possible to display such a visualization of the decision boundary in
+# general.
+# ```
 
 # %%
 import seaborn as sns
+from sklearn.inspection import DecisionBoundaryDisplay
 
-ax = sns.scatterplot(
+DecisionBoundaryDisplay.from_estimator(
+    logistic_regression, data_test, response_method="predict", cmap="RdBu_r", alpha=0.5
+)
+sns.scatterplot(
     data=penguins_test, x=culmen_columns[0], y=culmen_columns[1],
     hue=target_column, palette=["tab:red", "tab:blue"])
-_ = plot_decision_function(logistic_regression, range_features, ax=ax)
+_ = plt.title("Decision boundary of the trained\n LogisticRegression")
 
 # %% [markdown]
 # Thus, we see that our decision function is represented by a line separating
@@ -140,7 +134,24 @@ weights = pd.Series(coefs, index=culmen_columns)
 
 # %%
 weights.plot.barh()
-plt.title("Weights of the logistic regression")
+_ = plt.title("Weights of the logistic regression")
 
 # %% [markdown]
-# Indeed, both coefficients are non-null.
+# Indeed, both coefficients are non-null. If one of them had been zero, the
+# decision boundary would have been either horizontal or vertical.
+#
+# Furthermore the intercept is also non-zero, which means that the decision does
+# not go through the point with (0, 0) coordinates.
+#
+# For the mathematically inclined reader, the equation of the decision boundary
+# is:
+#
+#     coef0 * x0 + coef1 * x1 + intercept = 0
+#
+# where `x0` is `"Culmen Length (mm)"` and `x1` is `"Culmen Depth (mm)"`.
+#
+# This equation is equivalent to (assuming that `coef1` is non-zero):
+#
+#     x1 = coef0 / coef1 * x0 - intercept / coef1
+#
+# which is the equation of a straight line.

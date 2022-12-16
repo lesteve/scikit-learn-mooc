@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Linear regression without scikit-learn
 #
@@ -24,17 +31,17 @@ penguins.head()
 # %%
 import seaborn as sns
 
-feature_names = "Flipper Length (mm)"
+feature_name = "Flipper Length (mm)"
 target_name = "Body Mass (g)"
-data, target = penguins[[feature_names]], penguins[target_name]
+data, target = penguins[[feature_name]], penguins[target_name]
 
-ax = sns.scatterplot(data=penguins, x=feature_names, y=target_name,
+ax = sns.scatterplot(data=penguins, x=feature_name, y=target_name,
                      color="black", alpha=0.5)
-ax.set_title("Flipper length in function of the body mass")
+ax.set_title("Body Mass as a function of the Flipper Length")
 
 # %% [markdown]
 # ```{tip}
-# The function `scatterplot` from searborn take as input the full dataframe
+# The function `scatterplot` from seaborn take as input the full dataframe
 # and the parameter `x` and `y` allows to specify the name of the columns to
 # be plotted. Note that this function returns a matplotlib axis
 # (named `ax` in the example above) that can be further used to add elements on
@@ -83,7 +90,7 @@ predicted_body_mass = linear_model_flipper_mass(
 # %%
 label = "{0:.2f} (g / mm) * flipper length + {1:.2f} (g)"
 
-ax = sns.scatterplot(data=penguins, x=feature_names, y=target_name,
+ax = sns.scatterplot(data=penguins, x=feature_name, y=target_name,
                      color="black", alpha=0.5)
 ax.plot(flipper_length_range, predicted_body_mass)
 _ = ax.set_title(label.format(weight_flipper_length, intercept_body_mass))
@@ -109,7 +116,7 @@ predicted_body_mass = linear_model_flipper_mass(
 # We can now plot all samples and the linear model prediction.
 
 # %%
-ax = sns.scatterplot(data=penguins, x=feature_names, y=target_name,
+ax = sns.scatterplot(data=penguins, x=feature_name, y=target_name,
                      color="black", alpha=0.5)
 ax.plot(flipper_length_range, predicted_body_mass)
 _ = ax.set_title(label.format(weight_flipper_length, intercept_body_mass))
@@ -148,7 +155,7 @@ predicted_body_mass = linear_model_flipper_mass(
     flipper_length_range, weight_flipper_length, intercept_body_mass)
 
 # %%
-ax = sns.scatterplot(data=penguins, x=feature_names, y=target_name,
+ax = sns.scatterplot(data=penguins, x=feature_name, y=target_name,
                      color="black", alpha=0.5)
 ax.plot(flipper_length_range, predicted_body_mass)
 _ = ax.set_title(label.format(weight_flipper_length, intercept_body_mass))
@@ -164,7 +171,7 @@ predicted_body_mass = linear_model_flipper_mass(
     flipper_length_range, weight_flipper_length, intercept_body_mass)
 
 # %%
-ax = sns.scatterplot(data=penguins, x=feature_names, y=target_name,
+ax = sns.scatterplot(data=penguins, x=feature_name, y=target_name,
                      color="black", alpha=0.5)
 ax.plot(flipper_length_range, predicted_body_mass)
 _ = ax.set_title(label.format(weight_flipper_length, intercept_body_mass))

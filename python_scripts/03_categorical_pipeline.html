@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Encoding of categorical variables &#8212; Scikit-learn course</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,41 +20,41 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sklearn_mooc.js"></script>
+    <script src="../_static/matomo.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -65,7 +67,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +90,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -109,7 +126,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml_concepts/slides.html">
-   📰 Introducing machine-learning concepts
+   🎥 Introducing machine-learning concepts
   </a>
  </li>
  <li class="toctree-l1">
@@ -207,6 +224,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_video_cross_validation.html">
+     🎥 Validation of a model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_numerical_pipeline_cross_validation.html">
+     Model evaluation using cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_quiz_m1_02.html">
      ✅ Quiz M1.02
     </a>
@@ -254,6 +281,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_visualization_video.html">
+     🎥 Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_categorical_pipeline_visualization.html">
+     Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_quiz_m1_03.html">
      ✅ Quiz M1.03
     </a>
@@ -262,7 +299,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../predictive_modeling_pipeline/wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 1
   </a>
  </li>
  <li class="toctree-l1">
@@ -294,12 +331,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/overfitting_vs_under_fitting_slides.html">
-     📰 Overfitting and Underfitting
+     🎥 Overfitting and Underfitting
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_train_test.html">
-     The framework and why do we need it
+     Cross-validation framework
     </a>
    </li>
    <li class="toctree-l2">
@@ -321,7 +358,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/learning_validation_curves_slides.html">
-     📰 Comparing train and test errors
+     🎥 Comparing train and test errors
     </a>
    </li>
    <li class="toctree-l2">
@@ -363,7 +400,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/bias_vs_variance_slides.html">
-     📰 Bias versus Variance
+     🎥 Bias versus Variance
     </a>
    </li>
    <li class="toctree-l2">
@@ -375,7 +412,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../overfit/overfit_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 2
   </a>
  </li>
  <li class="toctree-l1">
@@ -448,8 +485,18 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../tuning/parameter_tuning_parallel_plot_video.html">
+     🎥 Analysis of hyperparameter search results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parameter_tuning_parallel_plot.html">
+     Analysis of hyperparameter search results
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="parameter_tuning_nested.html">
-     Cross-validation and hyperparameter tuning
+     Evaluation and hyperparameter tuning
     </a>
    </li>
    <li class="toctree-l2">
@@ -471,7 +518,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tuning/parameter_tuning_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 3
   </a>
  </li>
  <li class="toctree-l1">
@@ -503,7 +550,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_models/linear_models_slides.html">
-     📰 Intuitions on linear models
+     🎥 Intuitions on linear models
     </a>
    </li>
    <li class="toctree-l2">
@@ -604,12 +651,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_models/regularized_linear_models_slides.html">
-     📰 Intuitions on regularized linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04a.html">
-     ✅ Quiz M4.04a
+     🎥 Intuitions on regularized linear models
     </a>
    </li>
    <li class="toctree-l2">
@@ -628,8 +670,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04b.html">
-     ✅ Quiz M4.04b
+    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04.html">
+     ✅ Quiz M4.04
     </a>
    </li>
   </ul>
@@ -673,7 +715,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../linear_models/linear_models_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 4
   </a>
  </li>
  <li class="toctree-l1">
@@ -705,7 +747,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../trees/slides.html">
-     📰 Intuitions on tree-based models
+     🎥 Intuitions on tree-based models
     </a>
    </li>
    <li class="toctree-l2">
@@ -803,7 +845,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../trees/trees_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 5
   </a>
  </li>
  <li class="toctree-l1">
@@ -824,8 +866,8 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_intuitions_index.html">
-   Intuitions on ensemble methods
+  <a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">
+   Ensemble method using bootstrapping
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
   <label for="toctree-checkbox-18">
@@ -834,13 +876,8 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/slides.html">
-     📰 Intuitions on ensemble of tree-based models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">
-     ✅ Quiz M6.01
+    <a class="reference internal" href="../ensemble/bagging_slides.html">
+     🎥 Intuitions on ensemble models: bagging
     </a>
    </li>
    <li class="toctree-l2">
@@ -848,18 +885,6 @@
      Introductory example to ensemble models
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">
-   Ensemble method using bootstrapping
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="ensemble_bagging.html">
      Bagging
@@ -891,8 +916,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">
-     ✅ Quiz M6.02
+    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">
+     ✅ Quiz M6.01
     </a>
    </li>
   </ul>
@@ -901,15 +926,25 @@
   <a class="reference internal" href="../ensemble/ensemble_boosting_index.html">
    Ensemble based on boosting
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-  <label for="toctree-checkbox-20">
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/boosting_slides.html">
+     🎥 Intuitions on ensemble models: boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ensemble_adaboost.html">
      Adaptive Boosting (AdaBoost)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_gradient_boosting.html">
+     Gradient-boosting decision tree (GBDT)
     </a>
    </li>
    <li class="toctree-l2">
@@ -923,8 +958,30 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_gradient_boosting.html">
-     Gradient-boosting decision tree (GBDT)
+    <a class="reference internal" href="ensemble_hist_gradient_boosting.html">
+     Speeding-up gradient-boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">
+     ✅ Quiz M6.02
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">
+   Hyperparameter tuning with ensemble methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_hyperparameters.html">
+     Hyperparameter tuning
     </a>
    </li>
    <li class="toctree-l2">
@@ -938,52 +995,15 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_hist_gradient_boosting.html">
-     Speeding-up gradient-boosting
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_quiz_m6_03.html">
      ✅ Quiz M6.03
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">
-   Hyperparameter tuning with ensemble methods
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-  <label for="toctree-checkbox-21">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_hyperparameters.html">
-     Hyperparameter tuning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_ex_05.html">
-     📝 Exercise M6.05
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_sol_05.html">
-     📃 Solution for Exercise M6.05
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_04.html">
-     ✅ Quiz M6.04
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ensemble/ensemble_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 6
   </a>
  </li>
  <li class="toctree-l1">
@@ -1007,15 +1027,15 @@
   <a class="reference internal" href="../evaluation/cross_validation_baseline_index.html">
    Comparing a model with simple baselines
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_baseline.html">
-     Comparing results with baseline and chance level
+     Comparing model performance with a simple baseline
     </a>
    </li>
    <li class="toctree-l2">
@@ -1039,35 +1059,20 @@
   <a class="reference internal" href="../evaluation/cross_validation_choices_index.html">
    Choice of cross-validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_03.html">
-     📝 Introductory exercise regarding stratification
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_stratification.html">
      Stratification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_04.html">
-     📝 Introductory exercise for sample grouping
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_grouping.html">
      Sample grouping
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_05.html">
-     📝 Introductory exercise for non i.i.d. data
     </a>
    </li>
    <li class="toctree-l2">
@@ -1086,8 +1091,8 @@
   <a class="reference internal" href="../evaluation/cross_validation_nested_index.html">
    Nested cross-validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-  <label for="toctree-checkbox-24">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1104,17 +1109,12 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../evaluation/02_metrics.html">
-   Introduction of the evaluation metrics
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../evaluation/metrics_classification_index.html">
    Classification metrics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-  <label for="toctree-checkbox-25">
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1145,8 +1145,8 @@
   <a class="reference internal" href="../evaluation/metrics_regression_index.html">
    Regression metrics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-  <label for="toctree-checkbox-26">
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1175,12 +1175,98 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../evaluation/evaluation_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 7
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../evaluation/evaluation_module_take_away.html">
    Main take-away
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Concluding remarks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../concluding_remarks_video.html">
+   🎥 Concluding remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../concluding_remarks.html">
+   Concluding remarks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/datasets_intro.html">
+   Datasets description
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees_dataset.html">
+     The penguins datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/adult_census_description.html">
+     The adult census dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_california_housing.html">
+     The California housing dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_ames_housing.html">
+     The Ames housing dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_blood_transfusion.html">
+     The blood transfusion dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_bike_rides.html">
+     The bike rides dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/acknowledgement.html">
+   Acknowledgement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/notebook_timings.html">
+   Notebook timings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/toc_redirect.html">
+   Table of contents
   </a>
  </li>
 </ul>
@@ -1255,180 +1341,228 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../appendix/datasets_intro.html">
-   Datasets description
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
-  <label for="toctree-checkbox-28">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="trees_dataset.html">
-     The penguins datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../appendix/adult_census_description.html">
-     The adult census dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_california_housing.html">
-     The California housing dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_ames_housing.html">
-     The Ames housing dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_blood_transfusion.html">
-     The blood transfusion dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_bike_rides.html">
-     The bike rides dataset
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/acknowledgement.html">
-   Acknowledgement
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/notebook_timings.html">
-   Notebook timings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/toc_redirect.html">
-   Table of contents
-  </a>
- </li>
-</ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_scripts/03_categorical_pipeline.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.py</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/INRIA/scikit-learn-mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/03_categorical_pipeline.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/INRIA/scikit-learn-mooc/edit/master/python_scripts/03_categorical_pipeline.py"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/master?urlpath=tree/python_scripts/03_categorical_pipeline.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/03_categorical_pipeline.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/03_categorical_pipeline.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/03_categorical_pipeline.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_scripts/03_categorical_pipeline.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.py</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#identify-categorical-variables">
    Identify categorical variables
@@ -1468,17 +1602,72 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Encoding of categorical variables</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identify-categorical-variables">
+   Identify categorical variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#select-features-based-on-their-data-type">
+   Select features based on their data type
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strategies-to-encode-categories">
+   Strategies to encode categories
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encoding-ordinal-categories">
+     Encoding ordinal categories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encoding-nominal-categories-without-assuming-any-order">
+     Encoding nominal categories (without assuming any order)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choosing-an-encoding-strategy">
+     Choosing an encoding strategy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluate-our-predictive-pipeline">
+   Evaluate our predictive pipeline
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="encoding-of-categorical-variables">
-<h1>Encoding of categorical variables<a class="headerlink" href="#encoding-of-categorical-variables" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="encoding-of-categorical-variables">
+<h1>Encoding of categorical variables<a class="headerlink" href="#encoding-of-categorical-variables" title="Permalink to this headline">#</a></h1>
 <p>In this notebook, we will present typical ways of dealing with
 <strong>categorical variables</strong> by encoding them, namely <strong>ordinal encoding</strong> and
 <strong>one-hot encoding</strong>.</p>
@@ -1486,22 +1675,22 @@
 categorical data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">adult_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/adult-census.csv&quot;</span><span class="p">)</span>
-<span class="c1"># drop the duplicated column `&quot;education-num&quot;` as stated in the first notebook</span>
-<span class="n">adult_census</span> <span class="o">=</span> <span class="n">adult_census</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;education-num&quot;</span><span class="p">)</span>
+adult_census = pd.read_csv(&quot;../datasets/adult-census.csv&quot;)
+# drop the duplicated column `&quot;education-num&quot;` as stated in the first notebook
+adult_census = adult_census.drop(columns=&quot;education-num&quot;)
 
-<span class="n">target_name</span> <span class="o">=</span> <span class="s2">&quot;class&quot;</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">adult_census</span><span class="p">[</span><span class="n">target_name</span><span class="p">]</span>
+target_name = &quot;class&quot;
+target = adult_census[target_name]
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">adult_census</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_name</span><span class="p">])</span>
+data = adult_census.drop(columns=[target_name])
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="identify-categorical-variables">
-<h2>Identify categorical variables<a class="headerlink" href="#identify-categorical-variables" title="Permalink to this headline">¶</a></h2>
+<section id="identify-categorical-variables">
+<h2>Identify categorical variables<a class="headerlink" href="#identify-categorical-variables" title="Permalink to this headline">#</a></h2>
 <p>As we saw in the previous section, a numerical variable is a
 quantity represented by a real or integer number. These variables can be
 naturally handled by machine learning algorithms that are typically composed
@@ -1515,7 +1704,7 @@ possible countries (along with the <code class="docutils literal notranslate"><s
 missing):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;native-country&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data[&quot;native-country&quot;].value_counts().sort_index()
 </pre></div>
 </div>
 </div>
@@ -1571,7 +1760,7 @@ Name: native-country, dtype: int64
 the answer lies in the columns’ data type:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data.dtypes
 </pre></div>
 </div>
 </div>
@@ -1595,20 +1784,20 @@ dtype: object
 </div>
 <p>If we look at the <code class="docutils literal notranslate"><span class="pre">&quot;native-country&quot;</span></code> column, we observe its data type is
 <code class="docutils literal notranslate"><span class="pre">object</span></code>, meaning it contains string values.</p>
-</div>
-<div class="section" id="select-features-based-on-their-data-type">
-<h2>Select features based on their data type<a class="headerlink" href="#select-features-based-on-their-data-type" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="select-features-based-on-their-data-type">
+<h2>Select features based on their data type<a class="headerlink" href="#select-features-based-on-their-data-type" title="Permalink to this headline">#</a></h2>
 <p>In the previous notebook, we manually defined the numerical columns. We could
 do a similar approach. Instead, we will use the scikit-learn helper function
 <code class="docutils literal notranslate"><span class="pre">make_column_selector</span></code>, which allows us to select columns based on
 their data type. We will illustrate how to use this helper.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <span class="n">selector</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.compose import make_column_selector as selector
 
-<span class="n">categorical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
-<span class="n">categorical_columns</span> <span class="o">=</span> <span class="n">categorical_columns_selector</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">categorical_columns</span>
+categorical_columns_selector = selector(dtype_include=object)
+categorical_columns = categorical_columns_selector(data)
+categorical_columns
 </pre></div>
 </div>
 </div>
@@ -1631,8 +1820,8 @@ column names that have the requested data type. We can now filter out the
 unwanted columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_categorical</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">categorical_columns</span><span class="p">]</span>
-<span class="n">data_categorical</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_categorical = data[categorical_columns]
+data_categorical.head()
 </pre></div>
 </div>
 </div>
@@ -1727,7 +1916,7 @@ unwanted columns:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dataset is composed of </span><span class="si">{</span><span class="n">data_categorical</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> features&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The dataset is composed of {data_categorical.shape[1]} features&quot;)
 </pre></div>
 </div>
 </div>
@@ -1740,24 +1929,24 @@ unwanted columns:</p>
 <p>In the remainder of this section, we will present different strategies to
 encode categorical data into numerical data which can be used by a
 machine-learning algorithm.</p>
-</div>
-<div class="section" id="strategies-to-encode-categories">
-<h2>Strategies to encode categories<a class="headerlink" href="#strategies-to-encode-categories" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="encoding-ordinal-categories">
-<h3>Encoding ordinal categories<a class="headerlink" href="#encoding-ordinal-categories" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="strategies-to-encode-categories">
+<h2>Strategies to encode categories<a class="headerlink" href="#strategies-to-encode-categories" title="Permalink to this headline">#</a></h2>
+<section id="encoding-ordinal-categories">
+<h3>Encoding ordinal categories<a class="headerlink" href="#encoding-ordinal-categories" title="Permalink to this headline">#</a></h3>
 <p>The most intuitive strategy is to encode each category with a different
 number. The <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> will transform the data in such manner.
 We will start by encoding a single column to understand how the encoding
 works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import OrdinalEncoder
 
-<span class="n">education_column</span> <span class="o">=</span> <span class="n">data_categorical</span><span class="p">[[</span><span class="s2">&quot;education&quot;</span><span class="p">]]</span>
+education_column = data_categorical[[&quot;education&quot;]]
 
-<span class="n">encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">()</span>
-<span class="n">education_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">education_column</span><span class="p">)</span>
-<span class="n">education_encoded</span>
+encoder = OrdinalEncoder()
+education_encoded = encoder.fit_transform(education_column)
+education_encoded
 </pre></div>
 </div>
 </div>
@@ -1778,7 +1967,7 @@ value. We could check the mapping between the categories and the numerical
 values by checking the fitted attribute <code class="docutils literal notranslate"><span class="pre">categories_</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoder</span><span class="o">.</span><span class="n">categories_</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>encoder.categories_
 </pre></div>
 </div>
 </div>
@@ -1794,8 +1983,8 @@ values by checking the fitted attribute <code class="docutils literal notranslat
 <p>Now, we can check the encoding applied on all categorical features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_categorical</span><span class="p">)</span>
-<span class="n">data_encoded</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_encoded = encoder.fit_transform(data_categorical)
+data_encoded[:5]
 </pre></div>
 </div>
 </div>
@@ -1811,8 +2000,8 @@ values by checking the fitted attribute <code class="docutils literal notranslat
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;The dataset encoded contains </span><span class="si">{</span><span class="n">data_encoded</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> features&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(
+    f&quot;The dataset encoded contains {data_encoded.shape[1]} features&quot;)
 </pre></div>
 </div>
 </div>
@@ -1844,9 +2033,9 @@ if needed.</p>
 <p>If a categorical variable does not carry any meaningful order information
 then this encoding might be misleading to downstream statistical models and
 you might consider using one-hot encoding instead (see below).</p>
-</div>
-<div class="section" id="encoding-nominal-categories-without-assuming-any-order">
-<h3>Encoding nominal categories (without assuming any order)<a class="headerlink" href="#encoding-nominal-categories-without-assuming-any-order" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="encoding-nominal-categories-without-assuming-any-order">
+<h3>Encoding nominal categories (without assuming any order)<a class="headerlink" href="#encoding-nominal-categories-without-assuming-any-order" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> is an alternative encoder that prevents the downstream
 models to make a false assumption about the ordering of categories. For a
 given feature, it will create as many new columns as there are possible
@@ -1857,15 +2046,19 @@ will be set to <code class="docutils literal notranslate"><span class="pre">0</s
 how the encoding works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import OneHotEncoder
 
-<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">education_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">education_column</span><span class="p">)</span>
-<span class="n">education_encoded</span>
+encoder = OneHotEncoder(sparse=False)
+education_encoded = encoder.fit_transform(education_column)
+education_encoded
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:808: FutureWarning: `sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.
+  warnings.warn(
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., ..., 0., 0., 0.],
        [0., 0., 0., ..., 0., 0., 0.],
        [0., 0., 0., ..., 0., 0., 0.],
@@ -1891,9 +2084,9 @@ and ones. We can get a better understanding using the associated feature
 names resulting from the transformation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">input_features</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;education&quot;</span><span class="p">])</span>
-<span class="n">education_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">education_encoded</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
-<span class="n">education_encoded</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>feature_names = encoder.get_feature_names_out(input_features=[&quot;education&quot;])
+education_encoded = pd.DataFrame(education_encoded, columns=feature_names)
+education_encoded
 </pre></div>
 </div>
 </div>
@@ -2154,9 +2347,9 @@ returned, for each sample, a 1 to specify which category it belongs to.</p>
 <p>Let’s apply this encoding on the full dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;The dataset is composed of </span><span class="si">{</span><span class="n">data_categorical</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> features&quot;</span><span class="p">)</span>
-<span class="n">data_categorical</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(
+    f&quot;The dataset is composed of {data_categorical.shape[1]} features&quot;)
+data_categorical.head()
 </pre></div>
 </div>
 </div>
@@ -2254,12 +2447,16 @@ returned, for each sample, a 1 to specify which category it belongs to.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_categorical</span><span class="p">)</span>
-<span class="n">data_encoded</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_encoded = encoder.fit_transform(data_categorical)
+data_encoded[:5]
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.16/x64/lib/python3.9/site-packages/sklearn/preprocessing/_encoders.py:808: FutureWarning: `sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.
+  warnings.warn(
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
         0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0.,
@@ -2301,8 +2498,8 @@ returned, for each sample, a 1 to specify which category it belongs to.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;The encoded dataset contains </span><span class="si">{</span><span class="n">data_encoded</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> features&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(
+    f&quot;The encoded dataset contains {data_encoded.shape[1]} features&quot;)
 </pre></div>
 </div>
 </div>
@@ -2316,8 +2513,8 @@ returned, for each sample, a 1 to specify which category it belongs to.</p>
 provided by the encoder object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">data_categorical</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_encoded</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns_encoded</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>columns_encoded = encoder.get_feature_names_out(data_categorical.columns)
+pd.DataFrame(data_encoded, columns=columns_encoded).head()
 </pre></div>
 </div>
 </div>
@@ -2494,9 +2691,9 @@ encoded and compare this to the original string representation.</p>
 <p>The number of features after the encoding is more than 10 times larger than
 in the original data because some variables such as <code class="docutils literal notranslate"><span class="pre">occupation</span></code> and
 <code class="docutils literal notranslate"><span class="pre">native-country</span></code> have many possible categories.</p>
-</div>
-<div class="section" id="choosing-an-encoding-strategy">
-<h3>Choosing an encoding strategy<a class="headerlink" href="#choosing-an-encoding-strategy" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="choosing-an-encoding-strategy">
+<h3>Choosing an encoding strategy<a class="headerlink" href="#choosing-an-encoding-strategy" title="Permalink to this headline">#</a></h3>
 <p>Choosing an encoding strategy will depend on the underlying models and the
 type of categories (i.e. ordinal vs. nominal).</p>
 <div class="admonition note">
@@ -2523,10 +2720,10 @@ a linear model.</p></li>
 computational inefficiency in tree-based models. Because of this, it is not recommended
 to use <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> in such cases even if the original categories do not
 have a given order. We will show this in the <strong>final exercise</strong> of this sequence.</p>
-</div>
-</div>
-<div class="section" id="evaluate-our-predictive-pipeline">
-<h2>Evaluate our predictive pipeline<a class="headerlink" href="#evaluate-our-predictive-pipeline" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="evaluate-our-predictive-pipeline">
+<h2>Evaluate our predictive pipeline<a class="headerlink" href="#evaluate-our-predictive-pipeline" title="Permalink to this headline">#</a></h2>
 <p>We can now integrate this encoder inside a machine learning pipeline like we
 did with numerical data: let’s train a linear classifier on the encoded data
 and check the generalization performance of this machine learning pipeline using
@@ -2535,7 +2732,7 @@ cross-validation.</p>
 Let’s recall some statistics regarding this column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;native-country&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data[&quot;native-country&quot;].value_counts()
 </pre></div>
 </div>
 </div>
@@ -2595,25 +2792,31 @@ training and will not be able to encode it.</p>
 <ul class="simple">
 <li><p>list all the possible categories and provide it to the encoder via the
 keyword argument <code class="docutils literal notranslate"><span class="pre">categories</span></code>;</p></li>
-<li><p>use the parameter <code class="docutils literal notranslate"><span class="pre">handle_unknown</span></code>.</p></li>
+<li><p>use the parameter <code class="docutils literal notranslate"><span class="pre">handle_unknown</span></code>, i.e. if an unknown category is encountered
+during transform, the resulting one-hot encoded columns for this feature will
+be all zeros.</p></li>
 </ul>
 <p>Here, we will use the latter solution for simplicity.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Be aware the <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> exposes as well a parameter
-<code class="docutils literal notranslate"><span class="pre">handle_unknown</span></code>. It can be set to <code class="docutils literal notranslate"><span class="pre">use_encoded_value</span></code> and by setting
-<code class="docutils literal notranslate"><span class="pre">unknown_value</span></code> to handle rare categories. You are going to use these
-parameters in the next exercise.</p>
+<code class="docutils literal notranslate"><span class="pre">handle_unknown</span></code>. It can be set to <code class="docutils literal notranslate"><span class="pre">use_encoded_value</span></code>. If that option is chosen,
+you can define a fixed value to which all unknowns will be set to during
+<code class="docutils literal notranslate"><span class="pre">transform</span></code>. For example,
+<code class="docutils literal notranslate"><span class="pre">OrdinalEncoder(handle_unknown='use_encoded_value',</span> <span class="pre">unknown_value=42)</span></code>
+will set all values encountered during <code class="docutils literal notranslate"><span class="pre">transform</span></code> to <code class="docutils literal notranslate"><span class="pre">42</span></code> which are not part of
+the data encountered during the <code class="docutils literal notranslate"><span class="pre">fit</span></code> call.
+You are going to use these parameters in the next exercise.</p>
 </div>
 <p>We can now create our machine learning pipeline.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import LogisticRegression
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span>
-    <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">),</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-<span class="p">)</span>
+model = make_pipeline(
+    OneHotEncoder(handle_unknown=&quot;ignore&quot;), LogisticRegression(max_iter=500)
+)
 </pre></div>
 </div>
 </div>
@@ -2630,15 +2833,15 @@ scaling. In this case, increasing <code class="docutils literal notranslate"><sp
 categorical columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
-<span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data_categorical</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-<span class="n">cv_results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import cross_validate
+cv_results = cross_validate(model, data_categorical, target)
+cv_results
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.77364087, 0.75414801, 0.81507277, 0.72166562, 0.81559515]),
- &#39;score_time&#39;: array([0.03311157, 0.0332377 , 0.03317642, 0.03471446, 0.03322005]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.74289799, 0.65667224, 0.66914129, 0.67556572, 0.65593624]),
+ &#39;score_time&#39;: array([0.03138423, 0.03016901, 0.03007197, 0.03175044, 0.02996874]),
  &#39;test_score&#39;: array([0.83222438, 0.83560242, 0.82872645, 0.83312858, 0.83466421])}
 </pre></div>
 </div>
@@ -2646,13 +2849,13 @@ categorical columns.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The accuracy is: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>scores = cv_results[&quot;test_score&quot;]
+print(f&quot;The accuracy is: {scores.mean():.3f} ± {scores.std():.3f}&quot;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy is: 0.833 +/- 0.002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy is: 0.833 ± 0.002
 </pre></div>
 </div>
 </div>
@@ -2667,8 +2870,8 @@ encoding</strong> and <strong>one-hot encoding</strong>;</p></li>
 <li><p>used a <strong>pipeline</strong> to use a <strong>one-hot encoder</strong> before fitting a logistic
 regression.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2692,9 +2895,11 @@ regression.</p></li>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../predictive_modeling_pipeline/03_categorical_pipeline_index.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2710,20 +2915,20 @@ regression.</p></li>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By scikit-learn developers<br/>
-        
-            &copy; Copyright 2021.<br/>
-          <div class="extra_footer">
-            <div>
-   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Register</a>
-  and get the full "Machine learning in Python with scikit-learn" MOOC experience!</br>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By scikit-learn developers<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+  <div class="mooc_add">
+   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
+  </div>
   Brought to you by
   <a href="https://learninglab.inria.fr">Inria Learning Lab</a>,
   <a href="https://scikit-learn.fondation-inria.fr">scikit-learn @ La Fondation Inria</a>,
@@ -2731,17 +2936,20 @@ regression.</p></li>
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

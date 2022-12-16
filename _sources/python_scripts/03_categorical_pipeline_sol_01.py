@@ -1,14 +1,7 @@
 # ---
 # jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: percent
-#       format_version: '1.3'
-#       jupytext_version: 1.6.0
 #   kernelspec:
 #     display_name: Python 3
-#     language: python
 #     name: python3
 # ---
 
@@ -74,6 +67,17 @@ model = make_pipeline(
 # %% [markdown]
 # Your model is now defined. Evaluate it using a cross-validation using
 # `sklearn.model_selection.cross_validate`.
+#
+# ```{note}
+# Be aware that if an error happened during the cross-validation,
+# `cross_validate` will raise a warning and return NaN (Not a Number)
+# as scores.  To make it raise a standard Python exception with a traceback,
+# you can pass the `error_score="raise"` argument in the call to
+# `cross_validate`. An exception will be raised instead of a warning at the first
+# encountered problem  and `cross_validate` will stop right away instead of
+# returning NaN values. This is particularly handy when developing
+# complex machine learning pipelines.
+# ```
 
 # %%
 from sklearn.model_selection import cross_validate
@@ -83,7 +87,7 @@ cv_results = cross_validate(model, data_categorical, target)
 
 scores = cv_results["test_score"]
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f}")
+      f"{scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown] tags=["solution"]
 # Using an arbitrary mapping from string labels to integers as done here causes
@@ -101,7 +105,7 @@ cv_results = cross_validate(DummyClassifier(strategy="most_frequent"),
                             data_categorical, target)
 scores = cv_results["test_score"]
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f}")
+      f"{scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown]
 # Now, we would like to compare the generalization performance of our previous
@@ -120,7 +124,7 @@ model = make_pipeline(
 cv_results = cross_validate(model, data_categorical, target)
 scores = cv_results["test_score"]
 print("The mean cross-validation accuracy is: "
-      f"{scores.mean():.3f} +/- {scores.std():.3f}")
+      f"{scores.mean():.3f} ± {scores.std():.3f}")
 
 # %% [markdown] tags=["solution"]
 # With the linear classifier chosen, using an encoding that does not assume

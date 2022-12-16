@@ -1,4 +1,4 @@
-# 🏁 Wrap-up quiz
+# 🏁 Wrap-up quiz 4
 
 **This quiz requires some programming to be answered.**
 
@@ -31,30 +31,40 @@ numerical_features = [
 data_numerical = data[numerical_features]
 ```
 
-Start by fitting a linear regression (`sklearn.linear_model.LinearRegression`).
+Start by fitting a ridge regressor (`sklearn.linear_model.Ridge`) fixing the
+penalty `alpha` to 0 to not regularize the model.
 Use a 10-fold cross-validation and pass the argument `return_estimator=True` in
 `sklearn.model_selection.cross_validate` to access all fitted estimators fitted
-on each fold. As we saw in the previous notebooks, you will have to use a
+on each fold. As discussed in the previous notebooks, use an instance of
 `sklearn.preprocessing.StandardScaler` to scale the data before passing it to
 the regressor.
 
 ```{admonition} Question
-How large is the weight with the largest absolute value in this model?
+How large is the largest absolute value of the weight (coefficient)
+in this trained model?
 
-- a) Lower than 1.0
-- b) Between 1.0 and 1,000.0
-- c) Larger than 1,000.0
+- a) Lower than 1.0 (1e0)
+- b) Between 1.0 (1e0) and 100,000.0 (1e5)
+- c) Larger than 100,000.0 (1e5)
 
 _Select a single answer_
+
+Hint: Note that the estimator fitted in each fold of the cross-validation
+procedure is a pipeline object. To access the coefficients of the
+`Ridge` model at the last position in a pipeline object, you can
+use the expression `pipeline[-1].coef_` for each pipeline object
+fitted in the cross-validation procedure. The `-1` notation is a
+negative index meaning "last position".
 ```
 
 +++
 
 Repeat the same experiment by fitting a ridge regressor
-(`sklearn.linear_model.Ridge`) with the default parameter.
+(`sklearn.linear_model.Ridge`) with the default parameter (i.e. `alpha=1.0`).
 
 ```{admonition} Question
-What is the value of the weight with the largest absolute value in this model?
+How large is the largest absolute value of the weight (coefficient)
+in this trained model?
 
 - a) Lower than 1.0
 - b) Between 1.0 and 100,000.0
@@ -85,20 +95,20 @@ experiment.
 What is the impact on the weights of removing `"GarageArea"` from the dataset?
 
 - a) None
-- b) Change completely the order of the feature importance
-- c) The standard deviation (across all folds) of the `"GarageCars"` coefficient decreased
+- b) Completely changes the order of the most important features
+- c) Decreases the standard deviation (across CV folds) of the `"GarageCars"` coefficient
 
-_Select a single answer_
+_Select all answers that apply_
 ```
 
 +++
 
 ```{admonition} Question
-What is the reason for observing the previous impact on the most important
-weight?
+What is the main reason for observing the previous impact on the most
+important weight(s)?
 
-- a) Both features are correlated and are carrying similar information
-- b) Removing a feature reduce the noise in the dataset
+- a) Both garage features are correlated and are carrying similar information
+- b) Removing the "GarageArea" feature reduces the noise in the dataset
 - c) Just some random effects
 
 _Select a single answer_
@@ -106,17 +116,21 @@ _Select a single answer_
 
 +++
 
-Now, we will search for the regularization strength that will maximize the
+Now, we will search for the regularization strength that maximizes the
 generalization performance of our predictive model. Fit a
 [`sklearn.linear_model.RidgeCV`](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeCV.html)
-instead of a `Ridge` regressor pass `alphas=np.logspace(-1, 3, num=30)` to
-explore the effect of changing the regularization strength.
+instead of a `Ridge` regressor on the numerical data without the `"GarageArea"`
+column. Pass `alphas=np.logspace(-3, 3, num=101)` to explore the effect of
+changing the regularization strength.
 
 ```{admonition} Question
-Are there major differences regarding the most important weights?
+What is the effect of tuning `alpha` on the variability of the weights of the
+feature `"GarageCars"`? Remember that the variability can be assessed by
+computing the standard deviation.
 
-- a) Yes, the weights order is completely different
-- b) No, the weights order is very similar
+- a) The variability does not change after tuning `alpha`
+- b) The variability decreased after tuning alpha
+- c) The variability increased after tuning alpha
 
 _Select a single answer_
 ```
@@ -163,19 +177,20 @@ _Select a single answer_
 
 +++
 
-Fit a `sklearn.linear_model.LogisticRegression` classifier using a 10-fold
-cross-validation to assess the performance. Since we are dealing with a linear
-model, do not forget to scale the data with a `StandardScaler` before training
-the model.
-
 ```{admonition} Question
-On average, how much better/worse/similar is the logistic regression to a dummy
-classifier that would predict the most frequent class? We will consider an
-increase or decrease of the accuracy score.
+Compare the generalization performance using the accuracy of the two following
+predictive models using a 10-fold cross-validation:
 
-- a) Worse than a dummy classifier with a decrease of 0.04
-- b) Similar to a dummy classifier
-- c) Better than a dummy classifier with an increase 0.04
+- a linear model composed of a `StandardScaler` and a `LogisticRegression`
+- a `DummyClassifier` predicting the most frequent class
+
+By comparing the cross-validation test scores of both models fold-to-fold, count the number
+of times the linear model has a better test score than the dummy classifier
+Select the range which this number belongs to:
+
+- a) [0, 3]: the linear model is substantially worse than the dummy classifier
+- b) [4, 6]: both models are almost equivalent
+- c) [7, 10]: the linear model is substantially better than the dummy classifier
 
 _Select a single answer_
 ```
@@ -204,19 +219,24 @@ target = adult_census["class"]
 data = adult_census.drop(columns=["class", "education-num"])
 ```
 
-Create a predictive model where the categorical data should be one-hot encoded,
-the numerical data should be scaled, and the predictor used should be a
+Create a predictive model where the categorical data must be one-hot encoded,
+the numerical data must be scaled, and the predictor is a
 logistic regression classifier.
 
-```{admonition} Question
-On average, what is the increase in terms of accuracy by using the categorical
-features?
+Use the same 10-fold cross-validation strategy as above to evaluate this
+complex pipeline.
 
-- a) It gives similar results
-- b) It increases the generalization performance by 0.025
-- c) It increases the generalization performance by 0.05
-- d) It increases the generalization performance by 0.075
-- e) It increases the generalization performance by 0.1
+```{admonition} Question
+Look at the cross-validation test scores for both models and count the number of
+times the model using both numerical and categorical features has a better
+test score than the model using only numerical features.
+Select the range which this number belongs to:
+
+- a) [0, 3]: the model using both numerical and categorical features is
+  substantially worse than the model using only numerical features
+- b) [4, 6]: both models are almost equivalent
+- c) [7, 10]: the model using both numerical and categorical features is
+  substantially better than the model using only numerical features
 
 _Select a single answer_
 ```
@@ -229,18 +249,21 @@ feature names after the preprocessing performed.
 ```python
 preprocessor.fit(data)
 feature_names = (preprocessor.named_transformers_["onehotencoder"]
-                             .get_feature_names(categorical_columns)).tolist()
+                             .get_feature_names_out(categorical_columns)).tolist()
 feature_names += numerical_columns
+feature_names
 ```
 
 There is as many feature names as coefficients in the last step of your
 predictive pipeline.
 
 ```{admonition} Question
-What are the two most important features used by the logistic regressor?
+Which of the following pair of features is most impacting the
+predictions of the logistic regression classifier based on
+the relative magnitude of its coefficients?
 
 - a) `"hours-per-week"` and `"native-country_Columbia"`
-- b) `"workclass_?"` and `"naitive_country_?"`
+- b) `"workclass_?"` and `"native_country_?"`
 - c) `"capital-gain"` and `"education_Doctorate"`
 
 _Select a single answer_
@@ -257,5 +280,5 @@ What is the effect of decreasing the `C` parameter on the coefficients?
 - d) increasing the weights' variance
 - e) it has no influence on the weights' variance
 
-_Select several answers_
+_Select all answers that apply_
 ```

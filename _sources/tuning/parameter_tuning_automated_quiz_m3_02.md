@@ -7,10 +7,12 @@ What does `CV` stand for in `GridSearchCV` and why?
      performance through cross-validation on the full data
 - b) circular values: we do a permutation of all the possible parameter value
      combinations
-- c) cross-validation: the generalization performance of each parameter set is
-     evaluated by using an internal cross-validation procedure
+- c) cross-validation: the score of each combination of parameters on the grid
+     is computed by using an internal cross-validation procedure
 - d) contribution value: we estimate how much each parameter contributes to the
      model generalization performance
+
+_Select a single answer_
 ```
 
 +++
@@ -31,7 +33,7 @@ pipeline = Pipeline([
 ])
 ```
 
-We want do find the best `C` through a grid-search where `C` takes the values 0.1, 1, and 10:
+We want to find the best `C` through a grid-search where `C` takes the values 0.1, 1, and 10:
 ```
 param_grid = ...  # complete this line in your answer
 model = GridSearchCV(
@@ -46,6 +48,8 @@ How should the `param_grid` variable be defined:
 - b) `param_grid = {'classifier__C': [0.1, 1, 10]}`
 - c) `param_grid = {'classifier__C': 0.1, 'classifier__C': 1, 'classifier__C': 10}`
 - d) `param_grid = {'C': [0.1, 1, 10]}`
+
+_Select a single answer_
 ````
 
 +++
@@ -59,6 +63,8 @@ Select the true statements about `RandomizedSearchCV` and `GridSearchCV` below:
 - d) both `GridSearchCV` and `RandomizedSearchCV` have the attributes `cv_results_` and `best_params_`
 - e) both `GridSearchCV` and `RandomizedSearchCV` can use probability
      distributions to draw parameter values from
+
+_Select all answers that apply_
 ```
 
 +++
@@ -119,7 +125,7 @@ Looking at this plot, which parameter values always cause the model to perform b
 - e) too large `max_bins`
 - f) too small `max_bins`
 
-_Select several answers_
+_Select all answers that apply_
 ```
 
 +++
@@ -141,5 +147,5 @@ words, which hyperparameters values are never used to get a good model
 - e) too large `max_bins`
 - f) too low `max_bins`
 
-_Select several answers_
+_Select all answers that apply_
 ```

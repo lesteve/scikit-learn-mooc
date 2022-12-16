@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The framework and why do we need it &#8212; Scikit-learn course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Cross-validation framework &#8212; Scikit-learn course</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,46 +20,46 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sklearn_mooc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sklearn_mooc.js"></script>
+    <script src="../_static/matomo.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="✅ Quiz M2.01" href="../overfit/overfitting_vs_under_fitting_quiz_m2_01.html" />
-    <link rel="prev" title="📰 Overfitting and Underfitting" href="../overfit/overfitting_vs_under_fitting_slides.html" />
+    <link rel="prev" title="🎥 Overfitting and Underfitting" href="../overfit/overfitting_vs_under_fitting_slides.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -65,7 +67,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +90,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -109,7 +126,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../ml_concepts/slides.html">
-   📰 Introducing machine-learning concepts
+   🎥 Introducing machine-learning concepts
   </a>
  </li>
  <li class="toctree-l1">
@@ -207,6 +224,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_video_cross_validation.html">
+     🎥 Validation of a model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_numerical_pipeline_cross_validation.html">
+     Model evaluation using cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../predictive_modeling_pipeline/02_numerical_pipeline_quiz_m1_02.html">
      ✅ Quiz M1.02
     </a>
@@ -254,6 +281,16 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_visualization_video.html">
+     🎥 Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_categorical_pipeline_visualization.html">
+     Visualizing scikit-learn pipelines in Jupyter
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../predictive_modeling_pipeline/03_categorical_pipeline_quiz_m1_03.html">
      ✅ Quiz M1.03
     </a>
@@ -262,7 +299,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../predictive_modeling_pipeline/wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 1
   </a>
  </li>
  <li class="toctree-l1">
@@ -294,12 +331,12 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/overfitting_vs_under_fitting_slides.html">
-     📰 Overfitting and Underfitting
+     🎥 Overfitting and Underfitting
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     The framework and why do we need it
+     Cross-validation framework
     </a>
    </li>
    <li class="toctree-l2">
@@ -321,7 +358,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/learning_validation_curves_slides.html">
-     📰 Comparing train and test errors
+     🎥 Comparing train and test errors
     </a>
    </li>
    <li class="toctree-l2">
@@ -363,7 +400,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../overfit/bias_vs_variance_slides.html">
-     📰 Bias versus Variance
+     🎥 Bias versus Variance
     </a>
    </li>
    <li class="toctree-l2">
@@ -375,7 +412,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../overfit/overfit_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 2
   </a>
  </li>
  <li class="toctree-l1">
@@ -448,8 +485,18 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../tuning/parameter_tuning_parallel_plot_video.html">
+     🎥 Analysis of hyperparameter search results
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parameter_tuning_parallel_plot.html">
+     Analysis of hyperparameter search results
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="parameter_tuning_nested.html">
-     Cross-validation and hyperparameter tuning
+     Evaluation and hyperparameter tuning
     </a>
    </li>
    <li class="toctree-l2">
@@ -471,7 +518,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tuning/parameter_tuning_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 3
   </a>
  </li>
  <li class="toctree-l1">
@@ -503,7 +550,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_models/linear_models_slides.html">
-     📰 Intuitions on linear models
+     🎥 Intuitions on linear models
     </a>
    </li>
    <li class="toctree-l2">
@@ -604,12 +651,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../linear_models/regularized_linear_models_slides.html">
-     📰 Intuitions on regularized linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04a.html">
-     ✅ Quiz M4.04a
+     🎥 Intuitions on regularized linear models
     </a>
    </li>
    <li class="toctree-l2">
@@ -628,8 +670,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04b.html">
-     ✅ Quiz M4.04b
+    <a class="reference internal" href="../linear_models/linear_models_quiz_m4_04.html">
+     ✅ Quiz M4.04
     </a>
    </li>
   </ul>
@@ -673,7 +715,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../linear_models/linear_models_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 4
   </a>
  </li>
  <li class="toctree-l1">
@@ -705,7 +747,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../trees/slides.html">
-     📰 Intuitions on tree-based models
+     🎥 Intuitions on tree-based models
     </a>
    </li>
    <li class="toctree-l2">
@@ -803,7 +845,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../trees/trees_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 5
   </a>
  </li>
  <li class="toctree-l1">
@@ -824,8 +866,8 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_intuitions_index.html">
-   Intuitions on ensemble methods
+  <a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">
+   Ensemble method using bootstrapping
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
   <label for="toctree-checkbox-18">
@@ -834,13 +876,8 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/slides.html">
-     📰 Intuitions on ensemble of tree-based models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">
-     ✅ Quiz M6.01
+    <a class="reference internal" href="../ensemble/bagging_slides.html">
+     🎥 Intuitions on ensemble models: bagging
     </a>
    </li>
    <li class="toctree-l2">
@@ -848,18 +885,6 @@
      Introductory example to ensemble models
     </a>
    </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_bootstrap_index.html">
-   Ensemble method using bootstrapping
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="ensemble_bagging.html">
      Bagging
@@ -891,8 +916,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">
-     ✅ Quiz M6.02
+    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_01.html">
+     ✅ Quiz M6.01
     </a>
    </li>
   </ul>
@@ -901,15 +926,25 @@
   <a class="reference internal" href="../ensemble/ensemble_boosting_index.html">
    Ensemble based on boosting
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-  <label for="toctree-checkbox-20">
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/boosting_slides.html">
+     🎥 Intuitions on ensemble models: boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="ensemble_adaboost.html">
      Adaptive Boosting (AdaBoost)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_gradient_boosting.html">
+     Gradient-boosting decision tree (GBDT)
     </a>
    </li>
    <li class="toctree-l2">
@@ -923,8 +958,30 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_gradient_boosting.html">
-     Gradient-boosting decision tree (GBDT)
+    <a class="reference internal" href="ensemble_hist_gradient_boosting.html">
+     Speeding-up gradient-boosting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_02.html">
+     ✅ Quiz M6.02
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">
+   Hyperparameter tuning with ensemble methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ensemble_hyperparameters.html">
+     Hyperparameter tuning
     </a>
    </li>
    <li class="toctree-l2">
@@ -938,52 +995,15 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_hist_gradient_boosting.html">
-     Speeding-up gradient-boosting
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../ensemble/ensemble_quiz_m6_03.html">
      ✅ Quiz M6.03
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ensemble/ensemble_hyperparameters_index.html">
-   Hyperparameter tuning with ensemble methods
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-  <label for="toctree-checkbox-21">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_hyperparameters.html">
-     Hyperparameter tuning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_ex_05.html">
-     📝 Exercise M6.05
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ensemble_sol_05.html">
-     📃 Solution for Exercise M6.05
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ensemble/ensemble_quiz_m6_04.html">
-     ✅ Quiz M6.04
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../ensemble/ensemble_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 6
   </a>
  </li>
  <li class="toctree-l1">
@@ -1007,15 +1027,15 @@
   <a class="reference internal" href="../evaluation/cross_validation_baseline_index.html">
    Comparing a model with simple baselines
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_baseline.html">
-     Comparing results with baseline and chance level
+     Comparing model performance with a simple baseline
     </a>
    </li>
    <li class="toctree-l2">
@@ -1039,35 +1059,20 @@
   <a class="reference internal" href="../evaluation/cross_validation_choices_index.html">
    Choice of cross-validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_03.html">
-     📝 Introductory exercise regarding stratification
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_stratification.html">
      Stratification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_04.html">
-     📝 Introductory exercise for sample grouping
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="cross_validation_grouping.html">
      Sample grouping
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross_validation_ex_05.html">
-     📝 Introductory exercise for non i.i.d. data
     </a>
    </li>
    <li class="toctree-l2">
@@ -1086,8 +1091,8 @@
   <a class="reference internal" href="../evaluation/cross_validation_nested_index.html">
    Nested cross-validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-  <label for="toctree-checkbox-24">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1104,17 +1109,12 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../evaluation/02_metrics.html">
-   Introduction of the evaluation metrics
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../evaluation/metrics_classification_index.html">
    Classification metrics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-  <label for="toctree-checkbox-25">
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1145,8 +1145,8 @@
   <a class="reference internal" href="../evaluation/metrics_regression_index.html">
    Regression metrics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-  <label for="toctree-checkbox-26">
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1175,12 +1175,98 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../evaluation/evaluation_wrap_up_quiz.html">
-   🏁 Wrap-up quiz
+   🏁 Wrap-up quiz 7
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../evaluation/evaluation_module_take_away.html">
    Main take-away
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Concluding remarks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../concluding_remarks_video.html">
+   🎥 Concluding remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../concluding_remarks.html">
+   Concluding remarks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../appendix/datasets_intro.html">
+   Datasets description
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees_dataset.html">
+     The penguins datasets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/adult_census_description.html">
+     The adult census dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_california_housing.html">
+     The California housing dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_ames_housing.html">
+     The Ames housing dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_blood_transfusion.html">
+     The blood transfusion dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="datasets_bike_rides.html">
+     The bike rides dataset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/acknowledgement.html">
+   Acknowledgement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/notebook_timings.html">
+   Notebook timings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/toc_redirect.html">
+   Table of contents
   </a>
  </li>
 </ul>
@@ -1255,163 +1341,228 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Appendix
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../appendix/datasets_intro.html">
-   Datasets description
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/>
-  <label for="toctree-checkbox-28">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="trees_dataset.html">
-     The penguins datasets
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../appendix/adult_census_description.html">
-     The adult census dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_california_housing.html">
-     The California housing dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_ames_housing.html">
-     The Ames housing dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_blood_transfusion.html">
-     The blood transfusion dataset
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="datasets_bike_rides.html">
-     The bike rides dataset
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/acknowledgement.html">
-   Acknowledgement
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/notebook_timings.html">
-   Notebook timings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/toc_redirect.html">
-   Table of contents
-  </a>
- </li>
-</ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_scripts/cross_validation_train_test.py"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.py</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/INRIA/scikit-learn-mooc"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/cross_validation_train_test.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/INRIA/scikit-learn-mooc/edit/master/python_scripts/cross_validation_train_test.py"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/INRIA/scikit-learn-mooc/main?urlpath=tree/python_scripts/cross_validation_train_test.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/issues/new?title=Issue%20on%20page%20%2Fpython_scripts/cross_validation_train_test.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/INRIA/scikit-learn-mooc/edit/main/python_scripts/cross_validation_train_test.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_scripts/cross_validation_train_test.py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.py</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-error-vs-testing-error">
    Training error vs testing error
@@ -1439,17 +1590,60 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Cross-validation framework</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-error-vs-testing-error">
+   Training error vs testing error
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stability-of-the-cross-validation-estimates">
+   Stability of the cross-validation estimates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-detail-regarding-cross-validate">
+   More detail regarding
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     cross_validate
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-framework-and-why-do-we-need-it">
-<h1>The framework and why do we need it<a class="headerlink" href="#the-framework-and-why-do-we-need-it" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="cross-validation-framework">
+<h1>Cross-validation framework<a class="headerlink" href="#cross-validation-framework" title="Permalink to this headline">#</a></h1>
 <p>In the previous notebooks, we introduce some concepts regarding the
 evaluation of predictive models. While this section could be slightly
 redundant, we intend to go into details into the cross-validation framework.</p>
@@ -1460,10 +1654,10 @@ keeping any samples out.</p>
 dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.datasets import fetch_california_housing
 
-<span class="n">housing</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">housing</span><span class="o">.</span><span class="n">target</span>
+housing = fetch_california_housing(as_frame=True)
+data, target = housing.data, housing.target
 </pre></div>
 </div>
 </div>
@@ -1478,7 +1672,7 @@ discrete. This task is called regression.</p>
 classification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">DESCR</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(housing.DESCR)
 </pre></div>
 </div>
 </div>
@@ -1535,7 +1729,7 @@ It can be downloaded/loaded using the
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data.head()
 </pre></div>
 </div>
 </div>
@@ -1632,8 +1826,8 @@ It can be downloaded/loaded using the
 100 (k$) range to the thousand dollars (k$) range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">*=</span> <span class="mi">100</span>
-<span class="n">target</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>target *= 100
+target.head()
 </pre></div>
 </div>
 </div>
@@ -1653,34 +1847,31 @@ Name: MedHouseVal, dtype: float64
 <p>If you want a deeper overview regarding this dataset, you can refer to the
 Appendix - Datasets description section at the end of this MOOC.</p>
 </div>
-<div class="section" id="training-error-vs-testing-error">
-<h2>Training error vs testing error<a class="headerlink" href="#training-error-vs-testing-error" title="Permalink to this headline">¶</a></h2>
+<section id="training-error-vs-testing-error">
+<h2>Training error vs testing error<a class="headerlink" href="#training-error-vs-testing-error" title="Permalink to this headline">#</a></h2>
 <p>To solve this regression task, we will use a decision tree regressor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.tree import DecisionTreeRegressor
 
-<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+regressor = DecisionTreeRegressor(random_state=0)
+regressor.fit(data, target)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeRegressor(random_state=0)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeRegressor</label><div class="sk-toggleable__content"><pre>DecisionTreeRegressor(random_state=0)</pre></div></div></div></div></div></div></div>
 </div>
 <p>After training the regressor, we would like to know its potential generalization
 performance once deployed in production. For this purpose, we use the mean
 absolute error, which gives us an error in the native unit, i.e. k$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import mean_absolute_error
 
-<span class="n">target_predicted</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;On average, our regressor makes an error of </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
+target_predicted = regressor.predict(data)
+score = mean_absolute_error(target, target_predicted)
+print(f&quot;On average, our regressor makes an error of {score:.2f} k$&quot;)
 </pre></div>
 </div>
 </div>
@@ -1720,10 +1911,10 @@ to minimize the error on data that has not been seen during training.</p>
 <p>So let’s split our dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import train_test_split
 
-<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+data_train, data_test, target_train, target_test = train_test_split(
+    data, target, random_state=0)
 </pre></div>
 </div>
 </div>
@@ -1731,23 +1922,20 @@ to minimize the error on data that has not been seen during training.</p>
 <p>Then, let’s train our model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>regressor.fit(data_train, target_train)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeRegressor(random_state=0)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeRegressor</label><div class="sk-toggleable__content"><pre>DecisionTreeRegressor(random_state=0)</pre></div></div></div></div></div></div></div>
 </div>
 <p>Finally, we estimate the different types of errors. Let’s start by computing
 the training error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_predicted</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_train</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">target_train</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The training error of our model is </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>target_predicted = regressor.predict(data_train)
+score = mean_absolute_error(target_train, target_predicted)
+print(f&quot;The training error of our model is {score:.2f} k$&quot;)
 </pre></div>
 </div>
 </div>
@@ -1761,9 +1949,9 @@ the training error.</p>
 memorized the training set. However, we now compute the testing error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_predicted</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_test</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The testing error of our model is </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>target_predicted = regressor.predict(data_test)
+score = mean_absolute_error(target_test, target_predicted)
+print(f&quot;The testing error of our model is {score:.2f} k$&quot;)
 </pre></div>
 </div>
 </div>
@@ -1775,33 +1963,45 @@ memorized the training set. However, we now compute the testing error.</p>
 </div>
 <p>This testing error is actually about what we would expect from our model if
 it was used in a production environment.</p>
-</div>
-<div class="section" id="stability-of-the-cross-validation-estimates">
-<h2>Stability of the cross-validation estimates<a class="headerlink" href="#stability-of-the-cross-validation-estimates" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="stability-of-the-cross-validation-estimates">
+<h2>Stability of the cross-validation estimates<a class="headerlink" href="#stability-of-the-cross-validation-estimates" title="Permalink to this headline">#</a></h2>
 <p>When doing a single train-test split we don’t give any indication regarding
 the robustness of the evaluation of our predictive model: in particular, if
-the test set is small, this estimate of the testing error will be
-unstable and wouldn’t reflect the “true error rate” we would have observed
-with the same model on an unlimited amount of test data.</p>
+the test set is small, this estimate of the testing error will be unstable and
+wouldn’t reflect the “true error rate” we would have observed with the same
+model on an unlimited amount of test data.</p>
 <p>For instance, we could have been lucky when we did our random split of our
 limited dataset and isolated some of the easiest cases to predict in the
 testing set just by chance: the estimation of the testing error would be
 overly optimistic, in this case.</p>
-<p><strong>Cross-validation</strong> allows estimating the robustness of a predictive model
-by repeating the splitting procedure. It will give several training and
-testing errors and thus some <strong>estimate of the variability of the
-model generalization performance</strong>.</p>
-<p>There are different cross-validation strategies, for now we are going to
-focus on one called “shuffle-split”. At each iteration of this strategy we:</p>
+<p><strong>Cross-validation</strong> allows estimating the robustness of a predictive model by
+repeating the splitting procedure. It will give several training and testing
+errors and thus some <strong>estimate of the variability of the model generalization
+performance</strong>.</p>
+<p>There are <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators">different cross-validation
+strategies</a>,
+for now we are going to focus on one called “shuffle-split”. At each iteration
+of this strategy we:</p>
 <ul class="simple">
 <li><p>randomly shuffle the order of the samples of a copy of the full dataset;</p></li>
 <li><p>split the shuffled dataset into a train and a test set;</p></li>
 <li><p>train a new model on the train set;</p></li>
 <li><p>evaluate the testing error on the test set.</p></li>
 </ul>
-<p>We repeat this procedure <code class="docutils literal notranslate"><span class="pre">n_splits</span></code> times. Using <code class="docutils literal notranslate"><span class="pre">n_splits=40</span></code> means that we
-will train 40 models in total and all of them will be discarded: we just
-record their generalization performance on each variant of the test set.</p>
+<p>We repeat this procedure <code class="docutils literal notranslate"><span class="pre">n_splits</span></code> times. Keep in mind that the computational
+cost increases with <code class="docutils literal notranslate"><span class="pre">n_splits</span></code>.</p>
+<p><img alt="Cross-validation diagram" src="../_images/shufflesplit_diagram.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This figure shows the particular case of <strong>shuffle-split</strong> cross-validation
+strategy using <code class="docutils literal notranslate"><span class="pre">n_splits=5</span></code>.
+For each cross-validation split, the procedure trains a model on all the red
+samples and evaluate the score of the model on the blue samples.</p>
+</div>
+<p>In this case we will set <code class="docutils literal notranslate"><span class="pre">n_splits=40</span></code>, meaning that we will train 40 models
+in total and all of them will be discarded: we just record their
+generalization performance on each variant of the test set.</p>
 <p>To evaluate the generalization performance of our regressor, we can use
 <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html"><code class="docutils literal notranslate"><span class="pre">sklearn.model_selection.cross_validate</span></code></a>
 with a
@@ -1809,12 +2009,12 @@ with a
 object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import cross_validate
+from sklearn.model_selection import ShuffleSplit
 
-<span class="n">cv</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
-    <span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;neg_mean_absolute_error&quot;</span><span class="p">)</span>
+cv = ShuffleSplit(n_splits=40, test_size=0.3, random_state=0)
+cv_results = cross_validate(
+    regressor, data, target, cv=cv, scoring=&quot;neg_mean_absolute_error&quot;)
 </pre></div>
 </div>
 </div>
@@ -1823,10 +2023,10 @@ object:</p>
 it into a pandas dataframe to ease visualization and manipulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">cv_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_results</span><span class="p">)</span>
-<span class="n">cv_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+cv_results = pd.DataFrame(cv_results)
+cv_results.head()
 </pre></div>
 </div>
 </div>
@@ -1857,32 +2057,32 @@ it into a pandas dataframe to ease visualization and manipulation.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.144789</td>
-      <td>0.003793</td>
+      <td>0.144510</td>
+      <td>0.003587</td>
       <td>-46.909797</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.144976</td>
-      <td>0.003652</td>
+      <td>0.143760</td>
+      <td>0.003781</td>
       <td>-46.421170</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.143465</td>
-      <td>0.003647</td>
+      <td>0.141398</td>
+      <td>0.003812</td>
       <td>-47.411089</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.145613</td>
-      <td>0.003727</td>
+      <td>0.142439</td>
+      <td>0.003762</td>
       <td>-44.319824</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.142778</td>
-      <td>0.003709</td>
+      <td>0.139384</td>
+      <td>0.003798</td>
       <td>-47.607875</td>
     </tr>
   </tbody>
@@ -1906,7 +2106,7 @@ score.</p>
 <p>Let us revert the negation to get the actual error:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;test_error&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cv_results[&quot;test_error&quot;] = -cv_results[&quot;test_score&quot;]
 </pre></div>
 </div>
 </div>
@@ -1914,7 +2114,7 @@ score.</p>
 <p>Let’s check the results reported by the cross-validation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cv_results.head(10)
 </pre></div>
 </div>
 </div>
@@ -1946,71 +2146,71 @@ score.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.144789</td>
-      <td>0.003793</td>
+      <td>0.144510</td>
+      <td>0.003587</td>
       <td>-46.909797</td>
       <td>46.909797</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.144976</td>
-      <td>0.003652</td>
+      <td>0.143760</td>
+      <td>0.003781</td>
       <td>-46.421170</td>
       <td>46.421170</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.143465</td>
-      <td>0.003647</td>
+      <td>0.141398</td>
+      <td>0.003812</td>
       <td>-47.411089</td>
       <td>47.411089</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.145613</td>
-      <td>0.003727</td>
+      <td>0.142439</td>
+      <td>0.003762</td>
       <td>-44.319824</td>
       <td>44.319824</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.142778</td>
-      <td>0.003709</td>
+      <td>0.139384</td>
+      <td>0.003798</td>
       <td>-47.607875</td>
       <td>47.607875</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.144235</td>
-      <td>0.003711</td>
+      <td>0.142014</td>
+      <td>0.003741</td>
       <td>-45.901300</td>
       <td>45.901300</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.145049</td>
-      <td>0.003660</td>
+      <td>0.142187</td>
+      <td>0.003674</td>
       <td>-46.572767</td>
       <td>46.572767</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.145568</td>
-      <td>0.003666</td>
+      <td>0.142186</td>
+      <td>0.003670</td>
       <td>-46.194585</td>
       <td>46.194585</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.145487</td>
-      <td>0.003597</td>
+      <td>0.142449</td>
+      <td>0.003731</td>
       <td>-45.590236</td>
       <td>45.590236</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.145850</td>
-      <td>0.003647</td>
+      <td>0.143055</td>
+      <td>0.003859</td>
       <td>-45.727998</td>
       <td>45.727998</td>
     </tr>
@@ -2019,11 +2219,11 @@ score.</p>
 </div></div></div>
 </div>
 <p>We get timing information to fit and predict at each cross-validation
-iteration. Also, we get the test score, which corresponds to the testing
-error on each of the splits.</p>
+iteration. Also, we get the test score, which corresponds to the testing error
+on each of the splits.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">cv_results</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(cv_results)
 </pre></div>
 </div>
 </div>
@@ -2033,16 +2233,16 @@ error on each of the splits.</p>
 </div>
 </div>
 </div>
-<p>We get 40 entries in our resulting dataframe because we performed 40
-splits. Therefore, we can show the testing error distribution and thus, have
-an estimate of its variability.</p>
+<p>We get 40 entries in our resulting dataframe because we performed 40 splits.
+Therefore, we can show the testing error distribution and thus, have an
+estimate of its variability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
 
-<span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;test_error&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean absolute error (k$)&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Test error distribution&quot;</span><span class="p">)</span>
+cv_results[&quot;test_error&quot;].plot.hist(bins=10, edgecolor=&quot;black&quot;)
+plt.xlabel(&quot;Mean absolute error (k$)&quot;)
+_ = plt.title(&quot;Test error distribution&quot;)
 </pre></div>
 </div>
 </div>
@@ -2050,12 +2250,12 @@ an estimate of its variability.</p>
 <img alt="../_images/cross_validation_train_test_32_0.png" src="../_images/cross_validation_train_test_32_0.png" />
 </div>
 </div>
-<p>We observe that the testing error is clustered around 47 k$ and
-ranges from 43 k$ to 50 k$.</p>
+<p>We observe that the testing error is clustered around 47 k$ and ranges from
+43 k$ to 50 k$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean cross-validated testing error is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The mean cross-validated testing error is: &quot;
+      f&quot;{cv_results[&#39;test_error&#39;].mean():.2f} k$&quot;)
 </pre></div>
 </div>
 </div>
@@ -2067,8 +2267,8 @@ ranges from 43 k$ to 50 k$.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The standard deviation of the testing error is: &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cv_results</span><span class="p">[</span><span class="s1">&#39;test_error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The standard deviation of the testing error is: &quot;
+      f&quot;{cv_results[&#39;test_error&#39;].std():.2f} k$&quot;)
 </pre></div>
 </div>
 </div>
@@ -2079,20 +2279,19 @@ ranges from 43 k$ to 50 k$.</p>
 </div>
 </div>
 <p>Note that the standard deviation is much smaller than the mean: we could
-summarize that our cross-validation estimate of the testing error is
-46.36 +/- 1.17 k$.</p>
+summarize that our cross-validation estimate of the testing error is 46.36 ±
+1.17 k$.</p>
 <p>If we were to train a single model on the full dataset (without
 cross-validation) and then later had access to an unlimited amount of test
-data, we would expect its true testing error to fall close to that
-region.</p>
+data, we would expect its true testing error to fall close to that region.</p>
 <p>While this information is interesting in itself, it should be contrasted to
 the scale of the natural variability of the vector <code class="docutils literal notranslate"><span class="pre">target</span></code> in our dataset.</p>
 <p>Let us plot the distribution of the target variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Median House Value (k$)&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Target distribution&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>target.plot.hist(bins=20, edgecolor=&quot;black&quot;)
+plt.xlabel(&quot;Median House Value (k$)&quot;)
+_ = plt.title(&quot;Target distribution&quot;)
 </pre></div>
 </div>
 </div>
@@ -2102,7 +2301,7 @@ the scale of the natural variability of the vector <code class="docutils literal
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The standard deviation of the target is: </span><span class="si">{</span><span class="n">target</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> k$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The standard deviation of the target is: {target.std():.2f} k$&quot;)
 </pre></div>
 </div>
 </div>
@@ -2130,9 +2329,9 @@ metric (Mean Absolute Error) is not ideal.</p>
 mean absolute percentage error would have been a much better choice.</p>
 <p>But in all cases, an error of 47 k$ might be too large to automatically use
 our model to tag house values without expert supervision.</p>
-</div>
-<div class="section" id="more-detail-regarding-cross-validate">
-<h2>More detail regarding <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code><a class="headerlink" href="#more-detail-regarding-cross-validate" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="more-detail-regarding-cross-validate">
+<h2>More detail regarding <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code><a class="headerlink" href="#more-detail-regarding-cross-validate" title="Permalink to this headline">#</a></h2>
 <p>During cross-validation, many models are trained and evaluated. Indeed, the
 number of elements in each array of the output of <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code> is a
 result from one of these <code class="docutils literal notranslate"><span class="pre">fit</span></code>/<code class="docutils literal notranslate"><span class="pre">score</span></code> procedures. To make it explicit, it is
@@ -2140,14 +2339,14 @@ possible to retrieve these fitted models for each of the splits/folds by
 passing the option <code class="docutils literal notranslate"><span class="pre">return_estimator=True</span></code> in <code class="docutils literal notranslate"><span class="pre">cross_validate</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">return_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">cv_results</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cv_results = cross_validate(regressor, data, target, return_estimator=True)
+cv_results
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.17100716, 0.16641283, 0.16702557, 0.16748834, 0.16202784]),
- &#39;score_time&#39;: array([0.00269294, 0.00271583, 0.00285435, 0.0025816 , 0.00270891]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.16732407, 0.16398931, 0.16381001, 0.16446328, 0.15913439]),
+ &#39;score_time&#39;: array([0.00261164, 0.00267529, 0.0027523 , 0.00258875, 0.00269604]),
  &#39;estimator&#39;: [DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0),
@@ -2160,7 +2359,7 @@ passing the option <code class="docutils literal notranslate"><span class="pre">
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;estimator&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cv_results[&quot;estimator&quot;]
 </pre></div>
 </div>
 </div>
@@ -2184,10 +2383,10 @@ provide a <code class="docutils literal notranslate"><span class="pre">cross_val
 extensively did in the previous notebooks).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import cross_val_score
 
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-<span class="n">scores</span>
+scores = cross_val_score(regressor, data, target)
+scores
 </pre></div>
 </div>
 </div>
@@ -2197,9 +2396,9 @@ extensively did in the previous notebooks).</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook, we saw:</p>
 <ul class="simple">
 <li><p>the necessity of splitting the data into a train and test set;</p></li>
@@ -2207,8 +2406,8 @@ extensively did in the previous notebooks).</p>
 <li><p>the overall cross-validation framework with the possibility to study
 generalization performance variations.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2232,14 +2431,16 @@ generalization performance variations.</p></li>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="../overfit/overfitting_vs_under_fitting_slides.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">📰 Overfitting and Underfitting</p>
+            <p class="prev-next-title">🎥 Overfitting and Underfitting</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../overfit/overfitting_vs_under_fitting_quiz_m2_01.html" title="next page">
@@ -2250,20 +2451,20 @@ generalization performance variations.</p></li>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By scikit-learn developers<br/>
-        
-            &copy; Copyright 2021.<br/>
-          <div class="extra_footer">
-            <div>
-   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Register</a>
-  and get the full "Machine learning in Python with scikit-learn" MOOC experience!</br>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By scikit-learn developers<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+  <div class="mooc_add">
+   <a href="https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn">Join the full MOOC for better learning!</a>
+  </div>
   Brought to you by
   <a href="https://learninglab.inria.fr">Inria Learning Lab</a>,
   <a href="https://scikit-learn.fondation-inria.fr">scikit-learn @ La Fondation Inria</a>,
@@ -2271,17 +2472,20 @@ generalization performance variations.</p></li>
   with many thanks to the <a href="https://scikit-learn.org">scikit-learn</a> community as a whole!
 </div>
 
-          </div>
-      </p>
     </div>
-  </footer>
-</main>
+</p>
+        </footer>
+    </div>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

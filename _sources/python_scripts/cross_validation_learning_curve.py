@@ -1,8 +1,15 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Effect of the sample size in cross-validation
 #
 # In the previous notebook, we presented the general cross-validation framework
-# and how to assess if a predictive model is underfiting, overfitting, or
+# and how to assess if a predictive model is underfitting, overfitting, or
 # generalizing. Besides these aspects, it is also important to understand how
 # the different errors are influenced by the number of samples available.
 #
@@ -104,7 +111,7 @@ _ = plt.title("Learning curve for decision tree")
 # more samples into the training set.
 #
 # If we achieve a plateau and adding new samples in the training set does not
-# reduce the testing error, we might have reach the Bayes error rate using the
+# reduce the testing error, we might have reached the Bayes error rate using the
 # available model. Using a more complex model might be the only possibility to
 # reduce the testing error further.
 #

@@ -1,3 +1,10 @@
+# ---
+# jupyter:
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # Random forests
 #
@@ -50,7 +57,7 @@ target = adult_census[target_name]
 # encode unknown categories at prediction time in order to be able to use
 # cross-validation. Otherwise some rare categories could only be present on the
 # validation side of the cross-validation split and the `OrdinalEncoder` would
-# raise an error when calling the its `transform` method with the data points
+# raise an error when calling its `transform` method with the data points
 # of the validation set.
 
 # %%
@@ -82,7 +89,7 @@ from sklearn.model_selection import cross_val_score
 scores_tree = cross_val_score(tree, data, target)
 
 print(f"Decision tree classifier: "
-      f"{scores_tree.mean():.3f} +/- {scores_tree.std():.3f}")
+      f"{scores_tree.mean():.3f} ± {scores_tree.std():.3f}")
 
 # %% [markdown]
 #
@@ -106,7 +113,7 @@ bagged_trees = make_pipeline(
 scores_bagged_trees = cross_val_score(bagged_trees, data, target)
 
 print(f"Bagged decision tree classifier: "
-      f"{scores_bagged_trees.mean():.3f} +/- {scores_bagged_trees.std():.3f}")
+      f"{scores_bagged_trees.mean():.3f} ± {scores_bagged_trees.std():.3f}")
 
 # %% [markdown]
 #
@@ -129,7 +136,7 @@ random_forest = make_pipeline(
 scores_random_forest = cross_val_score(random_forest, data, target)
 
 print(f"Random forest classifier: "
-      f"{scores_random_forest.mean():.3f} +/- "
+      f"{scores_random_forest.mean():.3f} ± "
       f"{scores_random_forest.std():.3f}")
 
 # %% [markdown]

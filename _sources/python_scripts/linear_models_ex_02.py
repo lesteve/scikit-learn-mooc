@@ -1,4 +1,17 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.11.5
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # 📝 Exercise M4.02
 #
@@ -44,7 +57,7 @@ _ = sns.scatterplot(data=full_data, x="data", y="target", color="black",
 
 # %% [markdown]
 # We observe that the link between the data `data` and vector `target` is
-# non-linear. For instance, `data` could represent to be the years of
+# non-linear. For instance, `data` could represent the years of
 # experience (normalized) and `target` the salary (normalized). Therefore, the
 # problem here would be to infer the salary given the years of experience.
 #

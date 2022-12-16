@@ -1,14 +1,27 @@
 # -*- coding: utf-8 -*-
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.11.5
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # 📝 Exercise 01
 #
 # The aim of this exercise is to highlight caveats to have in mind when using
 # feature selection. You have to be extremely careful regarding the set of
-# data on which you will compute the statistic that help you feature algorithm
-# to decide which feature to select.
+# data on which you will compute the statistic that helps your feature
+# selection algorithm to decide which feature to select.
 #
 # On purpose, we will make you program the wrong way of doing feature selection
-# to insights.
+# to gain insights.
 #
 # First, you will create a completely random dataset using NumPy. Using the
 # function `np.random.randn`, generate a matrix `data` containing 100 samples
@@ -28,7 +41,7 @@ import numpy as np
 
 # %% [markdown]
 # Now, create a logistic regression model and use cross-validation to check
-# the score of such model. It will allow use to confirm that our model cannot
+# the score of such a model. It will allow use to confirm that our model cannot
 # predict anything meaningful from random data.
 
 # %%
@@ -50,7 +63,7 @@ import numpy as np
 # Now, we will make you program the **right** way to do the feature selection.
 # First, split the dataset into a training and testing set. Then, fit the
 # feature selector on the training set. Then, transform both the training and
-# testing sets before to train and test the logistic regression.
+# testing sets before you train and test the logistic regression.
 
 # %%
 # Write your code here.

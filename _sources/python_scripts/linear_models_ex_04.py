@@ -1,4 +1,17 @@
 # -*- coding: utf-8 -*-
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.11.5
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # 📝 Exercise M4.04
 #
@@ -31,7 +44,13 @@ data, target, coef = make_regression(
 # %%
 import pandas as pd
 
-feature_names = [f"Features {i}" for i in range(data.shape[1])]
+feature_names = [
+    "Relevant feature #0",
+    "Relevant feature #1",
+    "Noisy feature #0",
+    "Noisy feature #1",
+    "Noisy feature #2",
+]
 coef = pd.Series(coef, index=feature_names)
 coef.plot.barh()
 coef

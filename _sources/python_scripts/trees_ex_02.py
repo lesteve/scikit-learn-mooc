@@ -1,4 +1,17 @@
 # -*- coding: utf-8 -*-
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.11.5
+#   kernelspec:
+#     display_name: Python 3
+#     name: python3
+# ---
+
 # %% [markdown]
 # # 📝 Exercise M5.02
 #
@@ -15,10 +28,9 @@ import pandas as pd
 
 penguins = pd.read_csv("../datasets/penguins_regression.csv")
 
-data_columns = ["Flipper Length (mm)"]
-target_column = "Body Mass (g)"
-
-data_train, target_train = penguins[data_columns], penguins[target_column]
+feature_name = "Flipper Length (mm)"
+target_name = "Body Mass (g)"
+data_train, target_train = penguins[[feature_name]], penguins[target_name]
 
 # %% [markdown]
 # ```{note}
