@@ -8,8 +8,14 @@ msgstr ""
 "Language: lt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "repository"
-msgstr "saugykla"
+msgid "Download notebook file"
+msgstr "Atsisiųsti nešiojamojo kompiuterio failą"
+
+msgid "Sphinx Book Theme"
+msgstr "Sfinkso knygos tema"
+
+msgid "Toggle navigation"
+msgstr "Perjungti naršymą"
 
 msgid "open issue"
 msgstr "atviras klausimas"
@@ -17,65 +23,53 @@ msgstr "atviras klausimas"
 msgid "Contents"
 msgstr "Turinys"
 
-msgid "Fullscreen mode"
-msgstr "Pilno ekrano režimas"
-
-msgid "Download this page"
-msgstr "Atsisiųskite šį puslapį"
-
-msgid "Download source file"
-msgstr "Atsisiųsti šaltinio failą"
-
-msgid "Launch"
-msgstr "Paleiskite"
-
 msgid "Edit this page"
 msgstr "Redaguoti šį puslapį"
 
-msgid "Toggle navigation"
-msgstr "Perjungti naršymą"
-
-msgid "Theme by the"
-msgstr "Tema"
-
-msgid "Source repository"
-msgstr "Šaltinio saugykla"
-
-msgid "Last updated on"
-msgstr "Paskutinį kartą atnaujinta"
-
-msgid "By the"
-msgstr "Prie"
-
-msgid "Sphinx Book Theme"
-msgstr "Sfinkso knygos tema"
-
-msgid "Open an issue"
-msgstr "Atidarykite problemą"
-
-msgid "next page"
-msgstr "Kitas puslapis"
-
-msgid "Copyright"
-msgstr "Autorių teisės"
-
-msgid "Search this book..."
-msgstr "Ieškoti šioje knygoje ..."
+msgid "suggest edit"
+msgstr "pasiūlyti redaguoti"
 
 msgid "Print to PDF"
 msgstr "Spausdinti į PDF"
 
+msgid "By the"
+msgstr "Prie"
+
 msgid "By"
 msgstr "Iki"
+
+msgid "Open an issue"
+msgstr "Atidarykite problemą"
+
+msgid "Fullscreen mode"
+msgstr "Pilno ekrano režimas"
+
+msgid "Download source file"
+msgstr "Atsisiųsti šaltinio failą"
+
+msgid "Download this page"
+msgstr "Atsisiųskite šį puslapį"
+
+msgid "repository"
+msgstr "saugykla"
+
+msgid "Theme by the"
+msgstr "Tema"
+
+msgid "Last updated on"
+msgstr "Paskutinį kartą atnaujinta"
+
+msgid "Copyright"
+msgstr "Autorių teisės"
 
 msgid "previous page"
 msgstr "Ankstesnis puslapis"
 
-msgid "Search the docs ..."
-msgstr "Ieškoti dokumentuose ..."
+msgid "Launch"
+msgstr "Paleiskite"
 
-msgid "Download notebook file"
-msgstr "Atsisiųsti nešiojamojo kompiuterio failą"
+msgid "Source repository"
+msgstr "Šaltinio saugykla"
 
-msgid "suggest edit"
-msgstr "pasiūlyti redaguoti"
+msgid "next page"
+msgstr "Kitas puslapis"
