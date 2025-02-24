@@ -841,80 +841,80 @@ trees (i.e. shallow trees) might also lead to an underfitted forest.</p>
       <td>2</td>
       <td>None</td>
       <td>2</td>
-      <td>33.840644</td>
-      <td>0.479102</td>
+      <td>34.054779</td>
+      <td>0.508816</td>
     </tr>
     <tr>
       <th>0</th>
       <td>2</td>
       <td>1000</td>
       <td>10</td>
-      <td>36.905802</td>
-      <td>0.525160</td>
+      <td>36.960128</td>
+      <td>0.674312</td>
     </tr>
     <tr>
       <th>7</th>
       <td>None</td>
       <td>None</td>
       <td>20</td>
-      <td>37.317629</td>
-      <td>0.447696</td>
+      <td>37.281536</td>
+      <td>0.447023</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
       <td>100</td>
       <td>2</td>
-      <td>40.084452</td>
-      <td>0.484425</td>
+      <td>40.071118</td>
+      <td>0.437617</td>
     </tr>
     <tr>
       <th>8</th>
       <td>None</td>
       <td>100</td>
       <td>10</td>
-      <td>40.426129</td>
-      <td>0.682850</td>
+      <td>40.523289</td>
+      <td>0.568492</td>
     </tr>
     <tr>
       <th>6</th>
       <td>None</td>
       <td>1000</td>
       <td>50</td>
-      <td>40.794286</td>
-      <td>0.466914</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>100</td>
-      <td>1</td>
-      <td>49.947383</td>
-      <td>0.760117</td>
+      <td>40.876767</td>
+      <td>0.461232</td>
     </tr>
     <tr>
       <th>9</th>
       <td>1</td>
       <td>100</td>
       <td>2</td>
-      <td>50.477621</td>
-      <td>0.784819</td>
+      <td>50.031167</td>
+      <td>0.965327</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>100</td>
+      <td>1</td>
+      <td>50.248458</td>
+      <td>0.901105</td>
     </tr>
     <tr>
       <th>5</th>
       <td>1</td>
       <td>None</td>
       <td>100</td>
-      <td>54.509217</td>
-      <td>0.800215</td>
+      <td>54.462856</td>
+      <td>0.463538</td>
     </tr>
     <tr>
       <th>1</th>
       <td>3</td>
       <td>10</td>
       <td>10</td>
-      <td>54.898563</td>
-      <td>0.681179</td>
+      <td>54.943519</td>
+      <td>0.667540</td>
     </tr>
   </tbody>
 </table>
@@ -943,7 +943,7 @@ the unseen data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our random forest regressor makes an error of 33.92 k$
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our random forest regressor makes an error of 33.85 k$
 </pre></div>
 </div>
 </div>
@@ -973,15 +973,15 @@ have a low depth, typically between 3 to 8 levels, or few leaves (<span class="m
 <p>With this consideration in mind, the deeper the trees, the faster the
 residuals are corrected and then less learners are required. Therefore,
 it can be beneficial to increase <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> if <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> is low.</p>
-<p>Finally, we have overlooked the impact of the <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> parameter until
-now. When fitting the residuals, we would like the tree to try to correct all
-possible errors or only a fraction of them. The learning-rate allows you to
-control this behaviour. A small learning-rate value would only correct the
-residuals of very few samples. If a large learning-rate is set (e.g., 1), we
-would fit the residuals of all samples. So, with a very low learning-rate, we
-would need more estimators to correct the overall error. However, a too large
-learning-rate tends to obtain an overfitted ensemble, similar to having very
-deep trees.</p>
+<p>Finally, we have overlooked the impact of the <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> parameter
+until now. This parameter controls how much each correction contributes to the
+final prediction. A smaller learning-rate means the corrections of a new
+tree result in small adjustments to the model prediction. When the
+learning-rate is small, the model generally needs more trees to achieve good
+performance. A higher learning-rate makes larger adjustments with each tree,
+which requires fewer trees and trains faster, at the risk of overfitting. The
+learning-rate needs to be tuned by hyperparameter tuning to obtain the best
+value that results in a model with good generalization performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">loguniform</span>
@@ -1043,160 +1043,160 @@ deep trees.</p>
       <td>300</td>
       <td>100</td>
       <td>0.018640</td>
-      <td>31.008199</td>
-      <td>0.410625</td>
+      <td>31.075632</td>
+      <td>0.297297</td>
     </tr>
     <tr>
       <th>6</th>
       <td>300</td>
       <td>20</td>
       <td>0.047293</td>
-      <td>31.896917</td>
-      <td>0.349774</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>300</td>
-      <td>10</td>
-      <td>0.297739</td>
-      <td>32.247228</td>
-      <td>0.734303</td>
+      <td>31.829026</td>
+      <td>0.257212</td>
     </tr>
     <tr>
       <th>2</th>
       <td>30</td>
       <td>50</td>
       <td>0.176656</td>
-      <td>32.541193</td>
-      <td>0.435468</td>
+      <td>32.645976</td>
+      <td>0.277494</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>100</td>
-      <td>20</td>
-      <td>0.083745</td>
-      <td>33.052308</td>
-      <td>0.341853</td>
+      <th>13</th>
+      <td>300</td>
+      <td>10</td>
+      <td>0.297739</td>
+      <td>33.006395</td>
+      <td>0.472993</td>
     </tr>
     <tr>
       <th>19</th>
       <td>100</td>
       <td>10</td>
       <td>0.215543</td>
-      <td>33.437260</td>
-      <td>0.462715</td>
+      <td>33.137945</td>
+      <td>0.274292</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>100</td>
+      <td>20</td>
+      <td>0.083745</td>
+      <td>33.197275</td>
+      <td>0.234218</td>
     </tr>
     <tr>
       <th>12</th>
       <td>100</td>
       <td>20</td>
       <td>0.067503</td>
-      <td>33.683847</td>
-      <td>0.347719</td>
+      <td>33.871296</td>
+      <td>0.418139</td>
     </tr>
     <tr>
       <th>16</th>
       <td>300</td>
       <td>5</td>
       <td>0.059290</td>
-      <td>35.893673</td>
-      <td>0.479824</td>
+      <td>35.810194</td>
+      <td>0.469997</td>
     </tr>
     <tr>
       <th>1</th>
       <td>100</td>
       <td>5</td>
       <td>0.160519</td>
-      <td>36.413266</td>
-      <td>0.478577</td>
+      <td>36.248312</td>
+      <td>0.364016</td>
     </tr>
     <tr>
       <th>0</th>
       <td>1000</td>
       <td>2</td>
       <td>0.125207</td>
-      <td>40.697088</td>
-      <td>0.480729</td>
+      <td>40.889103</td>
+      <td>0.724700</td>
     </tr>
     <tr>
       <th>7</th>
       <td>1000</td>
       <td>2</td>
       <td>0.054511</td>
-      <td>42.224418</td>
-      <td>0.689681</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>10</td>
-      <td>5</td>
-      <td>0.248463</td>
-      <td>50.175087</td>
-      <td>0.963206</td>
+      <td>42.194444</td>
+      <td>0.632877</td>
     </tr>
     <tr>
       <th>8</th>
       <td>3</td>
       <td>5</td>
       <td>0.906226</td>
-      <td>50.258521</td>
-      <td>0.542859</td>
+      <td>50.229581</td>
+      <td>0.764358</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>10</td>
+      <td>5</td>
+      <td>0.248463</td>
+      <td>50.256974</td>
+      <td>0.559465</td>
     </tr>
     <tr>
       <th>5</th>
       <td>10</td>
       <td>100</td>
       <td>0.061034</td>
-      <td>61.598432</td>
-      <td>0.657508</td>
+      <td>61.595093</td>
+      <td>0.676801</td>
     </tr>
     <tr>
       <th>17</th>
       <td>3</td>
       <td>5</td>
       <td>0.079415</td>
-      <td>81.431827</td>
-      <td>0.887999</td>
+      <td>81.473618</td>
+      <td>0.964294</td>
     </tr>
     <tr>
       <th>4</th>
       <td>10</td>
       <td>2</td>
       <td>0.035100</td>
-      <td>82.480819</td>
-      <td>0.923530</td>
+      <td>82.538669</td>
+      <td>0.931620</td>
     </tr>
     <tr>
       <th>15</th>
       <td>3</td>
       <td>50</td>
       <td>0.019923</td>
-      <td>87.648069</td>
-      <td>1.045460</td>
+      <td>87.608300</td>
+      <td>1.093378</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
       <td>2</td>
       <td>0.039361</td>
-      <td>87.822320</td>
-      <td>1.118709</td>
+      <td>87.824971</td>
+      <td>1.081327</td>
     </tr>
     <tr>
       <th>11</th>
       <td>3</td>
       <td>10</td>
       <td>0.019351</td>
-      <td>88.407890</td>
-      <td>1.084055</td>
+      <td>88.317090</td>
+      <td>1.069122</td>
     </tr>
     <tr>
       <th>10</th>
       <td>3</td>
       <td>5</td>
       <td>0.017240</td>
-      <td>88.959734</td>
-      <td>1.049095</td>
+      <td>88.933888</td>
+      <td>1.074173</td>
     </tr>
   </tbody>
 </table>
@@ -1223,7 +1223,7 @@ test set.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our HGBT regressor makes an error of 30.37 k$
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our HGBT regressor makes an error of 30.57 k$
 </pre></div>
 </div>
 </div>
