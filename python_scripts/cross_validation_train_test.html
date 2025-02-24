@@ -57,8 +57,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
+    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -714,7 +714,7 @@ keeping any samples out.</p>
 dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_california_housing</span>
 
 <span class="n">housing</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">housing</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">housing</span><span class="o">.</span><span class="n">target</span>
@@ -985,7 +985,7 @@ Appendix - Datasets description section at the end of this MOOC.</p>
 <p>To solve this regression task, we will use a decision tree regressor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
 
 <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
@@ -1416,7 +1416,7 @@ use the mean absolute error, which gives us an error in the native unit, i.e.
 k$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span>
 
 <span class="n">target_predicted</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">target_predicted</span><span class="p">)</span>
@@ -1460,7 +1460,7 @@ error</strong>.</p>
 <p>So let’s split our dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">target_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
@@ -1921,7 +1921,7 @@ memorized the training set. However, we now compute the testing error.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The testing error of our model is 47.39 k$
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The testing error of our model is 47.28 k$
 </pre></div>
 </div>
 </div>
@@ -1974,8 +1974,8 @@ with a
 object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">ShuffleSplit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShuffleSplit</span>
 
 <span class="n">cv</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span>
@@ -1989,7 +1989,7 @@ object:</p>
 it into a pandas dataframe to ease visualization and manipulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">cv_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cv_results</span><span class="p">)</span>
 <span class="n">cv_results</span>
@@ -2023,242 +2023,242 @@ it into a pandas dataframe to ease visualization and manipulation.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.146254</td>
-      <td>0.003302</td>
+      <td>0.146062</td>
+      <td>0.003397</td>
       <td>-46.909797</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.146195</td>
-      <td>0.003151</td>
+      <td>0.146404</td>
+      <td>0.003294</td>
       <td>-46.421170</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.144710</td>
-      <td>0.002703</td>
-      <td>-47.413608</td>
+      <td>0.145131</td>
+      <td>0.003295</td>
+      <td>-47.411089</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.145901</td>
-      <td>0.002579</td>
-      <td>-44.575623</td>
+      <td>0.148187</td>
+      <td>0.003408</td>
+      <td>-44.319824</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.142743</td>
-      <td>0.002589</td>
+      <td>0.145390</td>
+      <td>0.003342</td>
       <td>-47.607875</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.144723</td>
-      <td>0.002601</td>
-      <td>-45.850154</td>
+      <td>0.147309</td>
+      <td>0.003366</td>
+      <td>-45.901300</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.145390</td>
-      <td>0.002631</td>
-      <td>-46.566775</td>
+      <td>0.148198</td>
+      <td>0.003466</td>
+      <td>-46.572767</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.146041</td>
-      <td>0.002963</td>
-      <td>-46.193971</td>
+      <td>0.148203</td>
+      <td>0.003404</td>
+      <td>-46.194585</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.146261</td>
-      <td>0.002615</td>
-      <td>-45.602123</td>
+      <td>0.148596</td>
+      <td>0.003456</td>
+      <td>-45.590236</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.146843</td>
-      <td>0.002790</td>
+      <td>0.149338</td>
+      <td>0.003503</td>
       <td>-45.727998</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>0.144514</td>
-      <td>0.002649</td>
+      <td>0.146930</td>
+      <td>0.003391</td>
       <td>-49.325285</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>0.144619</td>
-      <td>0.002649</td>
+      <td>0.147384</td>
+      <td>0.003415</td>
       <td>-47.433377</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>0.143815</td>
-      <td>0.002674</td>
-      <td>-46.900995</td>
+      <td>0.146649</td>
+      <td>0.003426</td>
+      <td>-46.899316</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>0.141638</td>
-      <td>0.002638</td>
+      <td>0.143993</td>
+      <td>0.003429</td>
       <td>-46.413821</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>0.143312</td>
-      <td>0.002818</td>
-      <td>-46.734312</td>
+      <td>0.144066</td>
+      <td>0.003463</td>
+      <td>-46.727109</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>0.144535</td>
-      <td>0.002663</td>
+      <td>0.145287</td>
+      <td>0.003361</td>
       <td>-44.254324</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>0.144213</td>
-      <td>0.002727</td>
+      <td>0.145035</td>
+      <td>0.003407</td>
       <td>-48.042372</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>0.146934</td>
-      <td>0.002648</td>
-      <td>-43.017008</td>
+      <td>0.147462</td>
+      <td>0.003338</td>
+      <td>-43.026746</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>0.143603</td>
-      <td>0.002637</td>
+      <td>0.145098</td>
+      <td>0.003417</td>
       <td>-46.176363</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>0.144486</td>
-      <td>0.002636</td>
-      <td>-47.827578</td>
+      <td>0.145020</td>
+      <td>0.003384</td>
+      <td>-47.662623</td>
     </tr>
     <tr>
       <th>20</th>
-      <td>0.144201</td>
-      <td>0.002774</td>
-      <td>-44.461020</td>
+      <td>0.144808</td>
+      <td>0.003427</td>
+      <td>-44.451056</td>
     </tr>
     <tr>
       <th>21</th>
-      <td>0.144778</td>
-      <td>0.002643</td>
-      <td>-46.174426</td>
+      <td>0.145348</td>
+      <td>0.003424</td>
+      <td>-46.173780</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>0.146806</td>
-      <td>0.002623</td>
-      <td>-45.981538</td>
+      <td>0.147820</td>
+      <td>0.003407</td>
+      <td>-45.795231</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>0.146917</td>
-      <td>0.002619</td>
-      <td>-45.952741</td>
+      <td>0.150466</td>
+      <td>0.005750</td>
+      <td>-46.166307</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>0.144332</td>
-      <td>0.002713</td>
+      <td>0.152664</td>
+      <td>0.003500</td>
       <td>-46.360169</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>0.144922</td>
-      <td>0.002641</td>
+      <td>0.145990</td>
+      <td>0.003587</td>
       <td>-46.968612</td>
     </tr>
     <tr>
       <th>26</th>
-      <td>0.144434</td>
-      <td>0.002701</td>
-      <td>-46.328320</td>
+      <td>0.147066</td>
+      <td>0.003461</td>
+      <td>-46.325623</td>
     </tr>
     <tr>
       <th>27</th>
-      <td>0.144747</td>
-      <td>0.002778</td>
-      <td>-46.518178</td>
+      <td>0.145143</td>
+      <td>0.003331</td>
+      <td>-46.522054</td>
     </tr>
     <tr>
       <th>28</th>
-      <td>0.146069</td>
-      <td>0.002628</td>
-      <td>-47.486351</td>
+      <td>0.147330</td>
+      <td>0.003547</td>
+      <td>-47.415111</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>0.144707</td>
-      <td>0.002685</td>
-      <td>-46.053691</td>
+      <td>0.145895</td>
+      <td>0.003386</td>
+      <td>-46.050461</td>
     </tr>
     <tr>
       <th>30</th>
-      <td>0.144607</td>
-      <td>0.002620</td>
+      <td>0.145874</td>
+      <td>0.003472</td>
       <td>-46.182242</td>
     </tr>
     <tr>
       <th>31</th>
-      <td>0.146073</td>
-      <td>0.002647</td>
+      <td>0.147297</td>
+      <td>0.003442</td>
       <td>-45.305162</td>
     </tr>
     <tr>
       <th>32</th>
-      <td>0.145257</td>
-      <td>0.002625</td>
+      <td>0.146272</td>
+      <td>0.003483</td>
       <td>-44.359681</td>
     </tr>
     <tr>
       <th>33</th>
-      <td>0.145320</td>
-      <td>0.002651</td>
+      <td>0.146344</td>
+      <td>0.003495</td>
       <td>-46.829014</td>
     </tr>
     <tr>
       <th>34</th>
-      <td>0.145971</td>
-      <td>0.002843</td>
+      <td>0.146119</td>
+      <td>0.003397</td>
       <td>-46.648786</td>
     </tr>
     <tr>
       <th>35</th>
-      <td>0.144818</td>
-      <td>0.002854</td>
-      <td>-45.649481</td>
+      <td>0.145559</td>
+      <td>0.003381</td>
+      <td>-45.653002</td>
     </tr>
     <tr>
       <th>36</th>
-      <td>0.145067</td>
-      <td>0.002673</td>
+      <td>0.146196</td>
+      <td>0.003402</td>
       <td>-46.864559</td>
     </tr>
     <tr>
       <th>37</th>
-      <td>0.148149</td>
-      <td>0.003056</td>
+      <td>0.144572</td>
+      <td>0.003402</td>
       <td>-47.420250</td>
     </tr>
     <tr>
       <th>38</th>
-      <td>0.147666</td>
-      <td>0.002844</td>
+      <td>0.144725</td>
+      <td>0.003492</td>
       <td>-47.352148</td>
     </tr>
     <tr>
       <th>39</th>
-      <td>0.144409</td>
-      <td>0.002804</td>
+      <td>0.144533</td>
+      <td>0.003484</td>
       <td>-47.102818</td>
     </tr>
   </tbody>
@@ -2322,71 +2322,71 @@ score.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.146254</td>
-      <td>0.003302</td>
+      <td>0.146062</td>
+      <td>0.003397</td>
       <td>-46.909797</td>
       <td>46.909797</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.146195</td>
-      <td>0.003151</td>
+      <td>0.146404</td>
+      <td>0.003294</td>
       <td>-46.421170</td>
       <td>46.421170</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.144710</td>
-      <td>0.002703</td>
-      <td>-47.413608</td>
-      <td>47.413608</td>
+      <td>0.145131</td>
+      <td>0.003295</td>
+      <td>-47.411089</td>
+      <td>47.411089</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.145901</td>
-      <td>0.002579</td>
-      <td>-44.575623</td>
-      <td>44.575623</td>
+      <td>0.148187</td>
+      <td>0.003408</td>
+      <td>-44.319824</td>
+      <td>44.319824</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.142743</td>
-      <td>0.002589</td>
+      <td>0.145390</td>
+      <td>0.003342</td>
       <td>-47.607875</td>
       <td>47.607875</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.144723</td>
-      <td>0.002601</td>
-      <td>-45.850154</td>
-      <td>45.850154</td>
+      <td>0.147309</td>
+      <td>0.003366</td>
+      <td>-45.901300</td>
+      <td>45.901300</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.145390</td>
-      <td>0.002631</td>
-      <td>-46.566775</td>
-      <td>46.566775</td>
+      <td>0.148198</td>
+      <td>0.003466</td>
+      <td>-46.572767</td>
+      <td>46.572767</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.146041</td>
-      <td>0.002963</td>
-      <td>-46.193971</td>
-      <td>46.193971</td>
+      <td>0.148203</td>
+      <td>0.003404</td>
+      <td>-46.194585</td>
+      <td>46.194585</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.146261</td>
-      <td>0.002615</td>
-      <td>-45.602123</td>
-      <td>45.602123</td>
+      <td>0.148596</td>
+      <td>0.003456</td>
+      <td>-45.590236</td>
+      <td>45.590236</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.146843</td>
-      <td>0.002790</td>
+      <td>0.149338</td>
+      <td>0.003503</td>
       <td>-45.727998</td>
       <td>45.727998</td>
     </tr>
@@ -2414,7 +2414,7 @@ Therefore, we can show the testing error distribution and thus, have an
 estimate of its variability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">cv_results</span><span class="p">[</span><span class="s2">&quot;test_error&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean absolute error (k$)&quot;</span><span class="p">)</span>
@@ -2423,7 +2423,7 @@ estimate of its variability.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/88968835d967870c44780ac2ce77b6c643251b3445ede932365b980693779e70.png" src="../_images/88968835d967870c44780ac2ce77b6c643251b3445ede932365b980693779e70.png" />
+<img alt="../_images/bf25f056ed9a7b2e596ca2007c6fdb392d5675e18dbb21ec22f0e56a295132a2.png" src="../_images/bf25f056ed9a7b2e596ca2007c6fdb392d5675e18dbb21ec22f0e56a295132a2.png" />
 </div>
 </div>
 <p>We observe that the testing error is clustered around 47 k$ and ranges from
@@ -2438,7 +2438,7 @@ estimate of its variability.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean cross-validated testing error is: 46.37 k$
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean cross-validated testing error is: 46.36 k$
 </pre></div>
 </div>
 </div>
@@ -2525,14 +2525,14 @@ passing the option <code class="docutils literal notranslate"><span class="pre">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.17034268, 0.16653204, 0.1676724 , 0.16708159, 0.16230321]),
- &#39;score_time&#39;: array([0.00196719, 0.00197625, 0.00220156, 0.00186491, 0.00195146]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.17081356, 0.16666031, 0.16728878, 0.16762733, 0.16208816]),
+ &#39;score_time&#39;: array([0.00259137, 0.00256538, 0.00265408, 0.00249004, 0.00261331]),
  &#39;estimator&#39;: [DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0),
   DecisionTreeRegressor(random_state=0)],
- &#39;test_score&#39;: array([0.26291527, 0.41947109, 0.43969189, 0.23357874, 0.40788361])}
+ &#39;test_score&#39;: array([0.26291527, 0.41947109, 0.44492564, 0.23357874, 0.40788361])}
 </pre></div>
 </div>
 </div>
@@ -2563,7 +2563,7 @@ provide a <code class="docutils literal notranslate"><span class="pre">cross_val
 extensively did in the previous notebooks).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_score</span>
 
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
 <span class="n">scores</span>
@@ -2571,7 +2571,7 @@ extensively did in the previous notebooks).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.26291527, 0.41947109, 0.43969189, 0.23357874, 0.40788361])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.26291527, 0.41947109, 0.44492564, 0.23357874, 0.40788361])
 </pre></div>
 </div>
 </div>

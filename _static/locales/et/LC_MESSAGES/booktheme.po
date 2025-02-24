@@ -8,68 +8,68 @@ msgstr ""
 "Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download notebook file"
-msgstr "Laadige sülearvuti fail alla"
-
-msgid "Sphinx Book Theme"
-msgstr "Sfinksiraamatu teema"
-
-msgid "Toggle navigation"
-msgstr "Lülita navigeerimine sisse"
-
-msgid "open issue"
-msgstr "avatud küsimus"
-
-msgid "Contents"
-msgstr "Sisu"
-
-msgid "Edit this page"
-msgstr "Muutke seda lehte"
-
-msgid "suggest edit"
-msgstr "soovita muuta"
-
-msgid "Print to PDF"
-msgstr "Prindi PDF-i"
-
-msgid "By the"
-msgstr "Autor"
-
-msgid "By"
-msgstr "Kõrval"
-
-msgid "Open an issue"
-msgstr "Avage probleem"
-
-msgid "Fullscreen mode"
-msgstr "Täisekraanirežiim"
+msgid "previous page"
+msgstr "eelmine leht"
 
 msgid "Download source file"
 msgstr "Laadige alla lähtefail"
 
-msgid "Download this page"
-msgstr "Laadige see leht alla"
+msgid "Edit this page"
+msgstr "Muutke seda lehte"
 
-msgid "repository"
-msgstr "hoidla"
+msgid "Download notebook file"
+msgstr "Laadige sülearvuti fail alla"
 
-msgid "Theme by the"
-msgstr "Teema"
+msgid "Open an issue"
+msgstr "Avage probleem"
 
-msgid "Last updated on"
-msgstr "Viimati uuendatud"
+msgid "Print to PDF"
+msgstr "Prindi PDF-i"
 
-msgid "Copyright"
-msgstr "Autoriõigus"
-
-msgid "previous page"
-msgstr "eelmine leht"
+msgid "By"
+msgstr "Kõrval"
 
 msgid "Launch"
 msgstr "Käivitage"
 
+msgid "next page"
+msgstr "järgmine leht"
+
 msgid "Source repository"
 msgstr "Allikahoidla"
 
-msgid "next page"
-msgstr "järgmine leht"
+msgid "open issue"
+msgstr "avatud küsimus"
+
+msgid "Last updated on"
+msgstr "Viimati uuendatud"
+
+msgid "Contents"
+msgstr "Sisu"
+
+msgid "Sphinx Book Theme"
+msgstr "Sfinksiraamatu teema"
+
+msgid "Download this page"
+msgstr "Laadige see leht alla"
+
+msgid "By the"
+msgstr "Autor"
+
+msgid "suggest edit"
+msgstr "soovita muuta"
+
+msgid "Copyright"
+msgstr "Autoriõigus"
+
+msgid "Toggle navigation"
+msgstr "Lülita navigeerimine sisse"
+
+msgid "repository"
+msgstr "hoidla"
+
+msgid "Fullscreen mode"
+msgstr "Täisekraanirežiim"
+
+msgid "Theme by the"
+msgstr "Teema"

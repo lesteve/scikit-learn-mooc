@@ -57,8 +57,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
+    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -716,8 +716,8 @@ parameters on the validation set.</p>
 <p>We start by loading the california housing dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">target</span> <span class="o">*=</span> <span class="mi">100</span>  <span class="c1"># rescale the target in k$</span>
@@ -781,9 +781,9 @@ mitigated when combining the trees altogether, whereas assembling underfitted
 trees (i.e. shallow trees) might also lead to an underfitted forest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 
 <span class="n">param_distributions</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
@@ -841,80 +841,80 @@ trees (i.e. shallow trees) might also lead to an underfitted forest.</p>
       <td>2</td>
       <td>None</td>
       <td>2</td>
-      <td>34.086966</td>
-      <td>0.629179</td>
+      <td>33.840644</td>
+      <td>0.479102</td>
     </tr>
     <tr>
       <th>0</th>
       <td>2</td>
       <td>1000</td>
       <td>10</td>
-      <td>36.979942</td>
-      <td>0.648473</td>
+      <td>36.905802</td>
+      <td>0.525160</td>
     </tr>
     <tr>
       <th>7</th>
       <td>None</td>
       <td>None</td>
       <td>20</td>
-      <td>37.321433</td>
-      <td>0.356154</td>
+      <td>37.317629</td>
+      <td>0.447696</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
       <td>100</td>
       <td>2</td>
-      <td>40.200608</td>
-      <td>0.612654</td>
+      <td>40.084452</td>
+      <td>0.484425</td>
     </tr>
     <tr>
       <th>8</th>
       <td>None</td>
       <td>100</td>
       <td>10</td>
-      <td>40.346535</td>
-      <td>0.554403</td>
+      <td>40.426129</td>
+      <td>0.682850</td>
     </tr>
     <tr>
       <th>6</th>
       <td>None</td>
       <td>1000</td>
       <td>50</td>
-      <td>40.796459</td>
-      <td>0.412262</td>
+      <td>40.794286</td>
+      <td>0.466914</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1</td>
       <td>100</td>
       <td>1</td>
-      <td>49.722886</td>
-      <td>0.840317</td>
+      <td>49.947383</td>
+      <td>0.760117</td>
     </tr>
     <tr>
       <th>9</th>
       <td>1</td>
       <td>100</td>
       <td>2</td>
-      <td>50.125493</td>
-      <td>0.639191</td>
+      <td>50.477621</td>
+      <td>0.784819</td>
     </tr>
     <tr>
       <th>5</th>
       <td>1</td>
       <td>None</td>
       <td>100</td>
-      <td>54.469358</td>
-      <td>0.816324</td>
+      <td>54.509217</td>
+      <td>0.800215</td>
     </tr>
     <tr>
       <th>1</th>
       <td>3</td>
       <td>10</td>
       <td>10</td>
-      <td>55.013735</td>
-      <td>0.931792</td>
+      <td>54.898563</td>
+      <td>0.681179</td>
     </tr>
   </tbody>
 </table>
@@ -943,7 +943,7 @@ the unseen data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our random forest regressor makes an error of 33.89 k$
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our random forest regressor makes an error of 33.92 k$
 </pre></div>
 </div>
 </div>
@@ -984,8 +984,8 @@ learning-rate tends to obtain an overfitted ensemble, similar to having very
 deep trees.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">loguniform</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">HistGradientBoostingRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">loguniform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistGradientBoostingRegressor</span>
 
 <span class="n">param_distributions</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;max_iter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span>
@@ -1043,160 +1043,160 @@ deep trees.</p>
       <td>300</td>
       <td>100</td>
       <td>0.018640</td>
-      <td>30.939656</td>
-      <td>0.348629</td>
+      <td>31.008199</td>
+      <td>0.410625</td>
     </tr>
     <tr>
       <th>6</th>
       <td>300</td>
       <td>20</td>
       <td>0.047293</td>
-      <td>31.887622</td>
-      <td>0.338836</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>30</td>
-      <td>50</td>
-      <td>0.176656</td>
-      <td>32.575157</td>
-      <td>0.297785</td>
+      <td>31.896917</td>
+      <td>0.349774</td>
     </tr>
     <tr>
       <th>13</th>
       <td>300</td>
       <td>10</td>
       <td>0.297739</td>
-      <td>33.047343</td>
-      <td>0.313950</td>
+      <td>32.247228</td>
+      <td>0.734303</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30</td>
+      <td>50</td>
+      <td>0.176656</td>
+      <td>32.541193</td>
+      <td>0.435468</td>
     </tr>
     <tr>
       <th>9</th>
       <td>100</td>
       <td>20</td>
       <td>0.083745</td>
-      <td>33.256967</td>
-      <td>0.343156</td>
+      <td>33.052308</td>
+      <td>0.341853</td>
     </tr>
     <tr>
       <th>19</th>
       <td>100</td>
       <td>10</td>
       <td>0.215543</td>
-      <td>33.351550</td>
-      <td>0.166646</td>
+      <td>33.437260</td>
+      <td>0.462715</td>
     </tr>
     <tr>
       <th>12</th>
       <td>100</td>
       <td>20</td>
       <td>0.067503</td>
-      <td>33.725963</td>
-      <td>0.322749</td>
+      <td>33.683847</td>
+      <td>0.347719</td>
     </tr>
     <tr>
       <th>16</th>
       <td>300</td>
       <td>5</td>
       <td>0.059290</td>
-      <td>35.834505</td>
-      <td>0.382251</td>
+      <td>35.893673</td>
+      <td>0.479824</td>
     </tr>
     <tr>
       <th>1</th>
       <td>100</td>
       <td>5</td>
       <td>0.160519</td>
-      <td>36.522778</td>
-      <td>0.545875</td>
+      <td>36.413266</td>
+      <td>0.478577</td>
     </tr>
     <tr>
       <th>0</th>
       <td>1000</td>
       <td>2</td>
       <td>0.125207</td>
-      <td>40.709360</td>
-      <td>0.665139</td>
+      <td>40.697088</td>
+      <td>0.480729</td>
     </tr>
     <tr>
       <th>7</th>
       <td>1000</td>
       <td>2</td>
       <td>0.054511</td>
-      <td>42.215794</td>
-      <td>0.740109</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>3</td>
-      <td>5</td>
-      <td>0.906226</td>
-      <td>50.103483</td>
-      <td>0.733983</td>
+      <td>42.224418</td>
+      <td>0.689681</td>
     </tr>
     <tr>
       <th>18</th>
       <td>10</td>
       <td>5</td>
       <td>0.248463</td>
-      <td>50.758600</td>
-      <td>0.897722</td>
+      <td>50.175087</td>
+      <td>0.963206</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3</td>
+      <td>5</td>
+      <td>0.906226</td>
+      <td>50.258521</td>
+      <td>0.542859</td>
     </tr>
     <tr>
       <th>5</th>
       <td>10</td>
       <td>100</td>
       <td>0.061034</td>
-      <td>61.525445</td>
-      <td>0.859251</td>
+      <td>61.598432</td>
+      <td>0.657508</td>
     </tr>
     <tr>
       <th>17</th>
       <td>3</td>
       <td>5</td>
       <td>0.079415</td>
-      <td>81.506915</td>
-      <td>0.915843</td>
+      <td>81.431827</td>
+      <td>0.887999</td>
     </tr>
     <tr>
       <th>4</th>
       <td>10</td>
       <td>2</td>
       <td>0.035100</td>
-      <td>82.480895</td>
-      <td>0.940579</td>
+      <td>82.480819</td>
+      <td>0.923530</td>
     </tr>
     <tr>
       <th>15</th>
       <td>3</td>
       <td>50</td>
       <td>0.019923</td>
-      <td>87.619009</td>
-      <td>1.076714</td>
+      <td>87.648069</td>
+      <td>1.045460</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
       <td>2</td>
       <td>0.039361</td>
-      <td>87.833591</td>
-      <td>1.139915</td>
+      <td>87.822320</td>
+      <td>1.118709</td>
     </tr>
     <tr>
       <th>11</th>
       <td>3</td>
       <td>10</td>
       <td>0.019351</td>
-      <td>88.329322</td>
-      <td>1.115631</td>
+      <td>88.407890</td>
+      <td>1.084055</td>
     </tr>
     <tr>
       <th>10</th>
       <td>3</td>
       <td>5</td>
       <td>0.017240</td>
-      <td>88.932918</td>
-      <td>1.137514</td>
+      <td>88.959734</td>
+      <td>1.049095</td>
     </tr>
   </tbody>
 </table>
@@ -1223,7 +1223,7 @@ test set.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our HGBT regressor makes an error of 30.49 k$
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On average, our HGBT regressor makes an error of 30.37 k$
 </pre></div>
 </div>
 </div>

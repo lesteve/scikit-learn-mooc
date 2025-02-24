@@ -57,8 +57,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../_static/sklearn_mooc.js"></script>
     <script src="../_static/matomo.js"></script>
+    <script src="../_static/sklearn_mooc.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -697,8 +697,8 @@ of a bagging regressor and evaluate the gain obtained.</p>
 testing set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_california_housing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">data</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">target</span> <span class="o">*=</span> <span class="mi">100</span>  <span class="c1"># rescale the target in k$</span>
@@ -720,9 +720,9 @@ performance on the testing set using the mean absolute error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solution</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">BaggingRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingRegressor</span>
 
 <span class="n">tree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
 <span class="n">bagging</span> <span class="o">=</span> <span class="n">BaggingRegressor</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">tree</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -737,7 +737,7 @@ performance on the testing set using the mean absolute error.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Basic mean absolute error of the bagging regressor:
-36.73 k$
+36.79 k$
 </pre></div>
 </div>
 </div>
@@ -788,8 +788,8 @@ warm_start
 </div>
 <div class="cell tag_solution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
 
 <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
@@ -807,7 +807,7 @@ warm_start
 </div>
 <div class="cell tag_solution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;param_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">param_grid</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
 <span class="n">columns</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;mean_test_error&quot;</span><span class="p">,</span> <span class="s2">&quot;std_test_error&quot;</span><span class="p">]</span>
@@ -847,184 +847,184 @@ warm_start
   </thead>
   <tbody>
     <tr>
-      <th>8</th>
-      <td>10</td>
-      <td>1.0</td>
-      <td>0.8</td>
-      <td>9</td>
-      <td>38.550679</td>
-      <td>1.809574</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>27</td>
-      <td>0.8</td>
-      <td>0.8</td>
-      <td>9</td>
-      <td>38.907349</td>
-      <td>1.036379</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>18</td>
-      <td>0.8</td>
-      <td>0.8</td>
-      <td>9</td>
-      <td>39.911581</td>
-      <td>1.687790</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>25</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>8</td>
-      <td>40.896636</td>
-      <td>1.129437</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>12</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>8</td>
-      <td>41.200185</td>
-      <td>1.150336</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>20</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>7</td>
-      <td>43.147905</td>
-      <td>1.172360</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>13</td>
-      <td>0.8</td>
-      <td>1.0</td>
-      <td>6</td>
-      <td>45.294455</td>
-      <td>1.468181</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>27</td>
-      <td>0.5</td>
-      <td>0.5</td>
-      <td>8</td>
-      <td>45.975905</td>
-      <td>0.882917</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>10</td>
-      <td>0.5</td>
-      <td>0.5</td>
-      <td>7</td>
-      <td>47.078127</td>
-      <td>2.479784</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>10</td>
-      <td>0.5</td>
-      <td>0.5</td>
-      <td>9</td>
-      <td>47.633190</td>
-      <td>2.922904</td>
-    </tr>
-    <tr>
       <th>18</th>
-      <td>26</td>
+      <td>11</td>
       <td>1.0</td>
-      <td>1.0</td>
-      <td>5</td>
-      <td>48.029047</td>
-      <td>1.292306</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>10</td>
       <td>0.8</td>
-      <td>0.8</td>
-      <td>5</td>
-      <td>48.348323</td>
-      <td>1.239787</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>17</td>
-      <td>0.8</td>
-      <td>0.5</td>
-      <td>6</td>
-      <td>48.688475</td>
-      <td>1.567236</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>19</td>
-      <td>0.5</td>
-      <td>0.5</td>
-      <td>6</td>
-      <td>50.056939</td>
-      <td>2.435231</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>25</td>
-      <td>1.0</td>
-      <td>0.5</td>
-      <td>6</td>
-      <td>50.634609</td>
-      <td>1.467715</td>
+      <td>9</td>
+      <td>39.546653</td>
+      <td>1.955356</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>20</td>
-      <td>0.8</td>
-      <td>0.5</td>
-      <td>6</td>
-      <td>50.815898</td>
-      <td>2.384356</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>25</td>
+      <td>21</td>
       <td>0.5</td>
       <td>1.0</td>
-      <td>4</td>
-      <td>51.465324</td>
-      <td>1.168005</td>
+      <td>8</td>
+      <td>40.758519</td>
+      <td>0.945200</td>
     </tr>
     <tr>
-      <th>19</th>
-      <td>13</td>
+      <th>15</th>
+      <td>26</td>
       <td>0.8</td>
-      <td>0.5</td>
-      <td>5</td>
-      <td>53.169198</td>
-      <td>2.596839</td>
+      <td>0.8</td>
+      <td>7</td>
+      <td>42.369527</td>
+      <td>1.363224</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>15</td>
+      <td>27</td>
+      <td>0.8</td>
+      <td>0.8</td>
+      <td>6</td>
+      <td>45.176448</td>
+      <td>1.090429</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>17</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>7</td>
+      <td>48.035848</td>
+      <td>2.718805</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>5</td>
+      <td>48.349420</td>
+      <td>1.245598</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>6</td>
+      <td>49.441711</td>
+      <td>1.990518</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+      <td>1.0</td>
+      <td>0.5</td>
+      <td>6</td>
+      <td>49.660886</td>
+      <td>1.205520</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>14</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>6</td>
+      <td>49.731084</td>
+      <td>2.549041</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>21</td>
+      <td>0.8</td>
+      <td>1.0</td>
+      <td>4</td>
+      <td>51.750552</td>
+      <td>1.058134</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>10</td>
+      <td>1.0</td>
+      <td>0.5</td>
+      <td>5</td>
+      <td>51.930953</td>
+      <td>1.945536</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>26</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>5</td>
+      <td>52.900121</td>
+      <td>2.574909</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>17</td>
       <td>1.0</td>
       <td>0.8</td>
-      <td>3</td>
-      <td>57.893897</td>
-      <td>1.250442</td>
+      <td>4</td>
+      <td>53.130321</td>
+      <td>0.544001</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>15</td>
+      <td>0.8</td>
+      <td>0.5</td>
+      <td>5</td>
+      <td>54.016831</td>
+      <td>2.103381</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>20</td>
+      <td>25</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>4</td>
+      <td>55.608827</td>
+      <td>0.965801</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>15</td>
+      <td>0.5</td>
+      <td>0.8</td>
+      <td>3</td>
+      <td>56.535124</td>
+      <td>1.012566</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>22</td>
       <td>1.0</td>
       <td>0.5</td>
+      <td>4</td>
+      <td>56.796754</td>
+      <td>1.735684</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>19</td>
+      <td>0.5</td>
+      <td>0.8</td>
       <td>3</td>
-      <td>61.187502</td>
-      <td>1.228751</td>
+      <td>57.029804</td>
+      <td>1.147499</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>24</td>
+      <td>0.8</td>
+      <td>0.5</td>
+      <td>3</td>
+      <td>60.623362</td>
+      <td>0.983457</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>17</td>
+      <td>0.8</td>
+      <td>0.5</td>
+      <td>3</td>
+      <td>61.524504</td>
+      <td>1.184793</td>
     </tr>
   </tbody>
 </table>
@@ -1042,7 +1042,7 @@ warm_start
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean absolute error after tuning of the bagging regressor:
-39.99 k$
+42.48 k$
 </pre></div>
 </div>
 </div>

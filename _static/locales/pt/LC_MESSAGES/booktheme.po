@@ -8,68 +8,68 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download notebook file"
-msgstr "Baixar arquivo de notebook"
-
-msgid "Sphinx Book Theme"
-msgstr "Tema do livro Sphinx"
-
-msgid "Toggle navigation"
-msgstr "Alternar de navegação"
-
-msgid "open issue"
-msgstr "questão aberta"
-
-msgid "Contents"
-msgstr "Conteúdo"
-
-msgid "Edit this page"
-msgstr "Edite essa página"
-
-msgid "suggest edit"
-msgstr "sugerir edição"
-
-msgid "Print to PDF"
-msgstr "Imprimir em PDF"
-
-msgid "By the"
-msgstr "Pelo"
-
-msgid "By"
-msgstr "De"
-
-msgid "Open an issue"
-msgstr "Abra um problema"
-
-msgid "Fullscreen mode"
-msgstr "Modo tela cheia"
+msgid "previous page"
+msgstr "página anterior"
 
 msgid "Download source file"
 msgstr "Baixar arquivo fonte"
 
-msgid "Download this page"
-msgstr "Baixe esta página"
+msgid "Edit this page"
+msgstr "Edite essa página"
 
-msgid "repository"
-msgstr "repositório"
+msgid "Download notebook file"
+msgstr "Baixar arquivo de notebook"
 
-msgid "Theme by the"
-msgstr "Tema por"
+msgid "Open an issue"
+msgstr "Abra um problema"
 
-msgid "Last updated on"
-msgstr "Última atualização em"
+msgid "Print to PDF"
+msgstr "Imprimir em PDF"
 
-msgid "Copyright"
-msgstr "direito autoral"
-
-msgid "previous page"
-msgstr "página anterior"
+msgid "By"
+msgstr "De"
 
 msgid "Launch"
 msgstr "Lançamento"
 
+msgid "next page"
+msgstr "próxima página"
+
 msgid "Source repository"
 msgstr "Repositório fonte"
 
-msgid "next page"
-msgstr "próxima página"
+msgid "open issue"
+msgstr "questão aberta"
+
+msgid "Last updated on"
+msgstr "Última atualização em"
+
+msgid "Contents"
+msgstr "Conteúdo"
+
+msgid "Sphinx Book Theme"
+msgstr "Tema do livro Sphinx"
+
+msgid "Download this page"
+msgstr "Baixe esta página"
+
+msgid "By the"
+msgstr "Pelo"
+
+msgid "suggest edit"
+msgstr "sugerir edição"
+
+msgid "Copyright"
+msgstr "direito autoral"
+
+msgid "Toggle navigation"
+msgstr "Alternar de navegação"
+
+msgid "repository"
+msgstr "repositório"
+
+msgid "Fullscreen mode"
+msgstr "Modo tela cheia"
+
+msgid "Theme by the"
+msgstr "Tema por"

@@ -8,68 +8,68 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download notebook file"
-msgstr "Unduh file notebook"
-
-msgid "Sphinx Book Theme"
-msgstr "Tema Buku Sphinx"
-
-msgid "Toggle navigation"
-msgstr "Alihkan navigasi"
-
-msgid "open issue"
-msgstr "masalah terbuka"
-
-msgid "Contents"
-msgstr "Isi"
-
-msgid "Edit this page"
-msgstr "Edit halaman ini"
-
-msgid "suggest edit"
-msgstr "menyarankan edit"
-
-msgid "Print to PDF"
-msgstr "Cetak ke PDF"
-
-msgid "By the"
-msgstr "Oleh"
-
-msgid "By"
-msgstr "Oleh"
-
-msgid "Open an issue"
-msgstr "Buka masalah"
-
-msgid "Fullscreen mode"
-msgstr "Mode layar penuh"
+msgid "previous page"
+msgstr "halaman sebelumnya"
 
 msgid "Download source file"
 msgstr "Unduh file sumber"
 
-msgid "Download this page"
-msgstr "Unduh halaman ini"
+msgid "Edit this page"
+msgstr "Edit halaman ini"
 
-msgid "repository"
-msgstr "gudang"
+msgid "Download notebook file"
+msgstr "Unduh file notebook"
 
-msgid "Theme by the"
-msgstr "Tema oleh"
+msgid "Open an issue"
+msgstr "Buka masalah"
 
-msgid "Last updated on"
-msgstr "Terakhir diperbarui saat"
+msgid "Print to PDF"
+msgstr "Cetak ke PDF"
 
-msgid "Copyright"
-msgstr "hak cipta"
-
-msgid "previous page"
-msgstr "halaman sebelumnya"
+msgid "By"
+msgstr "Oleh"
 
 msgid "Launch"
 msgstr "Meluncurkan"
 
+msgid "next page"
+msgstr "halaman selanjutnya"
+
 msgid "Source repository"
 msgstr "Repositori sumber"
 
-msgid "next page"
-msgstr "halaman selanjutnya"
+msgid "open issue"
+msgstr "masalah terbuka"
+
+msgid "Last updated on"
+msgstr "Terakhir diperbarui saat"
+
+msgid "Contents"
+msgstr "Isi"
+
+msgid "Sphinx Book Theme"
+msgstr "Tema Buku Sphinx"
+
+msgid "Download this page"
+msgstr "Unduh halaman ini"
+
+msgid "By the"
+msgstr "Oleh"
+
+msgid "suggest edit"
+msgstr "menyarankan edit"
+
+msgid "Copyright"
+msgstr "hak cipta"
+
+msgid "Toggle navigation"
+msgstr "Alihkan navigasi"
+
+msgid "repository"
+msgstr "gudang"
+
+msgid "Fullscreen mode"
+msgstr "Mode layar penuh"
+
+msgid "Theme by the"
+msgstr "Tema oleh"
