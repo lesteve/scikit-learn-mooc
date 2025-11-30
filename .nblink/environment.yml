@@ -1,0 +1,13 @@
+name: scikit-learn-course
+channels:
+  - emscripten-forge
+  - conda-forge
+dependencies:
+  - xeus-python
+  - scikit-learn >= 1.6
+  - pandas >= 1
+  - matplotlib-base
+  - seaborn >= 0.13
+  - plotly >= 5.10
+  - IPython
+  - packaging
