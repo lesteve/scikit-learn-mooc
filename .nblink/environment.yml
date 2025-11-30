@@ -5,6 +5,9 @@ channels:
 dependencies:
   - xeus-python
   - scikit-learn >= 1.6
+  # 2025-11-30: scipy 1.14 is the latest version available and needs numpy<2.3
+  # (this avoids scipy UserWarning)
+  - numpy<2.3
   - pandas >= 1
   - matplotlib-base
   - seaborn >= 0.13
